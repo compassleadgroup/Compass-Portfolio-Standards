@@ -1,0 +1,13 @@
+{
+  "name": "compass-portfolio-standards",
+  "owner": {
+    "name": "Compass Lead Group"
+  },
+  "plugins": [
+    {
+      "name": "compass-portfolio",
+      "source": "./",
+      "description": "Portfolio-wide slash commands for Compass rank and rent sites: /new-site, /new-page, /compliance-audit, /gsc-analysis, /tenant-package, /em-dash-check."
+    }
+  ]
+}
