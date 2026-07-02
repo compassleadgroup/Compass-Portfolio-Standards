@@ -18,7 +18,7 @@ Read the current versions of these files from the compass-standards repo (compas
 2. BUILD_PLAYBOOK.md
 3. SCHEMA_WHITELIST.md
 
-Also read CLAUDE_TEMPLATE.md if it exists in the target repo or the standards repo, and use it to generate the site's CLAUDE.md.
+Also read reference/CLAUDE_TEMPLATE.md from the standards repo and use it to generate the site's CLAUDE.md.
 
 ## Ask the operator for
 
@@ -56,7 +56,7 @@ Compliance on every page:
 - Header disclosure strip.
 - Footer disclaimer naming Compass Camper LLC as a marketing and lead generation company.
 - TCPA consent block above every form submit button.
-- Use the exact copy templates from COMPLIANCE_STANDARDS.md Section 3. Do not reword them.
+- Use the exact copy templates from the Required Page Elements section of COMPLIANCE_STANDARDS.md. Do not reword them.
 
 Schema:
 

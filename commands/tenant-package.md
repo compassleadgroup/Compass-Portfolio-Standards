@@ -14,7 +14,7 @@ Generate the closing assets to pitch a contractor on renting a specific Compass 
 ## Read first (live, at run time)
 
 1. TENANT_ACTIVATION.md from the compass-standards repo (compassleadgroup/Compass-Portfolio-Standards, default branch), via local clone or the available GitHub tools.
-2. Rank_and_Rent_Closing_Playbook.md, if it exists in the working repo or is provided by the operator.
+2. reference/Rank_and_Rent_Closing_Playbook.md from the same repo.
 
 ## Ask the operator for
 

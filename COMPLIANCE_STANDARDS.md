@@ -1,87 +1,370 @@
-# COMPLIANCE_STANDARDS.md
+# COMPLIANCE_STANDARDS.md — Master Reference for All Rank-and-Rent Sites
 
-Version 1.0. Effective July 2, 2026.
+**Use:** Apply these standards to every new site built under Compass Camper LLC. This is the default state of a site BEFORE a tenant contractor is signed. Once a tenant is signed, layer in changes from TENANT_ACTIVATION_PLAYBOOK.md.
 
-This is the master compliance rulebook for every Compass rank and rent site. It is the single authoritative copy. If any other file in any repo conflicts with this file, this file wins.
+**Last updated:** May 2026
+**Operating entity:** Compass Camper LLC (Oregon)
 
-Provenance note: this version was assembled into the canonical repo from the Tier 0 handoff specification because the prior standalone copy was not reachable from the migration session. Operator: verify the exact copy templates in Section 3 against the prior authoritative copy before treating the wording as final, then remove this note.
+---
 
-## 1. Entity truth
+## Core Principle
 
-- Every site is a marketing and lead generation service operated by Compass Camper LLC.
-- The sites connect homeowners with independent licensed contractors. The sites do not perform, supervise, or guarantee any work.
-- Nothing on any site may state or imply that the brand or Compass Camper LLC performs the work, employs the crews, or holds trade licenses.
-- Any contractor credential (license, certification, insurance, years in trade) must be attributed to the partner contractor, never to the brand and never to Compass Camper LLC.
+Every site Compass Camper LLC operates is a marketing service that connects homeowners with licensed local contractors. Compass Camper LLC does not perform service work, does not employ tradespeople, and does not directly negotiate scope or pricing on jobs.
 
-## 2. Required elements on every page
+The footer disclaimer states this. The body copy must reinforce it. The FTC's "net impression" doctrine treats a site as deceptive if a reasonable consumer encounters body copy that contradicts the disclaimer, even if the disclaimer is technically present.
 
-Every page on every site must carry all three of the following. A page missing any one of them fails audit.
+**The test:** Read the homepage hero, services section, and "Why Us" block out loud. If a casual reader could come away thinking "this company performs foundation/roofing/HVAC/etc. work," the copy is non-compliant.
 
-1. Header disclosure strip, at the top of the page, visible without scrolling.
-2. Footer disclaimer naming Compass Camper LLC as a marketing and lead generation company.
-3. TCPA consent block directly above the submit button of every form on the page (if the page has a form).
+---
 
-## 3. Exact copy templates
+## Language Rules
 
-Replace {BRAND_NAME} with the site brand. Do not reword these templates on individual sites. Wording changes happen here, by PR, and flow out to all sites.
+### Forbidden language (creates legal exposure)
 
-### 3.1 Header disclosure strip
+Never use these on any Compass Camper LLC site, ever:
+- "Vetted" / "vetted contractors" / "our vetted network"
+- "Our network" / "our network of contractors"
+- "Pre-screened" / "pre-qualified contractors"
+- "Hand-selected" / "carefully selected"
+- "Top-rated contractors" (unless backed by real, documented ranking criteria)
+- "Best contractors in [city]" (unless backed by a documented best-of process)
+- "Trusted partners" (creates implicit warranty obligations)
+- First-person claims about performing work: "we diagnose," "we repair," "we install," "we level," "we fix"
+- Fake testimonials, named customer reviews, or invented case studies
+- Claims of company tenure or experience that don't reflect Compass Camper LLC's actual age
+- Stock photos labeled as "our team" or "our crew"
+- Fabricated certifications, awards, or BBB ratings
+- "Since [year]" or "decades of experience" claims unless documented for Compass Camper LLC
 
-> {BRAND_NAME} is a free service that connects homeowners with independent licensed contractors. We are not a contractor and we do not perform the work.
+### Allowed language (defensible and compelling)
 
-### 3.2 Footer disclaimer
+These are honest, descriptive, and convert well:
+- "Licensed local contractors"
+- "A licensed contractor in your area"
+- "Licensed and insured contractors"
+- "The contractor you're matched with"
+- "A foundation/roofing/HVAC specialist near you"
+- "Independent licensed professionals"
+- "We connect homeowners with..."
+- "We help you find..."
+- "Free, no-obligation inspection from a licensed contractor"
+- Specific verifiable claims: "Licensed in [state]," "Carry general liability insurance," "Offer written warranties"
 
-> {BRAND_NAME} is a marketing and lead generation service operated by Compass Camper LLC. {BRAND_NAME} is not a contractor, does not perform any of the services described on this site, and does not guarantee any contractor's work. All services are performed by independent third party contractors who are solely responsible for their own licensing, insurance, and workmanship. Homeowners should verify licensing and insurance directly with the contractor. Compass Camper LLC may receive compensation when a homeowner is connected with a contractor.
+### Style consistency
 
-### 3.3 TCPA consent block
+- No em dashes (—). Use commas, periods, parens, or "to" instead.
+- Numbers under 10 spelled out, 10+ as digits.
+- Currency: $3,500 (no space after $).
+- Phone numbers always formatted as (XXX) XXX-XXXX with tel: links as +1XXXXXXXXXX.
+- Service names capitalized consistently within each site.
 
-Placed directly above every form submit button, in readable body-size text, never in fine print:
+---
 
-> By submitting this form, you agree that {BRAND_NAME} and its partner contractors may contact you about your request by phone, text message, or email, including through automated technology, at the number and email you provided. Consent is not a condition of purchase. Message and data rates may apply. You can opt out at any time. See our [Privacy Policy](/privacy/) for details.
+## Required Page Elements
 
-TCPA rules:
+### Header disclosure strip (every page, above main nav)
 
-- If a consent checkbox is used, it must never be pre-checked.
-- The /privacy/ link must resolve to a real privacy policy page on the same site.
-- Consent language must not be hidden, collapsed, grayed out, or placed below the button.
+A thin gray bar with small but visible text. NOT footer-only.
 
-## 4. Forbidden language
+**Copy template:**
+> "A marketing service connecting [CITY]-area homeowners with licensed [SERVICE] contractors. Compass Camper LLC is not a licensed contractor and does not perform [SERVICE] work."
 
-The full scannable checklist lives in FORBIDDEN_LANGUAGE.md. Summary of what is banned in all copy, alt text, metadata, and schema:
+**Style:** `bg-gray-100`, `text-xs` or `text-sm`, `text-gray-700`, `py-1.5 px-4`, centered. Looks like a legitimate disclosure, not hidden styling.
 
-- Vetting and endorsement claims: vetted, our network, pre-screened, pre-qualified, hand-selected, carefully selected, top-rated, best contractors in [city], trusted partners.
-- First-person work claims: we diagnose, we repair, we install, we level, we fix, and any equivalent phrasing that puts the brand in the trade.
-- Fabricated trust signals: fake testimonials or named reviews, tenure claims, "since [year]", "decades of experience", stock photos labeled as our team or crew, fabricated certifications, awards, or BBB ratings.
+**Why:** FTC net-impression doctrine requires a reasonable consumer to actually encounter the disclosure. Footer-only doesn't satisfy this when body copy is sales-pitchy.
 
-## 5. Truth in content
+### Footer disclaimer (every page)
 
-- No fake reviews, testimonials, named customers, or invented case studies.
-- No fake team members, staff bios, or stock photos presented as employees or crews.
-- No invented company history, founding dates, jobs-completed counters, or service counts.
-- No unverified awards, badges, ratings, or memberships.
-- Real data only in any proof or performance claim. Anything unverified must be labeled as unverified or removed.
+**Copy template:**
+> "This website is operated by Compass Camper LLC (Oregon), a licensed marketing and lead generation company. [SITE_BRAND] is a marketing service that connects homeowners with independent, licensed [SERVICE] contractors. All [SERVICE] and related services are performed by independent licensed contractors. Compass Camper LLC is not a licensed contractor and does not perform [SERVICE] work directly. Contractor license numbers are available upon request."
 
-## 6. Schema rules
+This MUST appear on every page. Same wording across the site.
 
-The full whitelist lives in SCHEMA_WHITELIST.md. Summary:
+### Form privacy/consent block (every form on the site)
 
-- Allowed pre-tenant: Organization, ProfessionalService, Service, FAQPage, BreadcrumbList. Nothing else.
-- Banned pre-tenant, always: LocalBusiness, any contractor-specific category, Review, AggregateRating, Rating.
-- ProfessionalService and Service descriptions must say the business connects homeowners with licensed contractors, not that it performs the work.
-- Schema must match the visible copy on the page. No schema-only claims.
+Above every submit button. Not pre-checked. Not in popup. Not in fine print.
 
-## 7. Style and formatting
+**TCPA consent copy template:**
+> "By submitting this form, I agree that Compass Camper LLC and a [SERVICE] contractor may contact me at the phone number and email I provided, including by automated phone calls, prerecorded messages, and text messages, regarding [SERVICE] services. Consent is not a condition of any purchase. Message and data rates may apply. I may opt out at any time by replying STOP to any text or asking to be removed during any call. See our Privacy Policy."
 
-- No em dashes (U+2014) anywhere: page copy, code comments, commit messages, alt text. Use commas, periods, parentheses, or "to".
-- Every page uses a self-referencing canonical and trailing-slash URLs, per BUILD_PLAYBOOK.md.
+"Privacy Policy" must be a real link to /privacy.
 
-## 8. Deploy and review policy
+**Disclosure above the form:**
+> "When you submit this form, your information is shared with a licensed [SERVICE] contractor for the purpose of scheduling your free [inspection/quote/assessment]."
 
-- Never merge and never deploy without operator review. Branch, commit, push, open a PR, stop.
-- No Wrangler. No Cloudflare Direct Upload. GitHub auto-build to Cloudflare Pages is the only deploy path.
+### About page required elements
 
-## 9. Change control
+Every Compass Camper LLC site's About page must include:
 
-- This file changes only by PR to the compass-portfolio-standards repo, reviewed by the operator.
-- Every change is recorded in CHANGELOG.md with a date.
-- Commands and site builds read these files live at run time, so a merged change here is immediately authoritative everywhere.
+1. **Operating entity disclosure:** "[SITE_BRAND] is operated by Compass Camper LLC, an Oregon-registered marketing company. We are not a [SERVICE] contractor and do not perform [SERVICE] work."
+
+2. **Business model explanation:** "We operate this website to connect [CITY]-area homeowners with licensed, insured [SERVICE] contractors. When you submit an inspection request, your information is forwarded to a licensed local contractor who can schedule your free [inspection/quote]."
+
+3. **Contractor requirements (objective criteria only):**
+   - Hold current [state] contractor licensing where required
+   - Carry current general liability insurance
+   - Offer written workmanship warranties on completed work
+   - Provide transparent, itemized written estimates before performing any work
+
+4. **NO fake team members.** No invented founders, named individuals with stock photos, or "Meet the Team" sections with fabricated bios.
+
+5. **NO false experience claims.** Don't claim years in business, projects completed, customers served, or homes repaired unless those numbers reflect Compass Camper LLC's actual operating history.
+
+---
+
+## Schema Markup Standards
+
+### LocalBusiness schema
+
+Do NOT use contractor-specific categories ("Foundation Repair Contractor," "Roofing Contractor," "Plumber," etc.). These categories falsely represent Compass Camper LLC as performing the work.
+
+**Use instead:**
+- `@type: "ProfessionalService"` with description "Marketing and lead generation services for [INDUSTRY]"
+- OR `@type: "Service"` with `provider` pointing to Compass Camper LLC and `serviceType: "[Service] contractor referral service"`
+
+The schema description and category MUST accurately reflect that Compass Camper LLC is a marketing service.
+
+### Organization schema (About page)
+
+Must reference Compass Camper LLC with:
+- Correct legal name: "Compass Camper LLC"
+- Correct registered state: Oregon
+- Correct address (operating address, see "Address Requirements" below)
+- Correct phone (Call Rail or similar tracking number once live)
+
+### Service schema (service pages)
+
+`@type: "Service"` is fine. Description must clarify the service is "connecting homeowners with licensed contractors for [service type]" not "we perform [service type]."
+
+### FAQPage schema
+
+Apply to any page with FAQs. Ensure the JSON-LD answer text matches the new compliant copy. If the visible answer changes, the schema must change too.
+
+### BreadcrumbList schema
+
+Standard implementation. No compliance concerns.
+
+### NEVER include these schemas before signing a tenant
+
+- `AggregateRating` — implies aggregate customer reviews exist
+- `Review` — each instance must correspond to a real, verifiable review
+- `Rating` on individual items without underlying data
+
+**FTC Reviews Rule (effective Oct 21, 2024)** treats fake review schema as a per-violation civil penalty up to $53,088. Until you have real reviews from real customers of an actual tenant contractor (or via your own Google Business Profile if you have one), zero review schema.
+
+---
+
+## Address Requirements
+
+### Operating address
+
+Every site needs a real operating address on file. NOT the Oregon registered-agent address.
+
+Acceptable options:
+- The operator's actual residential address (even if home-based)
+- A registered virtual office in the target market (acceptable but increasingly risky for GBP)
+- A real commercial office if/when one is leased
+
+**Why:** State UDAP statutes and the FTC require honest disclosure of where the business operates. Using only the registered-agent address misrepresents operating location.
+
+### Display vs. hide
+
+The operating address must be DISCLOSED on the About page or in Contact info. It does not need to be prominent. You can omit it from the homepage and footer.
+
+### Form addresses
+
+Forms that ask for a property address from the customer are fine. Just make sure they're using a placeholder that doesn't suggest the form is from the company's perspective (e.g., the user's address, not "Our office address").
+
+---
+
+## DBA Filings
+
+Every site brand operated under Compass Camper LLC must be filed as a DBA (or "fictitious name" or "assumed business name" depending on state).
+
+**Required filings:**
+1. Oregon (Compass Camper LLC's home state) — file the DBA with the Oregon Secretary of State
+2. The state where the site targets customers — file the DBA with that state's Secretary of State
+
+**Approximate cost:** $50-$150 per state, depending on jurisdiction.
+
+**When to file:** Within 30 days of launching a new site, before any paid traffic.
+
+**Why this matters:** Operating under a brand name that isn't legally registered to the LLC creates exposure if anyone challenges the business's right to use the name. It also strengthens defenses against UDAP claims because the DBA registration is an official acknowledgment of the marketing entity's existence.
+
+---
+
+## Privacy Policy Requirements
+
+Every site needs a Privacy Policy at /privacy that includes:
+
+1. **Operating entity disclosure:** Compass Camper LLC (Oregon)
+2. **What data is collected:** Names, phone numbers, email addresses, property addresses, IP addresses, page-visit data
+3. **How data is used:** To match homeowners with licensed contractors, to follow up on inquiries, to improve the service
+4. **Who data is shared with:** Licensed local contractors who can fulfill the inspection request, third-party service providers (Cloudflare for hosting, Call Rail for call tracking, etc.)
+5. **Data retention:** Reasonable retention period, typically 5+ years for TCPA defensibility on consent records
+6. **User rights:** Right to opt out, right to request data deletion (CCPA/CPRA if applicable), right to access their data
+7. **Contact info for privacy requests:** A real email address that's monitored
+
+**Sensitive areas:**
+- If targeting California residents, CCPA/CPRA disclosures required
+- If targeting EU residents (unlikely for local US services), GDPR considerations
+- TCPA consent retention: keep records for at least 5 years per FCC guidance
+
+---
+
+## Terms of Service Requirements
+
+Every site needs a Terms of Service at /terms that includes:
+
+1. **Operating entity:** Compass Camper LLC, Oregon
+2. **Governing law:** Oregon
+3. **Service description:** Marketing/lead generation service, NOT a contractor
+4. **Disclaimer of liability for contractor work:** The site connects users with contractors; users contract directly with the contractor for any work performed
+5. **No warranty:** The site doesn't warrant the work performed by any contractor
+6. **Dispute resolution clause:** Optional arbitration clause, otherwise governed by Oregon courts
+7. **Limitation of liability:** Reasonable cap on damages, typically the value of the lead or a nominal amount
+
+---
+
+## What NOT to Include Pre-Tenant
+
+Until you have a signed contractor partner, do NOT include any of these on the site:
+
+- **Customer testimonials** (real or invented)
+- **Review widgets** (Google, Yelp, BBB embeds with reviews displayed)
+- **AggregateRating or Review JSON-LD schema**
+- **"As featured in" media logos** unless verifiable
+- **Certifications, awards, BBB accreditation badges** unless Compass Camper LLC has earned them
+- **Specific job photos** unless they're stock photos clearly framed as illustrative
+- **Named team members** with bios
+- **"Years in business" counters or "Jobs completed" stats**
+- **Specific pricing claims** ("Starting at $X" or "Most jobs run $X to $Y") unless you have data from your tenant to back these numbers
+
+---
+
+## Off-Site Operational Requirements
+
+These aren't code but are operator responsibilities on every site:
+
+### Call answering
+
+Whoever answers the site's phone number must identify the call correctly:
+- Opening line: "[SITE_BRAND], how can I help?"
+- If asked whether the answerer is a contractor: "We're a marketing service that connects homeowners with licensed [SERVICE] contractors. I can help schedule your free inspection."
+- Never claim to be a contractor or to perform the work directly.
+
+### Call recording and consent
+
+Oregon is a one-party consent state for call recording. Tulsa/Oklahoma is also one-party. Most target markets for Compass Camper LLC are one-party consent. Verify per market.
+
+When using Call Rail or similar, enable call recording with appropriate consent language in the IVR or opening greeting.
+
+### Insurance (carry before any paid traffic or tenant signing)
+
+- **General Liability:** $1M/$2M with media-liability endorsement
+- **Errors & Omissions (E&O):** $1M/$2M for lead-gen activities
+- **Cyber liability:** $1M for data breach exposure (TCPA penalties, consumer data)
+
+Pre-revenue this can be deferred, but factor into the contractor outreach timeline. Should be in place before signing any tenant agreement.
+
+### TCPA defensibility tools
+
+Before any paid traffic, integrate one of:
+- **TrustedForm** (ActiveProspect) — captures consent token with form submission
+- **Jornaya LeadiD** — alternative consent token capture
+
+Without these, TCPA defense relies only on form HTML, which is weak. Cost: ~$200-$500/month for a small operator.
+
+Note: organic traffic alone has lower TCPA risk than paid lead-gen, but TrustedForm/Jornaya is still recommended once revenue exists.
+
+---
+
+## Compliance Audit Checklist for New Sites
+
+Use this checklist before launching any new site. Every item must pass before the site goes live publicly (beyond a test environment).
+
+### Pre-launch checklist
+
+**Brand and entity:**
+- [ ] DBA filed in Oregon
+- [ ] DBA filed in target state
+- [ ] Operating address documented (real, not registered-agent only)
+- [ ] Phone number is real and answerable (TextNow acceptable pre-revenue, Call Rail required pre-outreach)
+
+**Site content:**
+- [ ] Header disclosure strip on every page
+- [ ] Footer disclaimer on every page with correct entity and service references
+- [ ] All body copy uses neutral "a licensed contractor" language, no first-person work claims
+- [ ] No "vetted," "our network," "pre-screened," or similar claim-language
+- [ ] No fake testimonials, named customer reviews, or invented case studies
+- [ ] No fake team members or stock-photo bios
+- [ ] No false experience claims, completed-jobs counters, or "since [year]" claims
+- [ ] No certifications, awards, or accreditation badges unverified
+
+**Forms:**
+- [ ] TCPA consent language above submit button, not pre-checked
+- [ ] Disclosure above form about contractor data sharing
+- [ ] Privacy Policy link in consent block is a real link
+- [ ] TODO comment for TrustedForm/Jornaya integration before paid traffic
+
+**Schema:**
+- [ ] LocalBusiness or ProfessionalService schema, NOT contractor-specific category
+- [ ] Organization schema references Compass Camper LLC correctly
+- [ ] FAQPage schema matches visible compliant copy
+- [ ] Service schema description clarifies "connecting homeowners with"
+- [ ] NO AggregateRating schema anywhere
+- [ ] NO Review schema anywhere
+
+**Legal pages:**
+- [ ] /privacy exists with required disclosures
+- [ ] /terms exists with required clauses
+- [ ] Both link from footer on every page
+
+**Off-site:**
+- [ ] Call answering script documented
+- [ ] Phone number forwards to a person who can identify the business correctly
+- [ ] Operator has a plan for what to do with leads BEFORE a tenant is signed (typically: respond honestly, set expectations, hold lead until tenant exists, or forward to a free Tulsa-area contractor as a goodwill referral)
+
+### Insurance (before paid traffic OR tenant signing)
+
+- [ ] General Liability $1M/$2M with media endorsement
+- [ ] E&O $1M/$2M
+- [ ] Cyber liability $1M
+
+### TCPA tools (before paid traffic OR tenant outreach)
+
+- [ ] TrustedForm or Jornaya integrated on all forms
+- [ ] Consent records retention plan (5+ years)
+- [ ] STOP keyword handling for SMS
+
+---
+
+## What This Document Does Not Cover
+
+This is a compliance baseline, not a complete legal review. Before any specific high-risk action, consult a real attorney:
+- Drafting tenant contractor agreements
+- Class-action TCPA defense if a complaint surfaces
+- Multi-state expansion compliance (some states have stricter UDAP statutes)
+- Specific certification or licensing questions in regulated industries (HVAC, electrical, plumbing in certain jurisdictions)
+- Tax structure decisions for the LLC
+
+This document reflects general best-practice principles for marketing/lead-gen businesses operating under FTC, state UDAP, and TCPA rules as of May 2026. Regulatory environments change. Review annually.
+
+---
+
+## When to Layer in Tenant Activation Changes
+
+Once a contractor is signed and an exclusive partnership agreement is executed, apply the standardized changes documented in TENANT_ACTIVATION_PLAYBOOK.md.
+
+That playbook covers:
+- What language can now be added ("our partner contractor")
+- What review and rating content can now appear
+- What schema upgrades become available
+- What additional trust elements can be added
+- What stays the same regardless of tenant status
+
+Do NOT apply tenant-state changes before an actual partnership agreement is signed. Pre-tenant compliance is non-negotiable, even if it costs some conversion percentage.
+
+---
+
+End of COMPLIANCE_STANDARDS.md
