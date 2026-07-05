@@ -1,13 +1,14 @@
 {
   "name": "compass-portfolio-standards",
+  "description": "Claude Code plugin marketplace for the Compass rank and rent portfolio: operational slash commands and the compliance skill, backed by the canonical standards docs in this repo.",
   "owner": {
     "name": "Compass Lead Group"
   },
   "plugins": [
     {
-      "name": "compass-portfolio",
-      "source": "./",
-      "description": "Portfolio-wide slash commands for Compass rank and rent sites: /new-site, /new-page, /compliance-audit, /gsc-analysis, /tenant-package, /em-dash-check."
+      "name": "compass-ops",
+      "source": "./plugins/compass-ops",
+      "description": "Portfolio-wide slash commands and compliance skill for Compass rank and rent sites: /new-site, /new-page, /compliance-audit, /gsc-analysis, /tenant-package, /em-dash-check."
     }
   ]
 }

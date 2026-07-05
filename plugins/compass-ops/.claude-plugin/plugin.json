@@ -1,0 +1,8 @@
+{
+  "name": "compass-ops",
+  "description": "Portfolio-wide slash commands and compliance skill for Compass rank and rent sites. Commands read the live standards files in this repo at run time.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Compass Lead Group"
+  }
+}
