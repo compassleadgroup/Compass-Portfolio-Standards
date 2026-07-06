@@ -2,6 +2,28 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-07-06 (second entry, same day)
+
+Autonomous merge pipeline added. The Claude compliance review is now the merge authority for site repo PRs; no site PR waits for the operator.
+
+- sync/merge-when-green.yml: canonical three-gate pipeline, distributed to every site repo as .github/workflows/merge-when-green.yml. Gate 1: compliance greps (em dash scan plus the FORBIDDEN_LANGUAGE.md checklist, parsed from the site's local copy). Gate 2: npm build. Gate 3: Claude compliance review, reusing the claude-code-action mechanism from the claude-review.yml already running in the site repos, with a structured PASS or FAIL verdict. PASS squash-merges the PR; FAIL posts the reasons as a PR comment and leaves it open.
+- Standards-sync PRs that touch only canonical rule files skip Gates 1 and 3 (the rule files name the banned phrases and carry em dashes, so they could never pass their own greps) and merge on a green build. Normal PRs that touch a canonical file fail Gate 1, which enforces editing the standards repo instead.
+- .github/workflows/standards-sync.yml: files named sync/*.yml now land in .github/workflows/ at each site, and sync/merge-when-green.yml changes trigger the sync.
+- sync/files.txt: added sync/merge-when-green.yml.
+- CLAUDE.md: created. Pipeline rules, canonicalization one site at a time verified on the Cloudflare preview, first-launch PR descriptions carry the pre-launch checklist results, and the fix-PR-N failure loop.
+- Operator setup: SYNC_TOKEN needs the Workflows read and write permission, and CLAUDE_CODE_OAUTH_TOKEN needs to be available in every site repo. Steps in sync/README.md.
+- There was no [manual] skip logic to delete. ZERO_MERGE_SETUP.md was never executed in this org, so merge-when-green.yml is new here rather than a rewrite.
+
+## 2026-07-06
+
+Standards Sync workflow added. A push to main that changes a canonical rule file opens or updates a standards-sync PR in every site repo whose local copies differ. PRs only, the workflow never merges and never pushes to a site repo's main. No AI in the loop.
+
+- .github/workflows/standards-sync.yml: the workflow. Triggers on pushes to main touching a synced file or a sync manifest, plus manual workflow_dispatch runs.
+- sync/sites.txt: manifest of 16 site repos, actual org names. The 12 compass-kb wiki sites plus Central-PA-Radon-Pros, Minnesota-Radon-Pros, VT-Metal-Roofing, and CO-Springs-Radon-Pros (created 2026-07-05, not yet in the wiki).
+- sync/files.txt: the four synced files: COMPLIANCE_STANDARDS.md, FORBIDDEN_LANGUAGE.md, SCHEMA_WHITELIST.md, BUILD_PLAYBOOK.md.
+- sync/README.md: SYNC_TOKEN setup steps, new-site onboarding, test steps.
+- Not runnable until the operator creates the SYNC_TOKEN repo secret (fine-grained personal access token, Contents and Pull requests read and write, scoped to the site repos plus this repo).
+
 ## 2026-07-02 (second entry, same day)
 
 Operator supplied the original project files (compassprojectfiles.zip). Migration completed with the real originals.
