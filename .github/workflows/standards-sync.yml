@@ -10,6 +10,7 @@ on:
       - 'BUILD_PLAYBOOK.md'
       - 'sync/files.txt'
       - 'sync/sites.txt'
+      - 'sync/merge-when-green.yml'
   workflow_dispatch:
 
 jobs:
@@ -57,10 +58,15 @@ jobs:
               FILE="${FILE%$'\r'}"
               [ -z "$FILE" ] && continue
               case "$FILE" in '#'*) continue ;; esac
+              # Workflow files kept under sync/ land in .github/workflows/ at the site.
+              DEST="$FILE"
+              case "$FILE" in
+                sync/*.yml|sync/*.yaml) DEST=".github/workflows/$(basename "$FILE")" ;;
+              esac
               if [ -f "$FILE" ]; then
-                if ! cmp -s "$FILE" "target/$FILE" 2>/dev/null; then
-                  mkdir -p "target/$(dirname "$FILE")"
-                  cp "$FILE" "target/$FILE"
+                if ! cmp -s "$FILE" "target/$DEST" 2>/dev/null; then
+                  mkdir -p "target/$(dirname "$DEST")"
+                  cp "$FILE" "target/$DEST"
                   CHANGED=1
                 fi
               else
@@ -85,7 +91,7 @@ jobs:
               gh pr create --repo "$REPO" \
                 --head standards-sync --base "$BASE" \
                 --title "Standards sync: updated canonical rule files" \
-                --body "Automated sync from Compass-Portfolio-Standards. Review the diff and merge. Compliance rules changed upstream; this keeps the local copies current. Do not edit these files locally, edit the standards repo instead."
+                --body "Automated sync from Compass-Portfolio-Standards. Rules changed upstream; this keeps the local copies current. The merge pipeline builds this PR and merges it on green. Do not edit these files locally, edit the standards repo instead."
               echo "    PR opened"
             fi
             cd ..
