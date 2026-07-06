@@ -2,6 +2,16 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-07-06
+
+Standards Sync workflow added. A push to main that changes a canonical rule file opens or updates a standards-sync PR in every site repo whose local copies differ. PRs only, the workflow never merges and never pushes to a site repo's main. No AI in the loop.
+
+- .github/workflows/standards-sync.yml: the workflow. Triggers on pushes to main touching a synced file or a sync manifest, plus manual workflow_dispatch runs.
+- sync/sites.txt: manifest of 16 site repos, actual org names. The 12 compass-kb wiki sites plus Central-PA-Radon-Pros, Minnesota-Radon-Pros, VT-Metal-Roofing, and CO-Springs-Radon-Pros (created 2026-07-05, not yet in the wiki).
+- sync/files.txt: the four synced files: COMPLIANCE_STANDARDS.md, FORBIDDEN_LANGUAGE.md, SCHEMA_WHITELIST.md, BUILD_PLAYBOOK.md.
+- sync/README.md: SYNC_TOKEN setup steps, new-site onboarding, test steps.
+- Not runnable until the operator creates the SYNC_TOKEN repo secret (fine-grained personal access token, Contents and Pull requests read and write, scoped to the site repos plus this repo).
+
 ## 2026-07-02 (second entry, same day)
 
 Operator supplied the original project files (compassprojectfiles.zip). Migration completed with the real originals.

@@ -1,0 +1,92 @@
+name: Standards Sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'COMPLIANCE_STANDARDS.md'
+      - 'FORBIDDEN_LANGUAGE.md'
+      - 'SCHEMA_WHITELIST.md'
+      - 'BUILD_PLAYBOOK.md'
+      - 'sync/files.txt'
+      - 'sync/sites.txt'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout standards repo
+        uses: actions/checkout@v4
+
+      - name: Sync rule files to every site repo
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "$GH_TOKEN" ]; then
+            echo "SYNC_TOKEN secret is not set. Follow the setup steps in sync/README.md, then rerun." >&2
+            exit 1
+          fi
+
+          git config --global user.name "compass-standards-sync"
+          git config --global user.email "compassleadgroup@gmail.com"
+
+          while IFS= read -r REPO <&3 || [ -n "$REPO" ]; do
+            REPO="${REPO%$'\r'}"
+            [ -z "$REPO" ] && continue
+            case "$REPO" in '#'*) continue ;; esac
+            echo "==> $REPO"
+            URL="https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+
+            # PRs target main when the repo has one, otherwise the repo default branch.
+            # Cloning that branch explicitly keeps the diff and the PR base identical.
+            if git ls-remote --exit-code --heads "$URL" main > /dev/null 2>&1; then
+              BASE=main
+            else
+              BASE=$(git ls-remote --symref "$URL" HEAD | awk '$1 == "ref:" { sub("refs/heads/", "", $2); print $2; exit }')
+              echo "    no main branch, PR will target the default branch: $BASE"
+            fi
+
+            rm -rf target
+            git clone --depth 1 --branch "$BASE" "$URL" target
+
+            CHANGED=0
+            while IFS= read -r FILE || [ -n "$FILE" ]; do
+              FILE="${FILE%$'\r'}"
+              [ -z "$FILE" ] && continue
+              case "$FILE" in '#'*) continue ;; esac
+              if [ -f "$FILE" ]; then
+                if ! cmp -s "$FILE" "target/$FILE" 2>/dev/null; then
+                  mkdir -p "target/$(dirname "$FILE")"
+                  cp "$FILE" "target/$FILE"
+                  CHANGED=1
+                fi
+              else
+                echo "    WARNING: $FILE is listed in sync/files.txt but missing from the standards repo, skipped"
+              fi
+            done < sync/files.txt
+
+            if [ "$CHANGED" -eq 0 ]; then
+              echo "    already current, skipping"
+              continue
+            fi
+
+            cd target
+            git checkout -B standards-sync
+            git add -A
+            git commit -m "Sync canonical standards from Compass-Portfolio-Standards"
+            git push -f origin standards-sync
+
+            if ! gh pr list --repo "$REPO" --head standards-sync --state open --json number --jq 'length' | grep -q '^0$'; then
+              echo "    existing PR updated"
+            else
+              gh pr create --repo "$REPO" \
+                --head standards-sync --base "$BASE" \
+                --title "Standards sync: updated canonical rule files" \
+                --body "Automated sync from Compass-Portfolio-Standards. Review the diff and merge. Compliance rules changed upstream; this keeps the local copies current. Do not edit these files locally, edit the standards repo instead."
+              echo "    PR opened"
+            fi
+            cd ..
+          done 3< sync/sites.txt
