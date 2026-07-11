@@ -2,6 +2,14 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-07-11
+
+Operator decision: the header disclosure strip stays (it is the primary holding-out and FTC net-impression defense) but gets shortened and visually minimized portfolio-wide.
+
+- COMPLIANCE_STANDARDS.md, Required Page Elements: header strip copy template shortened to "A marketing service, not a licensed contractor. [SERVICE] work is performed by independent licensed local contractors." The "not a licensed contractor" phrase and the independent-contractor attribution are retained as the legally load-bearing elements. Style pinned to a minimal small-font bar: bg-gray-50, text-xs, text-gray-500, py-1 px-4, centered, always rendered, never hidden behind interaction.
+- TENANT_ACTIVATION.md, Revision 1: pre-tenant and post-tenant strip copies updated to the shortened base. Post-tenant names the tenant and license number in the second sentence; the disclosure itself never comes off.
+- Rollout to all 20 live sites tracked in compass-kb CHANGELOG, 2026-07-11.
+
 ## 2026-07-02 (second entry, same day)
 
 Operator supplied the original project files (compassprojectfiles.zip). Migration completed with the real originals.

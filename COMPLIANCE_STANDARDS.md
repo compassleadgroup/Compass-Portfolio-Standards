@@ -64,12 +64,12 @@ These are honest, descriptive, and convert well:
 
 ### Header disclosure strip (every page, above main nav)
 
-A thin gray bar with small but visible text. NOT footer-only.
+A thin, minimal gray bar with small but readable text. NOT footer-only.
 
-**Copy template:**
-> "A marketing service connecting [CITY]-area homeowners with licensed [SERVICE] contractors. Compass Camper LLC is not a licensed contractor and does not perform [SERVICE] work."
+**Copy template (operator decision 2026-07-11, shortened from the earlier two-sentence version; keeps the "not a licensed contractor" phrase and the independent-contractor attribution, which are the legally load-bearing elements):**
+> "A marketing service, not a licensed contractor. [SERVICE] work is performed by independent licensed local contractors."
 
-**Style:** `bg-gray-100`, `text-xs` or `text-sm`, `text-gray-700`, `py-1.5 px-4`, centered. Looks like a legitimate disclosure, not hidden styling.
+**Style (operator decision 2026-07-11, minimal small-font bar):** `bg-gray-50`, `text-xs`, `text-gray-500`, `py-1 px-4`, centered, single line on desktop. Muted is fine; hidden is not. It must render on every page without interaction (no dismissal, no collapse, no scripts) and stay readable against its background. Looks like a legitimate disclosure, not hidden styling.
 
 **Why:** FTC net-impression doctrine requires a reasonable consumer to actually encounter the disclosure. Footer-only doesn't satisfy this when body copy is sales-pitchy.
 

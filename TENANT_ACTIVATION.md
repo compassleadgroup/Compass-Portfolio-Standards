@@ -90,11 +90,11 @@ The following changes should be made when a tenant is signed. These are the stan
 
 ### Revision 1: Header disclosure strip update
 
-**Pre-tenant copy:**
-> "A marketing service connecting [CITY]-area homeowners with licensed [SERVICE] contractors. Compass Camper LLC is not a licensed contractor and does not perform [SERVICE] work."
+**Pre-tenant copy (matches the shortened 2026-07-11 template in COMPLIANCE_STANDARDS.md):**
+> "A marketing service, not a licensed contractor. [SERVICE] work is performed by independent licensed local contractors."
 
 **Post-tenant copy:**
-> "A marketing service connecting [CITY]-area homeowners with [TENANT_BRAND], our partner [SERVICE] contractor. Compass Camper LLC is not a licensed contractor and does not perform [SERVICE] work."
+> "A marketing service, not a licensed contractor. [SERVICE] work is performed by our partner [TENANT_BRAND], License #[LICENSE_NUMBER]."
 
 The disclosure stays. The framing updates to name the tenant.
 
