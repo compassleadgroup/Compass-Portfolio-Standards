@@ -19,6 +19,7 @@ That rule applies to legacy prompts, project briefs, per-site instruction files,
 | VOICE.md | House voice reference: tone, sentence rhythm, banned filler, how the brand speaks. Keeps content distinct inside the neutral compliance gated voice. |
 | TENANT_ACTIVATION.md | What changes on a site once a contractor is signed as a tenant. |
 | CHANGELOG.md | Every standards change, dated. |
+| ci/ | The deterministic compliance checker (compliance-check.mjs) that site CI runs on every pull request. Single source; site repos check this repo out at run time rather than vendoring a copy. |
 | reference/ | Supporting research, templates, and playbooks (closing playbook, CLAUDE template, SEO and citation references, niche research). Reference material, not standards. On any conflict, the root standards files win. |
 | archive/ | Deprecated legacy files, kept for history only. Each carries a DEPRECATED header. Never use them in a build. |
 
