@@ -6,7 +6,7 @@ Scaffold a complete new Compass rank and rent site. The output is a full site so
 
 ## Guardrails (non-negotiable, apply to every step)
 
-- Branch, commit, push source, and open a PR for operator review. Do not merge. Do not deploy.
+- Branch, commit, push source, open a PR, and merge it once its checks pass (operator instruction, 2026-07-15). Never deploy by hand (see the next rule).
 - Do not use Wrangler. Do not use Cloudflare Direct Upload. GitHub auto-build to Cloudflare Pages is the only deploy path.
 - No em dashes (U+2014) anywhere: page copy, code comments, commit messages, alt text.
 
@@ -77,6 +77,6 @@ CI gate:
 
 ## Finish
 
-1. Branch, commit, push source, open a PR for operator review.
-2. Do not merge. Do not deploy. Do not use Wrangler or Direct Upload.
+1. Branch, commit, push source, open a PR, and merge it once its checks pass.
+2. Never deploy by hand: no Wrangler, no Direct Upload. Merging to main triggers the GitHub auto-build to Cloudflare Pages.
 3. Report the full URL list you built and any decisions the operator needs to make.

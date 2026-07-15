@@ -6,8 +6,8 @@ Run a repo-wide removal of the em dash character (U+2014) and verify the count i
 
 ## Guardrails (non-negotiable)
 
-- Do not merge. Do not deploy. No Wrangler. No Cloudflare Direct Upload.
-- If this produces file changes, commit them on a branch and open a PR for operator review.
+- Never deploy by hand: no Wrangler, no Cloudflare Direct Upload.
+- If this produces file changes, commit them on a branch, open a PR, and merge it once the check passes.
 
 ## Scope
 

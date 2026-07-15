@@ -2,6 +2,14 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-07-15 (operating rule)
+
+Merge policy changed. Claude now opens and merges PRs in every repo, site repos included, once checks pass. Operator instruction, aligning this repo with the compass-kb git protocol and superseding the earlier "never merge, stop for operator review, this applies to every repo" rule.
+
+- README.md: the Operating rules bullet flipped from never-merge-and-wait-for-review to merge-after-checks-pass.
+- commands/new-site.md, commands/new-page.md, commands/em-dash-check.md: guardrails and finish steps updated to merge after checks. The deploy-method rule is unchanged: never deploy by hand, GitHub auto-build to Cloudflare Pages only.
+- The read-only commands (compliance-audit, gsc-analysis, tenant-package) keep "does not merge or deploy" because they report or generate rather than ship site changes; that is tool behavior, not the governance rule.
+
 ## 2026-07-15
 
 Added the deterministic compliance checker as canonical CI tooling. No rule change.

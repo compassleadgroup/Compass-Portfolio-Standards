@@ -6,7 +6,7 @@ Build one service page or city page for the current site, in the house format, a
 
 ## Guardrails (non-negotiable)
 
-- Branch, commit, push, open a PR. Do not merge. Do not deploy.
+- Branch, commit, push, open a PR, and merge it once its checks pass. Never deploy by hand (see the next rule).
 - No Wrangler. No Cloudflare Direct Upload. GitHub auto-build to Cloudflare Pages is the only deploy path.
 - No em dashes (U+2014) anywhere: copy, code comments, commit messages, alt text.
 
@@ -39,4 +39,4 @@ Look at the top 3 organic results for the target keyword. Note their structure a
 
 ## Finish
 
-Branch, commit, push, open a PR. Do not merge or deploy. No em dashes. Report the page URL, target keyword, and the SERP coverage decisions you made.
+Branch, commit, push, open a PR, and merge it once its checks pass. Never deploy by hand. No em dashes. Report the page URL, target keyword, and the SERP coverage decisions you made.
