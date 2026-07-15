@@ -1,0 +1,39 @@
+# Compliance gate. On every pull request into main, runs the canonical
+# deterministic compliance checker from compass-portfolio-standards against
+# this site's src. The checker is single-sourced there (ci/compliance-check.mjs),
+# so a standards change flows through automatically. Blocks only hard fails
+# (forbidden schema, banned claim-language, first-person work claims, em dashes).
+# Judgment review stays the /compliance-audit command.
+#
+# This is the canonical template. Every site repo carries a copy at
+# .github/workflows/compliance.yml. /new-site copies it verbatim into a new site.
+name: compliance
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  compliance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+
+      - name: Checkout standards (canonical checker)
+        uses: actions/checkout@v4
+        with:
+          repository: compassleadgroup/Compass-Portfolio-Standards
+          path: .compass-standards
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run compliance checker
+        run: node .compass-standards/ci/compliance-check.mjs src

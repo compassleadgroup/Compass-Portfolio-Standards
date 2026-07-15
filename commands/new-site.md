@@ -71,6 +71,10 @@ Language:
 - Attribute any contractor credential to the partner contractor, never to Compass Camper LLC.
 - No em dashes anywhere, including alt text.
 
+CI gate:
+
+- Copy `ci/site-compliance.yml` from the compass-standards repo to `.github/workflows/compliance.yml` in the new site, verbatim. This is the deterministic compliance gate that runs the canonical checker on every pull request. Every existing site carries it and new sites must too.
+
 ## Finish
 
 1. Branch, commit, push source, open a PR for operator review.
