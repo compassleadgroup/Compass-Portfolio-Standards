@@ -47,6 +47,6 @@ To install:
 
 ## Operating rules for agents working in Compass repos
 
-- Never merge and never deploy. Branch, commit, push, open a PR, and stop for operator review. This applies to every repo.
+- Claude opens the PR and merges it once its checks pass. This applies to every repo, site repos included; the operator never has to touch a PR and reviews merged history instead (operator instruction, 2026-07-15, aligning with the compass-kb git protocol). Deploy is still never manual: GitHub auto-build to Cloudflare Pages is the only path (next rule).
 - No Wrangler. No Cloudflare Direct Upload. GitHub auto-build to Cloudflare Pages is the only deploy path.
 - No em dashes anywhere: file content, code comments, commit messages, alt text.
