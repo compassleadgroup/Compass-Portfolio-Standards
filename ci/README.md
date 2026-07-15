@@ -1,6 +1,6 @@
 # ci/ compliance checker
 
-`compliance-check.mjs` is the canonical deterministic compliance gate for Compass rank-and-rent sites. This is the single source. Site repos do not carry their own copy. Each site's `.github/workflows/compliance.yml` checks this repo out at CI time and runs this script against the site's `src`, so a change here flows through to every site on its next pull request.
+`compliance-check.mjs` is the canonical deterministic compliance gate for Compass rank-and-rent sites. This is the single source. Site repos do not carry their own copy. Each site's `.github/workflows/compliance.yml` checks this repo out at CI time and runs this script against the site's `src`, so a change here flows through to every site on its next pull request. The workflow itself is the canonical template `ci/site-compliance.yml`; every site carries a verbatim copy at `.github/workflows/compliance.yml`, and `/new-site` copies it into new sites.
 
 ## What it enforces
 
