@@ -56,13 +56,13 @@ const LINE_RULES = [
   { id: "en-dash", severity: "warn", re: /\u2013/g,
     msg: "En dash present. Confirm it is intended (ranges only)." },
 
-  // Schema: forbidden types and properties (precise, schema-only patterns)
-  { id: "schema-aggregaterating", severity: "fail", re: /aggregaterating/gi,
-    msg: "AggregateRating schema is banned pre-tenant. Remove it." },
-  { id: "schema-review-prop", severity: "fail", re: /"review"\s*:\s*[\[{]/gi,
+  // Schema: forbidden types and properties. These match an EMITTED node (a quoted
+  // @type or property), not the type name written in a comment or a guardrail
+  // allow-list. Both quote styles, because the Astro/TS sites use single quotes.
+  { id: "schema-review-prop", severity: "fail", re: /["']review["']\s*:\s*[\[{]/gi,
     msg: "Review schema property is banned unless it maps to a real, documented review." },
   { id: "schema-forbidden-type", severity: "fail",
-    re: /"@type"\s*:\s*"(LocalBusiness|Review|Rating|Contractor|GeneralContractor|HomeAndConstructionBusiness|Plumber|Electrician|HVACBusiness|RoofingContractor|FoundationRepairContractor|Locksmith)"/gi,
+    re: /["']@type["']\s*:\s*["'](LocalBusiness|Review|Rating|AggregateRating|Contractor|GeneralContractor|HomeAndConstructionBusiness|Plumber|Electrician|HVACBusiness|RoofingContractor|FoundationRepairContractor|Locksmith)["']/gi,
     msg: "Forbidden schema @type. Allowed only: Organization, Service, ProfessionalService, BreadcrumbList, FAQPage." },
 
   // Forbidden claim-language (COMPLIANCE_STANDARDS.md, "never use these ever")

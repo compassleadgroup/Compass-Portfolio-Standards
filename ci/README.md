@@ -30,4 +30,6 @@ Adapted from the operator's uploaded proposal (2026-07-15). Three changes bring 
 2. "pre-qualified" broadened beyond "pre-qualified contractors" to also catch pros and professionals, still scoped so it does not flag "pre-qualified for financing".
 3. "top-rated" broadened to the bare form.
 
+4. Schema rules match an emitted, quoted @type or property in either quote style, not the type name written in a comment or a guardrail allow-list. This avoids flagging the compliance guardrails some site templates carry, and it catches single-quoted emissions the first cut missed.
+
 Known caveat: this script hardcodes the banned-phrase and schema lists rather than reading FORBIDDEN_LANGUAGE.md and SCHEMA_WHITELIST.md. That is a second copy of the rules and can drift. It is kept deliberate for now, because a zero-dependency regex gate is simpler and faster in CI. If the canonical lists change, update this file in the same pull request. A future version could parse the two markdown files instead.
