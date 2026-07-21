@@ -8,7 +8,7 @@ Re-skin an existing Compass site's LOOK without touching its content, SEO, or co
 
 - Branch, commit, push, open a PR, and merge it once its checks pass. Never deploy by hand: no Wrangler, no Direct Upload. GitHub auto-build to Cloudflare Pages is the only deploy path.
 - No em dashes (U+2014) anywhere: copy, code comments, commit messages, alt text.
-- Re-skin the visual layer only. Do not change the copy claims, the schema, the disclosures, the URL structure, or the internal linking. If a re-skin would touch any of those, stop and ask.
+- Re-skin the visual layer, which includes the layout and composition. Recompose sections freely; that is the point of a redesign, not just a recolor. Do not change the copy claims, the schema, the disclosures, the URL structure, or the internal linking. If a re-skin would touch any of those, stop and ask.
 - The compliance-mandated header disclosure strip has fixed styling in COMPLIANCE_STANDARDS.md (its classes, size, and single-line placement). It survives the re-skin verbatim; adjust only what is needed to keep it readable against a new background, and confirm it against COMPLIANCE_STANDARDS.md before you finish.
 
 ## Read first (live, at run time)
@@ -23,12 +23,13 @@ Also read the site's current design record on its compass-kb site page, and the 
 
 ## Do the re-skin
 
-Invoke the `site-design` skill and run its loop on this existing site:
+Invoke the `site-design` skill and run its loop on this existing site. Follow its calibration section: a redesign is neither a recolor nor a themed costume, it is a different but tasteful layout. Concretely:
 
-- Pin a new direction for the site (palette, type pairing, one signature element, layout archetype), diffed against the sibling so no two sites share a lane.
+- Offer the operator two or three restrained style directions in plain language first (for example warm editorial, photo-led, or clean classic), each of which breaks the card grid, and build the one they pick. Taste is the operator's call; do not silently pick a bold theme.
+- Pin the chosen direction (palette, type pairing, one signature element, and a layout archetype that is not the card-grid template), diffed against the sibling so no two sites share a lane.
 - Gather three to five exemplars per the skill's reference registry, from premium adjacent categories, never from other lead-gen sites.
-- Go section by section: re-skin the navbar, then the hero, then down the page, each against its exemplar, translate not copy.
-- After each section, run the `site-design-qa` skill and clear its verdict table before moving on.
+- Go section by section and recompose each section's layout, not just its colors: kill the uniform card grid (recompose it as an editorial list, feature rows, or a directory), rework the hero, and rethink the section rhythm. Translate the exemplar treatments, do not copy them.
+- After each section, run the `site-design-qa` skill and clear its verdict table before moving on, including its recolor and costume checks.
 
 ## Finish
 

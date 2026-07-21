@@ -33,9 +33,14 @@ Every answer must be NO. Any YES is a FAIL for that row. The first block is the 
 - Is the type just default Inter or system with no display face?
 - Do cards have frosted-glass or soft-glow styling?
 - Does it break or look unstyled on mobile?
-- Is the section a plain 2x2 card grid? (A newer tell: break the grid.)
+- Is the services, building-types, or feature block a uniform grid of identical cards (2-by-2 or 3-by-N)? (The template tell. Recompose it as an editorial list, feature rows, or a directory.)
 - Does it carry the recognizable house look of a drafting artifact rather than a built, subject-specific design?
 - Could this exact section be dropped onto the sibling site in the same niche unchanged? (If yes, it is not distinct enough. Diff it against the sibling's design record and change a lane.)
+
+For a re-skin or redesign, two more, both must be NO:
+
+- Is this essentially the previous layout recolored, the same hero shape, the same card grid, the same section skeleton with new paint? (A recolor is not a redesign.)
+- Would this read as a themed costume or novelty (a blueprint, a terminal, a stunt) rather than a tasteful site a local-business owner would proudly show a customer? (Too much is also a fail. The target is different but restrained.)
 
 ## Output
 
