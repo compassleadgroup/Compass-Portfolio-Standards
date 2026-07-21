@@ -2,6 +2,13 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-07-21 (image source neutrality)
+
+Clarified that image compliance does not care how an image was made. The only image line in "What NOT to Include Pre-Tenant" excepted "stock photos clearly framed as illustrative", which implicitly disfavored AI-generated imagery. It now reads that stock, licensed, and AI-generated images are treated the same: generic, clearly illustrative imagery is fine regardless of source, and the depiction rules (no specific real job, no crew, no staged before-and-after, no person presented as staff or a customer) apply equally to all of them.
+
+- Operator instruction: the standard should not restrict images by generation method. This removes the last source-based distinction. The master never carried an "AI only for backgrounds and diagrams" rule; that lived only in some site-repo copies, since reconciled (hillcountrybarnbuilders.com site PR #19).
+- No protection weakened. The FTC-relevant guardrails are depiction-based and unchanged; they now apply source-agnostically.
+
 ## 2026-07-21
 
 Wired the design-distinctiveness doctrine into the build tooling as executable skills. Closes the compass-standards half of compass-kb open question 17: the doctrine existed but nothing in a build enforced it, so a build could pass every compliance grep and still ship the AI-generated look.
