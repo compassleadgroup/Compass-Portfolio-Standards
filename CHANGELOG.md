@@ -2,6 +2,18 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-07-21
+
+Wired the design-distinctiveness doctrine into the build tooling as executable skills. Closes the compass-standards half of compass-kb open question 17: the doctrine existed but nothing in a build enforced it, so a build could pass every compliance grep and still ship the AI-generated look.
+
+- New skills/ directory ships two Claude skills. site-design: the anti-generic build loop (pin a design brief, gather three to five exemplars from premium adjacent categories, build section by section, translate not copy) with skills/site-design/references.md, the per-niche exemplar registry. site-design-qa: the section-gated visual drift gate (screenshot a section, return a pass or fail verdict table against the vibe-check plus two newer tells, never edit unprompted). They extend reference/CLAUDEwebdesign_copy.md rather than restating its bans, so no drift. Byte-mirrored in compass-kb/.claude/skills for the knowledge base, same as CLAUDEwebdesign is mirrored.
+- BUILD_PLAYBOOK.md: added Section 0, visual design distinctiveness, ahead of Section 1. The prime directive (a page that reads as AI-made has failed), the exemplar mechanism, the two newer tells (2x2 grids, raw drafting-artifact output), the variance rule, and the QA gate. Existing sections unrenumbered.
+- commands/new-site.md: reads CLAUDEwebdesign_copy.md at run time, copies it into the new repo as CLAUDEwebdesign.md, invokes the site-design skill in the build, and runs the site-design-qa gate before the PR. New sites are now born with the design rulebook and the visual gate.
+- commands/new-page.md: a new page now matches the site's existing design record and clears site-design-qa before merge.
+- commands/reskin.md: new /reskin command for past builds. Re-skins an existing site's look via the site-design loop without touching content, SEO, schema, disclosures, or URLs.
+- README.md and marketplace.json: the command count is now seven, /reskin and the two skills are documented, and the file map lists skills/.
+- No compliance rule changed. This adds visual-design enforcement only. COMPLIANCE_STANDARDS.md still governs and wins every conflict.
+
 ## 2026-07-15 (operating rule)
 
 Merge policy changed. Claude now opens and merges PRs in every repo, site repos included, once checks pass. Operator instruction, aligning this repo with the compass-kb git protocol and superseding the earlier "never merge, stop for operator review, this applies to every repo" rule.

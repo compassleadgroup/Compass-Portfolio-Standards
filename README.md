@@ -13,7 +13,7 @@ That rule applies to legacy prompts, project briefs, per-site instruction files,
 | File | Covers |
 | --- | --- |
 | COMPLIANCE_STANDARDS.md | The master compliance rulebook. Entity truth, required disclosures, exact copy templates, forbidden claims, schema rules, change control. Single copy, authoritative. |
-| BUILD_PLAYBOOK.md | Site architecture, URL conventions, tech stack, page templates, internal linking, content lanes, deploy policy, style rules. |
+| BUILD_PLAYBOOK.md | Site architecture, URL conventions, tech stack, page templates, internal linking, content lanes, deploy policy, style rules, and visual design distinctiveness (Section 0). |
 | FORBIDDEN_LANGUAGE.md | Quick reference banned word and claim list, extracted from COMPLIANCE_STANDARDS.md so commands can check one place. |
 | SCHEMA_WHITELIST.md | The only schema.org types allowed on a pre-tenant site, and the types that are always banned pre-tenant. |
 | VOICE.md | House voice reference: tone, sentence rhythm, banned filler, how the brand speaks. Keeps content distinct inside the neutral compliance gated voice. |
@@ -21,20 +21,24 @@ That rule applies to legacy prompts, project briefs, per-site instruction files,
 | CHANGELOG.md | Every standards change, dated. |
 | ci/ | The deterministic compliance checker (compliance-check.mjs) that site CI runs on every pull request. Single source; site repos check this repo out at run time rather than vendoring a copy. |
 | reference/ | Supporting research, templates, and playbooks (closing playbook, CLAUDE template, SEO and citation references, niche research). Reference material, not standards. On any conflict, the root standards files win. |
+| skills/ | The plugin's Claude skills. site-design (the anti-generic build loop with the per-niche exemplar registry) and site-design-qa (the section-gated visual drift gate). The executable form of the design-distinctiveness doctrine. |
 | archive/ | Deprecated legacy files, kept for history only. Each carries a DEPRECATED header. Never use them in a build. |
 
 ## The compass-portfolio plugin
 
-This repo also ships the compass-portfolio Claude Code plugin. The plugin installs six saved slash commands that are available portfolio wide:
+This repo also ships the compass-portfolio Claude Code plugin. The plugin installs seven saved slash commands that are available portfolio wide:
 
 | Command | Purpose |
 | --- | --- |
 | /new-site | Scaffold a complete new rank and rent site to standards, ready for operator review. |
 | /new-page | Build one service page or city page in the house format. |
+| /reskin | Re-skin an existing site's look to the design-distinctiveness doctrine, without touching content, SEO, or compliance. |
 | /compliance-audit | Run the pre-launch checklist against a site and return pass or fail per item. |
 | /gsc-analysis | Turn a Google Search Console export into a prioritized action list and a decision record. |
 | /tenant-package | Generate the closing assets to pitch a contractor on a specific site. |
 | /em-dash-check | Strip and verify zero em dashes across a repo. |
+
+It also ships two skills the build commands invoke: `site-design` (gather exemplars, build section by section, translate not copy) and `site-design-qa` (screenshot a section, return a pass or fail verdict table, never edit unprompted).
 
 Each command reads the live files in this repo at run time, so standards changes flow through automatically without editing the commands.
 

@@ -36,7 +36,8 @@ Look at the top 3 organic results for the target keyword. Note their structure a
 - Self-referencing canonical and trailing slash.
 - Internal linking: link to at least 3 other service pages and 2 to 3 city pages in the body, plus the footer mega-nav.
 - Zero forbidden language (FORBIDDEN_LANGUAGE.md).
+- The site's existing design system: reuse the site's palette, type pairing, signature element, and section rhythm from its CLAUDEwebdesign.md and design record. A new page must match the site it joins, not introduce a generic look. Section 0 of BUILD_PLAYBOOK.md governs.
 
 ## Finish
 
-Branch, commit, push, open a PR, and merge it once its checks pass. Never deploy by hand. No em dashes. Report the page URL, target keyword, and the SERP coverage decisions you made.
+Run the `site-design-qa` skill on the finished page and clear its verdict table before you open the PR. Then branch, commit, push, open a PR, and merge it once its checks pass. Never deploy by hand. No em dashes. Report the page URL, target keyword, and the SERP coverage decisions you made.

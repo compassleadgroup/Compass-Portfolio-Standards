@@ -14,6 +14,25 @@
 
 ---
 
+## SECTION 0: VISUAL DESIGN DISTINCTIVENESS (read before building any component)
+
+The prime directive: if a stranger glances at the page for two seconds and thinks "an AI made this," the build failed, no matter how clean the code or the SEO. Every site gets a distinct, subject-specific, human-studio look. The default sleek-generic look, the one the model reaches for on autopilot and the one every other AI-built lead-gen site wears, is the failure mode, not the floor. This is a money rule: the site is the product a tenant judges, a visually identical portfolio is a detectable footprint, and a hand-made set of assets defends a higher exit multiple than one template cloned many times.
+
+The full rules and the executable loop live in two places you must use on every build:
+
+- reference/CLAUDEwebdesign_copy.md: the base design rulebook (the AI-fingerprint bans, the palette and type protocol, the one-signature-element rule, the responsive floor). It rides into every site repo as CLAUDEwebdesign.md.
+- The `site-design` skill (in this plugin under skills/): the executable loop that closes the gap prose rules cannot. Bans only get a build to generic-safe, which is still cookie-cutter. Distinctiveness has to be manufactured: pin a design brief tied to the subject and metro, gather three to five concrete exemplars from premium adjacent categories (never from other lead-gen sites), then build section by section against them, translating the treatment onto this site's own tokens, never copying. The skill carries the per-niche exemplar registry.
+
+Two newer tells to treat as bans, on top of the CLAUDEwebdesign list: a plain 2x2 card grid reads as generated (break the grid), and the raw output of a drafting artifact carries a spottable house look (use it for a skeleton only, then rebuild against the exemplars).
+
+Portfolio variance: no two sites share a palette, a type pairing, or a layout archetype. Read the sibling site's design record before building and change a lane on each axis. Capture this site's design record (palette hexes, display-plus-body pairing, the one signature element, the layout archetype) at build-record time.
+
+The gate: run the `site-design-qa` skill on each finished section and once on the full page before the build PR merges. It screenshots the section and returns a pass or fail verdict table against the vibe-check, and never edits unprompted. A build can pass every compliance grep and still ship the templated look, so this visual gate is separate from and additional to the compliance CI.
+
+The design license is visual and editorial only. It never buys a compliance shortcut: the copy, schema, disclosures, and forbidden-language rules are identical in a bold build and a plain one, and COMPLIANCE_STANDARDS.md wins every conflict.
+
+---
+
 ## SECTION 1: SITE ARCHITECTURE
 
 ### Target URL count on launch
