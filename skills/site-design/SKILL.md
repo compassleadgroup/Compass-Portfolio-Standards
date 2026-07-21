@@ -12,6 +12,26 @@ Turns the design-distinctiveness doctrine into an executable build loop. Bans an
 
 It does not replace the design rulebook. It assumes that rulebook is available (the base bans, the palette and type protocol, the one-signature-element rule, the responsive floor) and adds three things the rulebook lacks: the reference-exemplar discipline, cross-category sourcing, and two newer tells.
 
+## The calibration: redesign, not recolor, and not a costume
+
+Two failure modes sit on either side of a good redesign. Aim for the middle. (Learned the hard way on the hillcountrybarnbuilders.com re-skin, 2026-07-21: the first attempt was a recolor, the second overcorrected into an industrial costume, the third landed.)
+
+- Recolor (too little). Swapping the palette, type, and a few borders while the layout stays the same is not a redesign. If the hero is still a headline over a scrimmed photo with two stacked buttons, the services are still a grid of identical bordered cards, and the form is still one boxed block, the build failed no matter how nice the new colors are. The single clearest tell to kill is the uniform card grid (a 3-by-N or 2-by-2 of identical cards). Recompose it.
+- Costume (too much). A themed novelty that makes the page about the concept instead of the business also fails. A blueprint or spec-sheet, a terminal, a heavy brutalist gimmick: a real local-service owner would not proudly hand it to a customer. For home-service niches the site should feel warm, human, and credible, not like a stunt.
+- The target. A genuinely different, tasteful layout that a good studio would design for this specific local business: a different layout archetype and different section compositions, executed with restraint. Different, not disguised.
+
+Calibrate taste with the operator. Taste is the operator's call, so on a re-skin, or any time the operator is particular, offer two or three restrained style directions in plain language before building (for example warm editorial, photo-led, or clean classic), each of which breaks the card grid, and build the one the operator picks. Do not silently pick a bold theme.
+
+Layout patterns that beat the card grid (reach for one and tie it to the subject):
+
+- Editorial list: roomy rows, each a name, a one-line, a hairline divider, and an arrow.
+- Alternating image-and-text feature rows.
+- A magazine split: asymmetric oversized type beside an image.
+- A directory or index: clean grouped lists rather than boxes.
+- One primary feature plus a supporting list, instead of N equal cards.
+
+Avoid the uniform grid of identical cards, the everything-centered single column, and the boxed centered form as the only form.
+
 ## Prerequisites
 
 - The design rulebook. In a site repo it is CLAUDEwebdesign.md. In the compass-portfolio-standards plugin it is reference/CLAUDEwebdesign_copy.md. In the compass-kb knowledge base it is raw/CLAUDEwebdesign copy.md. Read whichever is present.
@@ -20,7 +40,7 @@ It does not replace the design rulebook. It assumes that rulebook is available (
 
 ## Step 1: Pin the direction (before any component)
 
-Name the concrete subject, not "a local service site." Radon in Minnesota home sales. Barndominiums in the Hill Country. Well water in rural Michigan. Then pick the design lane: a dominant plus accent palette from the subject or region, a display-plus-body type pairing, one signature element that encodes something true about the subject, and a layout archetype. Diff every axis against the sibling's design record and change a lane on each.
+Name the concrete subject, not "a local service site." Radon in Minnesota home sales. Barndominiums in the Hill Country. Well water in rural Michigan. Then pick the design lane: a dominant plus accent palette from the subject or region, a display-plus-body type pairing, one signature element that encodes something true about the subject, and a layout archetype. Diff every axis against the sibling's design record and change a lane on each. The layout archetype is a first-class axis, not an afterthought: pick one that breaks the card-grid template per the calibration above, and if the operator chose a style direction, execute that one.
 
 ## Step 2: Gather exemplars (the core move)
 
