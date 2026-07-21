@@ -6,7 +6,7 @@ Scaffold a complete new Compass rank and rent site. The output is a full site so
 
 ## Guardrails (non-negotiable, apply to every step)
 
-- Branch, commit, push source, open a PR, and merge it once its checks pass (operator instruction, 2026-07-15). Never deploy by hand (see the next rule).
+- Branch, commit, push source, open a PR, and merge it once both gates clear: the compliance CI and the site-design-qa visual gate (see Finish). Never deploy by hand (see the next rule).
 - Do not use Wrangler. Do not use Cloudflare Direct Upload. GitHub auto-build to Cloudflare Pages is the only deploy path.
 - No em dashes (U+2014) anywhere: page copy, code comments, commit messages, alt text.
 
@@ -15,8 +15,9 @@ Scaffold a complete new Compass rank and rent site. The output is a full site so
 Read the current versions of these files from the compass-standards repo (compassleadgroup/Compass-Portfolio-Standards, default branch). Use a local clone if one is present, otherwise fetch via the available GitHub tools. Do not rely on cached or remembered versions.
 
 1. COMPLIANCE_STANDARDS.md (authoritative; on any conflict it wins)
-2. BUILD_PLAYBOOK.md
+2. BUILD_PLAYBOOK.md (Section 0 is the visual-design gate; do not skip it)
 3. SCHEMA_WHITELIST.md
+4. reference/CLAUDEwebdesign_copy.md (the design rulebook)
 
 Also read reference/CLAUDE_TEMPLATE.md from the standards repo and use it to generate the site's CLAUDE.md.
 
@@ -51,6 +52,13 @@ Architecture:
 - Drive city pages from a single [city].astro template fed by a cities.ts data file.
 - Footer mega-nav that links to every service and every city, on every page.
 
+Design (per Section 0 of BUILD_PLAYBOOK.md, and non-negotiable):
+
+- Copy reference/CLAUDEwebdesign_copy.md from the compass-standards repo to CLAUDEwebdesign.md in the new site, verbatim, so the design rulebook rides in the repo.
+- Invoke the `site-design` skill and run its loop: pin a design brief (palette, display-plus-body type pairing, one signature element, layout archetype) tied to this niche and metro, diffed against the sibling site's design record so no two sites share a lane; gather three to five exemplars from premium adjacent categories, never from other lead-gen sites; then build section by section against them, translating the treatment onto this site's own tokens, never copying.
+- After each section, run the `site-design-qa` skill and clear its verdict table (every row PASS or an accepted WATCH) before starting the next section, so drift is caught while it is one section and cheap to fix. Save each section's audit file in the repo.
+- Do not ship the model's autopilot look. If a page could be dropped onto another site in the portfolio unchanged, it is not done.
+
 Compliance on every page:
 
 - Header disclosure strip.
@@ -77,6 +85,8 @@ CI gate:
 
 ## Finish
 
-1. Branch, commit, push source, open a PR, and merge it once its checks pass.
-2. Never deploy by hand: no Wrangler, no Direct Upload. Merging to main triggers the GitHub auto-build to Cloudflare Pages.
-3. Report the full URL list you built and any decisions the operator needs to make.
+1. Run the `site-design-qa` skill once on the full assembled page (the per-section passes happened during the build). Clear its verdict table and commit the saved full-page audit file.
+2. Record the site's design record (palette hexes, type pairing, signature element, layout archetype) on its compass-kb site page via /new_site_page, so the portfolio variance ledger stays current.
+3. Branch, commit, push source, open a PR. Merge only after both gates clear: the compliance CI is green AND the site-design-qa audit files are committed with every row PASS or an accepted WATCH. The compliance CI does not check visual design, so the QA audit is the only trace that the visual gate ran; do not merge without it.
+4. Never deploy by hand: no Wrangler, no Direct Upload. Merging to main triggers the GitHub auto-build to Cloudflare Pages.
+5. Report the full URL list you built, the design record, and any decisions the operator needs to make.

@@ -7,7 +7,7 @@
     {
       "name": "compass-portfolio",
       "source": "./",
-      "description": "Portfolio-wide slash commands for Compass rank and rent sites: /new-site, /new-page, /compliance-audit, /gsc-analysis, /tenant-package, /em-dash-check."
+      "description": "Portfolio-wide slash commands for Compass rank and rent sites: /new-site, /new-page, /reskin, /compliance-audit, /gsc-analysis, /tenant-package, /em-dash-check. Ships the site-design and site-design-qa skills."
     }
   ]
 }
