@@ -26,7 +26,7 @@ That rule applies to legacy prompts, project briefs, per-site instruction files,
 
 ## The compass-portfolio plugin
 
-This repo also ships the compass-portfolio Claude Code plugin. The plugin installs seven saved slash commands that are available portfolio wide:
+This repo also ships the compass-portfolio Claude Code plugin. The plugin installs ten saved slash commands that are available portfolio wide. The seven build and operations commands:
 
 | Command | Purpose |
 | --- | --- |
@@ -37,6 +37,8 @@ This repo also ships the compass-portfolio Claude Code plugin. The plugin instal
 | /gsc-analysis | Turn a Google Search Console export into a prioritized action list and a decision record. |
 | /tenant-package | Generate the closing assets to pitch a contractor on a specific site. |
 | /em-dash-check | Strip and verify zero em dashes across a repo. |
+
+Plus three knowledge-base writers that record research and site facts to compass-kb, from log_verdict.md, new_site_page.md, and new_site_research.md in commands/.
 
 It also ships two skills the build commands invoke: `site-design` (gather exemplars, build section by section, translate not copy) and `site-design-qa` (screenshot a section, return a pass or fail verdict table, never edit unprompted).
 

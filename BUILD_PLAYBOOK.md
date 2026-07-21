@@ -27,7 +27,7 @@ Two newer tells to treat as bans, on top of the CLAUDEwebdesign list: a plain 2x
 
 Portfolio variance: no two sites share a palette, a type pairing, or a layout archetype. Read the sibling site's design record before building and change a lane on each axis. Capture this site's design record (palette hexes, display-plus-body pairing, the one signature element, the layout archetype) at build-record time.
 
-The gate: run the `site-design-qa` skill on each finished section and once on the full page before the build PR merges. It screenshots the section and returns a pass or fail verdict table against the vibe-check, and never edits unprompted. A build can pass every compliance grep and still ship the templated look, so this visual gate is separate from and additional to the compliance CI.
+The gate: run the `site-design-qa` skill on each finished section and once on the full page before the build PR merges. It screenshots the section and returns a pass or fail verdict table against the vibe-check, and never edits unprompted. A build can pass every compliance grep and still ship the templated look, so this visual gate is separate from and additional to the compliance CI. One reconciliation with Section 2: the homepage differentiators block (Section 2, item 5) is a verifiable-specifics list, not a generic slogan section. Give it a concrete subject-specific heading, never the words "Why Choose Us," and it clears the gate.
 
 The design license is visual and editorial only. It never buys a compliance shortcut: the copy, schema, disclosures, and forbidden-language rules are identical in a bold build and a plain one, and COMPLIANCE_STANDARDS.md wins every conflict.
 
@@ -85,7 +85,7 @@ Section order (12 sections, locked):
 2. **H1 with brand + service cluster.** Formula: `{Brand Name}: {Service Type} in {City}, {State}`. Example: "Tulsa Foundation Experts: Foundation Repair, Pier Installation, and Crawl Space Solutions in Tulsa, OK."
 3. **Intro paragraph (2 to 3 paragraphs, 100 to 200 words).** Mention years of experience (real numbers only), city name in the first 100 words, and the climate/soil/local condition that drives the niche.
 4. **Quote request form above the fold on desktop.** Fields: Name, Phone, Email, Service Needed (dropdown), brief description. Include TCPA consent block.
-5. **"Why Choose Us" stat-claim list (8 to 12 bullets).** Each bullet is a verifiable specific. "48 foundations stabilized in Tulsa County since 2024" beats "1,000+ happy customers."
+5. **Differentiators list (8 to 12 bullets), under a concrete subject-specific heading, never the generic "Why Choose Us" slogan.** Each bullet is a verifiable specific. "48 foundations stabilized in Tulsa County since 2024" beats "1,000+ happy customers." The verifiable-specifics content is required; the generic "Why Choose Us" framing is a banned AI tell (Section 0 and CLAUDEwebdesign), so title this block for the subject, not with the slogan.
 6. **Services grid (4 to 10 H3 cards).** Each card has an image, the service name, a 2-paragraph blurb, and a link to the full service page.
 7. **Process or "Our Approach" numbered steps (3 to 7 steps).** Inspection, diagnosis, written estimate, work, warranty handoff.
 8. **Cost-range table.** Real local ranges. Foundation repair: steel push piers $1,400 to $2,500 per pier, helical piers $1,500 to $3,000, polyurethane foam jacking $5 to $25 per square foot. Annotate as "{Year} {Metro} market ranges, updated annually."
@@ -712,6 +712,6 @@ When the operator asks the AI to edit a website using this playbook, follow this
 
 Apply every section as binding rules. If the operator asks for an exception, ask why and document it. If a rule conflicts with new Google guidance after this playbook's date, defer to the newer guidance and note the deviation.
 
-**Last updated:** May 2026
+**Last updated:** July 2026 (Section 0 visual design distinctiveness added)
 **Operating entity:** Compass Camper LLC (Oregon)
 **Compliance basis:** Google QRG Sept 11, 2025; Google March 2024 core update + spam policies; Google Site Reputation Abuse policy (Nov 19, 2024 expansion); Whitespark 2026 Local Ranking Factors; Sterling Sky doorway penalty case studies.

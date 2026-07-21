@@ -36,7 +36,7 @@ Look at the top 3 organic results for the target keyword. Note their structure a
 - Self-referencing canonical and trailing slash.
 - Internal linking: link to at least 3 other service pages and 2 to 3 city pages in the body, plus the footer mega-nav.
 - Zero forbidden language (FORBIDDEN_LANGUAGE.md).
-- The site's existing design system: reuse the site's palette, type pairing, signature element, and section rhythm from its CLAUDEwebdesign.md and design record. A new page must match the site it joins, not introduce a generic look. Section 0 of BUILD_PLAYBOOK.md governs.
+- The site's existing design system: match the site it joins, do not introduce a generic look. The authoritative tokens for page-matching (palette, type pairing, signature element, section rhythm) live in the site repo's own CLAUDEwebdesign.md and its built components, which are present in this build session; reuse them. The site's design record on its compass-kb page is the same values if you need to cross-check. Section 0 of BUILD_PLAYBOOK.md governs.
 
 ## Finish
 

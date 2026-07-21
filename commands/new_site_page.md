@@ -34,6 +34,7 @@ Use the site-page structure from compass-kb/CLAUDE.md. Required fields:
 - GSC status: not yet set up (default for a new site, since GSC comes after the demand gate), or verified with latest striking-distance findings if a pull has run.
 - Demand-validation gate: CLEARED or PENDING, with what is outstanding.
 - Next action: singular and honest. For a fresh site with no data, "await demand-validation gate" is correct.
+- Design record (required for sites built 2026-07-12 on, under the design-distinctiveness doctrine): palette hexes (dominant plus accent), the display-plus-body type pairing, the one signature element, and the layout archetype. This is the portfolio variance ledger the next same-niche build reads to pick a different lane, so it must be recorded, not skipped. Pull the four values from the build, where the site-design skill pins them. Grandfathered pre-doctrine sites backfill this opportunistically.
 
 ## Step 3: Keep the index current
 

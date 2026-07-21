@@ -9,6 +9,7 @@ Re-skin an existing Compass site's LOOK without touching its content, SEO, or co
 - Branch, commit, push, open a PR, and merge it once its checks pass. Never deploy by hand: no Wrangler, no Direct Upload. GitHub auto-build to Cloudflare Pages is the only deploy path.
 - No em dashes (U+2014) anywhere: copy, code comments, commit messages, alt text.
 - Re-skin the visual layer only. Do not change the copy claims, the schema, the disclosures, the URL structure, or the internal linking. If a re-skin would touch any of those, stop and ask.
+- The compliance-mandated header disclosure strip has fixed styling in COMPLIANCE_STANDARDS.md (its classes, size, and single-line placement). It survives the re-skin verbatim; adjust only what is needed to keep it readable against a new background, and confirm it against COMPLIANCE_STANDARDS.md before you finish.
 
 ## Read first (live, at run time)
 
@@ -32,5 +33,5 @@ Invoke the `site-design` skill and run its loop on this existing site:
 ## Finish
 
 1. Branch, commit, push, open a PR, and merge it once its checks pass. Never deploy by hand.
-2. Update the site's design record on its compass-kb site page to the new palette, type pairing, signature element, and archetype (the design record is the variance ledger), via /new_site_page or a direct edit.
+2. Update the site's design record on its existing compass-kb site page to the new palette, type pairing, signature element, and archetype (the design record is the variance ledger). Do this as a direct edit of the existing page via a compass-kb PR. Do not use /new_site_page: it creates a new page and does not update an existing one.
 3. Report what changed, the new design record, and confirm no copy, schema, disclosure, or URL changed.
