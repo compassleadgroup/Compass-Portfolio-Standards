@@ -235,7 +235,7 @@ Until you have a signed contractor partner, do NOT include any of these on the s
 - **AggregateRating or Review JSON-LD schema**
 - **"As featured in" media logos** unless verifiable
 - **Certifications, awards, BBB accreditation badges** unless Compass Camper LLC has earned them
-- **Specific job photos** unless they're stock photos clearly framed as illustrative
+- **Specific job photos presented as a real job** the site arranged. Generic, illustrative imagery is fine, and how it was made does not matter: stock, licensed, or AI-generated are treated the same. Illustrative imagery must stay generic (a building type, material, or setting, never a specific real job), show no crew or staged before-and-after, and never present a person as staff or a customer.
 - **Named team members** with bios
 - **"Years in business" counters or "Jobs completed" stats**
 - **Specific pricing claims** ("Starting at $X" or "Most jobs run $X to $Y") unless you have data from your tenant to back these numbers
