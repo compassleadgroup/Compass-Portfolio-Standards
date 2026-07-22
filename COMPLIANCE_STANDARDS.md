@@ -129,7 +129,7 @@ The schema description and category MUST accurately reflect that Compass Camper 
 Must reference Compass Camper LLC with:
 - Correct legal name: "Compass Camper LLC"
 - Correct registered state: Oregon
-- Correct address (operating address, see "Address Requirements" below)
+- No address (see "Address Requirements" below: no operating address is displayed on any site, operator ruling 2026-07-22; never emit a fabricated or registered-agent address in schema)
 - Correct phone (Call Rail or similar tracking number once live)
 
 ### Service schema (service pages)
@@ -158,18 +158,20 @@ Standard implementation. No compliance concerns.
 
 ### Operating address
 
-Every site needs a real operating address on file. NOT the Oregon registered-agent address.
+Operator ruling, 2026-07-22: no operating address is required on any site. Sites identify the operating entity (Compass Camper LLC, operating as Compass Lead Group, registered in Oregon) and provide a monitored email plus a phone number where one is live; a street address is not displayed. This replaces the earlier requirement that every site disclose an operating address on About or Contact.
 
-Acceptable options:
-- The operator's actual residential address (even if home-based)
-- A registered virtual office in the target market (acceptable but increasingly risky for GBP)
-- A real commercial office if/when one is leased
+What still holds, without exception:
 
-**Why:** State UDAP statutes and the FTC require honest disclosure of where the business operates. Using only the registered-agent address misrepresents operating location.
+- Never fabricate an address, a suite number, or a local office.
+- Never present the Oregon registered-agent address as an operating location, on the site or on any directory listing.
+- Never imply a physical office in the target market ("visit our showroom", map pins to an office, LocalBusiness schema).
+- If a real address is ever added voluntarily (for example a leased commercial office), it must be real and identical everywhere it appears.
+
+**Why the ruling is defensible:** the sites are disclosed marketing services, not contractors holding out a place of business; the deception risk UDAP statutes target is a fake or misrepresented location, which the rules above still prohibit. The honest posture is entity plus contact channels with no address, not an address that misdescribes where a one-operator online business "is".
 
 ### Display vs. hide
 
-The operating address must be DISCLOSED on the About page or in Contact info. It does not need to be prominent. You can omit it from the homepage and footer.
+No address is displayed. Entity identification (legal name, Oregon registration, dba) stays on the About page and in the footer disclosure as before.
 
 ### Form addresses
 
@@ -288,7 +290,7 @@ Use this checklist before launching any new site. Every item must pass before th
 **Brand and entity:**
 - [ ] DBA filed in Oregon
 - [ ] DBA filed in target state
-- [ ] Operating address documented (real, not registered-agent only)
+- [ ] No address displayed anywhere on the site; no fabricated or registered-agent address in copy, schema, or listings (operator ruling 2026-07-22)
 - [ ] Phone number is real and answerable (TextNow acceptable pre-revenue, Call Rail required pre-outreach)
 
 **Site content:**
