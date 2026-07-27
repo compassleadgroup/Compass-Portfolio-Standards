@@ -2,6 +2,14 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-07-27 (compliance gate: skip cleanly when a repo has no src yet)
+
+The site compliance workflow ran the checker unconditionally against `src`, and the checker exits 2 ("Path not found") when that directory does not exist. A repo scaffolded with documentation only, before its first build batch, therefore red-failed every pull request for having nothing to scan rather than for a compliance problem. Found while scaffolding the three wave 3 site repos (Centennial State Metal Roofing, Sonoran Septic, Show Me Metal Roofing), all of which sit in exactly that state.
+
+- ci/site-compliance.yml: the run step now checks for `src` and skips with a message when it is absent. Behaviour is unchanged for every repo that has a `src`, which is every built site.
+- Verified both directions before shipping: with no `src` the step exits 0 with a message; with a `src` containing a clean file the checker exits 0; with a `src` containing a first-person work claim the checker still exits 1. The gate loses no enforcement.
+- Site repos carry their own copy of this workflow, so this does not propagate on its own. The three wave 3 repos are being synced in the same session. Older site repos are unaffected in practice, since they all have a `src`.
+
 ## 2026-07-21 (image source neutrality)
 
 Clarified that image compliance does not care how an image was made. The only image line in "What NOT to Include Pre-Tenant" excepted "stock photos clearly framed as illustrative", which implicitly disfavored AI-generated imagery. It now reads that stock, licensed, and AI-generated images are treated the same: generic, clearly illustrative imagery is fine regardless of source, and the depiction rules (no specific real job, no crew, no staged before-and-after, no person presented as staff or a customer) apply equally to all of them.

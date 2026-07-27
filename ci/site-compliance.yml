@@ -36,4 +36,12 @@ jobs:
           node-version: "22"
 
       - name: Run compliance checker
-        run: node .compass-standards/ci/compliance-check.mjs src
+        # A scaffolded repo has no src/ until its first build batch lands, and the
+        # checker exits 2 on a missing path. Skip cleanly in that state so a
+        # pre-build pull request does not red-fail for having nothing to scan.
+        run: |
+          if [ -d src ]; then
+            node .compass-standards/ci/compliance-check.mjs src
+          else
+            echo "No src/ in this repo yet (pre-build scaffold). Nothing to scan."
+          fi
