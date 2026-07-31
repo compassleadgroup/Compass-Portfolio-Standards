@@ -80,6 +80,24 @@ A thin, minimal gray bar with small but readable text. NOT footer-only.
 
 This MUST appear on every page. Same wording across the site.
 
+### Both disclosure blocks carry data-nosnippet (added 2026-07-31)
+
+Put `data-nosnippet` on the element wrapping the header disclosure strip and on the element wrapping the footer disclaimer.
+
+```html
+<div class="bg-gray-50 text-xs text-gray-500 py-1 px-4 text-center" data-nosnippet>
+  A marketing service, not a licensed contractor. ...
+</div>
+```
+
+Google honors the attribute on `div`, `section`, and `span`. It is NOT honored on a bare `<p>`, so tag the wrapping element or add one.
+
+**Why:** without it, Google builds the search-result description out of the disclosure text instead of the page's own meta description. A live example on capecodsepticpros.com showed a guide page about cesspools whose search snippet read "Cape Cod Septic Pros is operated by Compass Camper LLC, doing business as Compass Lead Group. We are a referral and matching service and do not perform septic ...". The page's own description was already accurate and specific; Google quoted the footer anyway. Every page in the portfolio had the same exposure.
+
+**This does not weaken the disclosure.** `data-nosnippet` affects snippet generation only. The text still renders on every page without interaction, is still crawled, and is still indexed. What a reasonable consumer encounters on the page is unchanged, which is what the net-impression test turns on. What changes is that the search snippet describes the page instead of repeating a disclaimer.
+
+**Related copy rule.** A page's meta description leads with the service and the local specifics, not with the business model. "Free matching with independent licensed contractors for ...", "Get matched with a licensed ...", and "Connect with a licensed ..." are weak openers: the first thing a searcher reads should be the work they came for. Allowed language still governs the wording, and no description may claim or imply that Compass Camper LLC performs the work. Business-model pages (`/about/`, `/terms/`, `/privacy/`, `/how-we-make-money/`) are the exception and should describe the business model, because that is their subject.
+
 ### Form privacy/consent block (every form on the site)
 
 Above every submit button. Not pre-checked. Not in popup. Not in fine print.
@@ -296,6 +314,8 @@ Use this checklist before launching any new site. Every item must pass before th
 **Site content:**
 - [ ] Header disclosure strip on every page
 - [ ] Footer disclaimer on every page with correct entity and service references
+- [ ] `data-nosnippet` on the wrapper of both disclosure blocks (check the built HTML, not the source)
+- [ ] Every page has its own meta description, leading with the service and the local specifics, not the matching pitch
 - [ ] All body copy uses neutral "a licensed contractor" language, no first-person work claims
 - [ ] No "vetted," "our network," "pre-screened," or similar claim-language
 - [ ] No fake testimonials, named customer reviews, or invented case studies
