@@ -15,7 +15,7 @@ Scaffold a complete new Compass rank and rent site. The output is a full site so
 Read the current versions of these files from the compass-standards repo (compassleadgroup/Compass-Portfolio-Standards, default branch). Use a local clone if one is present, otherwise fetch via the available GitHub tools. Do not rely on cached or remembered versions.
 
 1. COMPLIANCE_STANDARDS.md (authoritative; on any conflict it wins)
-2. BUILD_PLAYBOOK.md (Section 0 is the visual-design gate; do not skip it)
+2. BUILD_PLAYBOOK.md (Section 0 is the visual-design gate and Section 2A is the lead-capture spec; do not skip either)
 3. SCHEMA_WHITELIST.md
 4. reference/CLAUDEwebdesign_copy.md (the design rulebook)
 
@@ -58,6 +58,14 @@ Design (per Section 0 of BUILD_PLAYBOOK.md, and non-negotiable):
 - Invoke the `site-design` skill and run its loop: pin a design brief (palette, display-plus-body type pairing, one signature element, layout archetype) tied to this niche and metro, diffed against the sibling site's design record so no two sites share a lane; gather three to five exemplars from premium adjacent categories, never from other lead-gen sites; then build section by section against them, translating the treatment onto this site's own tokens, never copying.
 - After each section, run the `site-design-qa` skill and clear its verdict table (every row PASS or an accepted WATCH) before starting the next section, so drift is caught while it is one section and cheap to fix. Save each section's audit file in the repo.
 - Do not ship the model's autopilot look. If a page could be dropped onto another site in the portfolio unchanged, it is not done.
+
+Lead capture (non-negotiable, built in batch one, never a later pass):
+
+- Read SECTION 2A of BUILD_PLAYBOOK.md and build every item in it. It is locked and it overrides any older field list elsewhere in the playbook.
+- The short version, so nothing gets missed: a four-field form (name, phone, city, what the job is), no email field, placed directly under the hero as section two with the hero button jumping to it; a neutral first option on the job-type dropdown; a sticky mobile call bar that prints the digits and renders through tablet widths; a "Prefer to talk" phone line under the form for desktop; the routing promise printed under every submit and in the sitewide CTA band; consent naming only the channels the form collects; an ask on every reachable page including the /locations hub.
+- Choosing "licensed" or "independent" in the routing promise is the threshold test in SECTION 2A, not a does-the-state-license-it question. Get this one right per site: it is a claim and it carries the evidence bar.
+- Never print a response time or any other promise about what the contractor will do. Never print a text-us line unless the operator confirms inbound SMS reaches a human.
+- The build is not done until a real Web3Forms key is in place and a test submission has landed in the inbox. A form that renders is not a form that delivers.
 
 Compliance on every page:
 
