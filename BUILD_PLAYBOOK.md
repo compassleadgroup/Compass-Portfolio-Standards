@@ -84,7 +84,7 @@ Section order (12 sections, locked):
 1. **Trust strip in header.** Logo, phone with click-to-call, then text: "Licensed and Insured" plus license number if real and tenant-attributable. Never reuse a license number across sites with different niche categories.
 2. **H1 with brand + service cluster.** Formula: `{Brand Name}: {Service Type} in {City}, {State}`. Example: "Tulsa Foundation Experts: Foundation Repair, Pier Installation, and Crawl Space Solutions in Tulsa, OK."
 3. **Intro paragraph (2 to 3 paragraphs, 100 to 200 words).** Mention years of experience (real numbers only), city name in the first 100 words, and the climate/soil/local condition that drives the niche.
-4. **Quote request form above the fold on desktop.** Fields: Name, Phone, Email, Service Needed (dropdown), brief description. Include TCPA consent block.
+4. **Lead form directly under the hero, as section two.** Exactly four visible fields plus the TCPA consent block. Full spec in SECTION 2A, which is locked and overrides any older field list. This section sits ABOVE the education content, never below it, and the hero button jumps to it rather than linking off to /contact.
 5. **Differentiators list (8 to 12 bullets), under a concrete subject-specific heading, never the generic "Why Choose Us" slogan.** Each bullet is a verifiable specific. "48 foundations stabilized in Tulsa County since 2024" beats "1,000+ happy customers." The verifiable-specifics content is required; the generic "Why Choose Us" framing is a banned AI tell (Section 0 and CLAUDEwebdesign), so title this block for the subject, not with the slogan.
 6. **Services grid (4 to 10 H3 cards).** Each card has an image, the service name, a 2-paragraph blurb, and a link to the full service page.
 7. **Process or "Our Approach" numbered steps (3 to 7 steps).** Inspection, diagnosis, written estimate, work, warranty handoff.
@@ -92,7 +92,57 @@ Section order (12 sections, locked):
 9. **Testimonials grid (3 to 5).** Use only real testimonials from real customers with explicit consent. Never invent named customers. If no real testimonials exist yet, omit this section. Do not fabricate.
 10. **FAQ accordion (5 to 10 Q&As).** Cost, timeline, warranty, materials, process, climate, licensing.
 11. **Final CTA + phone repeat.** Form + click-to-call.
-12. **Footer.** Full NAP card, business hours, Google Maps embed, 5-social-icon row, full mega-nav of Services and Locations, real LLC disclosure with copyright.
+12. **Footer.** Phone with click-to-call, 5-social-icon row, full mega-nav of Services and Locations, real LLC disclosure with copyright, and the compliance disclaimer. NO street address, NO business hours, NO Google Maps embed: no operating address appears on any site (operator ruling 2026-07-22), so a map pin would have to be invented, which is the fake-premises tripwire. See Section 8, Service-area map.
+
+---
+
+## SECTION 2A: LEAD CAPTURE (locked; built in, never retrofitted)
+
+A lead is the product the tenant rents, so every point of conversion rate is rent leverage. These elements ship in the first build batch. They are not a later pass and not optional.
+
+Every item below traces to a defect found on a live portfolio site, which is why the list is specific rather than general advice.
+
+**The form**
+
+1. **Exactly four visible fields: name, phone, city, and what the job is.** No email field. Phone is required. Multi-step and quote-builder forms only outperform at six or more fields, and this ask is four, so everything else optional comes off instead. A phone field costs 30 to 48 percent of completions and is the one field that cannot go.
+2. **The "what the job is" control leads with a neutral option** if it is a dropdown, for example "Not sure yet". A dropdown with no neutral default silently submits its first real option for every visitor who never touches it, and the contractor receives that as a stated fact. This is a data-honesty defect, not a styling choice.
+3. **Check required flags and select defaults, not just the field count.** One live site had phone optional while email was required, which is backwards for this model.
+
+**Placement and the ask inventory**
+
+4. **The homepage form sits directly under the hero, as section two**, before any education content. The hero's primary button jumps to the form anchor rather than routing to /contact.
+5. **Every page a visitor can reach carries at least one ask**: a form, a call link, or a CTA band. Count the pages with no ask before tuning the ones that have one. Hub pages are the usual miss: a /locations hub that several town pages link into is a real landing page and needs the CTA band.
+
+**The phone**
+
+6. **Sticky mobile call bar that prints the digits**, never a "Call Now" label. A local area code is itself local proof, and the number is what a homeowner dials from a second device.
+7. **Check the breakpoint.** The bar renders through tablet widths, not only below the smallest breakpoint.
+8. **A desktop phone line directly under the form**: "Prefer to talk? Call (XXX) XXX-XXXX". The sticky bar is mobile only, so without this a desktop visitor sees no number below the header.
+
+**What the copy may and may not promise**
+
+9. **The routing promise prints under every form submit and in the sitewide CTA band.** One shared config string, not per-page copy: "Your request goes to a [licensed or independent] local [trade] contractor serving [market], not a national lead list." The site controls routing, so this is true pre-tenant and post-tenant.
+10. **Choosing "licensed" or "independent" is a threshold test, not a does-the-state-license-it question.** The test: does EVERY contractor the promise could route to actually hold the license. A state license that attaches only above a dollar threshold fails the test when typical jobs fall below it. Worked cases: Louisiana residential roofing attaches at $7,500 and Mississippi at $10,000, so both print "licensed"; Tennessee contractors attach at $25,000 and North Carolina general contractors at $40,000, above most jobs in those trades, so both print "independent"; a permit or registry with no dollar floor (a septic installer permit, a state radon license) prints "licensed". Where the state licenses nothing in the trade, print "independent". **Where a verified public registry exists, name the registry instead of a license status**, which is stronger and sidesteps the question entirely.
+11. **Never promise contractor behavior.** No response times, no "call answered live", no "same-day estimate", no "contacts you within one business day", until a signed tenant commits to it in writing. The site can promise its own routing; it cannot promise someone else's conduct.
+12. **No text-us line** until inbound SMS is confirmed to reach a human who reads it. A printed text ask on a voice-only number swallows homeowners' messages silently.
+
+**Consent and the pages that describe the form**
+
+13. **The consent block names only the channels the form actually collects.** With no email field it never promises email contact. Narrowing consent is always safe; widening it never is.
+14. **Sweep the copy that describes the fields.** The privacy page's collected-data list, any how-it-works step, and any "put it in your message" instruction all have to match the four fields. Live sites have shipped a privacy policy pointing at a free-text box that no longer existed.
+
+**The gate that makes all of it real**
+
+15. **A form that renders is not a form that delivers.** The access key must be real, never a placeholder, and a test submission must land in the inbox before launch. Ten portfolio sites once shipped with a placeholder key and rendered live-looking forms that posted nowhere, invisible from the outside. If the build gates the form behind a readiness constant, that constant must be confirmed to have at least one importer: a gate nothing consumes reads as protection and provides none.
+
+**Rejected, do not build**
+
+| Rejected | Reason |
+| --- | --- |
+| Chat widgets and callback widgets | Only manned chat converts. An unattended widget on a site nobody staffs creates response-time failures |
+| Multi-step or quote-builder forms | Wrong side of the six-field threshold for a four-field ask |
+| Trust badges, association logos, review widgets | Fabrication is forbidden, and review stars have been unavailable to self-serving markup since 2019 |
+| Countdown timers and urgency theater | Fake urgency is a named low-quality signal |
 
 ---
 
@@ -246,8 +296,8 @@ Run every template through Google's Rich Results Test before publishing. Fix all
 
 - Real LLC ownership disclosure: "© 2026 Compass Camper LLC. All Rights Reserved."
 - Compliance disclaimer (full version in Section 11).
-- Full NAP card with click-to-call phone and embedded Google Map.
-- Business hours (real ones only, never "24/7" unless literally true).
+- Phone with click-to-call. Name, phone, and URL only: no street address on any site, ever (operator ruling 2026-07-22). No embedded map, see Section 8.
+- No business hours. Published hours imply staffed premises this entity does not have.
 - 5-social-icon row.
 
 ### Trust language
@@ -303,16 +353,17 @@ Run every template through Google's Rich Results Test before publishing. Fix all
 - Self-canonical tag on every page.
 - No `noindex` anywhere except `/thank-you`.
 
-### Maps embed
+### Service-area map (NOT a Google Maps embed)
 
-- Use Google Maps Embed API (`/maps/embed/v1/place?key={api-key}&q={address}&zoom=15`), not the JavaScript Maps API. Embed API is free and has lower JS bloat.
+- **No site ships a Google Maps embed** (decision 2026-07-26). It is not a ranking factor, there is no map pack to feed under the organic-only doctrine, and a place embed renders exactly one thing: a pin at an address. No address is displayed on any site, so the pin would have to be invented, which is the fake-premises tripwire and the "pretending to be a real business" signal the June 2026 spam update penalizes. It also costs a client-side API key per site and several hundred KB of render-blocking third-party JavaScript against the Core Web Vitals budget above.
+- **Approved substitute** when a build wants the local-reassurance visual: a static, self-hosted service-area map (SVG or WebP) of the counties served. No pin, no office icon, no hours. Alt text says service area, never location. Pair it with `areaServed` on the whitelisted Organization or ProfessionalService schema. Hand-drawn beats stock here.
 
 ### Analytics
 
 - GA4 from day one.
 - Google Search Console verified.
 - Bing Webmaster Tools verified.
-- CallRail or CallSling on the renter-routed phone for call attribution. Budget $30 to $50 per month per site.
+- Call tracking is Twilio, the plan of record, provisioned at traction rather than at launch. Do not budget for CallRail or CallSling: this portfolio runs no paid tools except DataForSEO, which is a standing portfolio-level exception, not a per-site line item.
 
 ---
 
@@ -514,7 +565,8 @@ Before pushing a site live, verify every item:
 - [ ] Sitemap.xml auto-generated and reachable
 - [ ] Robots.txt allows crawlers, references sitemap
 - [ ] Footer mega-nav links to every Service and Location
-- [ ] Mobile sticky call bar working
+- [ ] Footer carries no street address, no business hours, and no map embed
+- [ ] Every SECTION 2A lead-capture item verified on the BUILT HTML and on a 375px render, including the sticky bar printing digits and a test submission that landed in the inbox
 
 ### Content
 - [ ] Homepage has all 12 sections
@@ -524,7 +576,7 @@ Before pushing a site live, verify every item:
 - [ ] No invented certifications or licenses
 
 ### Schema
-- [ ] LocalBusiness or Service schema on every relevant page
+- [ ] Service schema on every relevant page. LocalBusiness is BANNED, see SCHEMA_WHITELIST.md
 - [ ] FAQPage schema matches visible FAQ on every page
 - [ ] BreadcrumbList schema on every interior page
 - [ ] Organization schema with `sameAs` to 5 socials on homepage

@@ -102,8 +102,15 @@ Google honors the attribute on `div`, `section`, and `span`. It is NOT honored o
 
 Above every submit button. Not pre-checked. Not in popup. Not in fine print.
 
-**TCPA consent copy template:**
+**The consent block names only the channels the form actually collects.** The standard lead form is four fields with no email (BUILD_PLAYBOOK.md SECTION 2A), so the four-field template below is the default. Narrowing consent to the channels collected is always safe; widening it is never safe. Never promise contact by a channel the form does not capture.
+
+**TCPA consent copy template, four-field form (the default; no email field):**
+> "By submitting this form, I agree that Compass Camper LLC and a [SERVICE] contractor may contact me at the phone number I provided, including by automated phone calls, prerecorded messages, and text messages, regarding [SERVICE] services. Consent is not a condition of any purchase. Message and data rates may apply. I may opt out at any time by replying STOP to any text or asking to be removed during any call. See our Privacy Policy."
+
+**TCPA consent copy template, only where a form genuinely collects an email address:**
 > "By submitting this form, I agree that Compass Camper LLC and a [SERVICE] contractor may contact me at the phone number and email I provided, including by automated phone calls, prerecorded messages, and text messages, regarding [SERVICE] services. Consent is not a condition of any purchase. Message and data rates may apply. I may opt out at any time by replying STOP to any text or asking to be removed during any call. See our Privacy Policy."
+
+Whichever template a site uses, the /privacy collected-data list must match the fields the form actually has. Added 2026-08-03: the single-template version of this rule promised email contact on every four-field form in the portfolio, which is over-disclosure rather than a violation, but it is a claim the form cannot support and it is corrected here centrally rather than patched per site.
 
 "Privacy Policy" must be a real link to /privacy.
 
