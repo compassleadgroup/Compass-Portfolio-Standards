@@ -73,6 +73,24 @@ A thin, minimal gray bar with small but readable text. NOT footer-only.
 
 **Why:** FTC net-impression doctrine requires a reasonable consumer to actually encounter the disclosure. Footer-only doesn't satisfy this when body copy is sales-pitchy.
 
+#### Exception: editorial content properties (operator decision 2026-08-07)
+
+**Narrow. It does not apply to any geo rank-and-rent site.** All 53 geo sites keep the header strip exactly as specified above.
+
+A site may move the load-bearing disclosure from the header strip to the point of contact **only if every one of these is true**:
+
+1. It is an editorial content property rather than a geo lead-gen site: deep informational pages written to answer a question, no city, county or state pages, no "hire us" framing in the body copy.
+2. **Its body copy is not sales-pitchy.** This is the condition the "Why" above actually turns on. A site that reads as a sales pitch does not qualify, whatever else it is.
+3. **The footer disclaimer still renders on every page, unchanged**, wrapped with `data-nosnippet`.
+4. **Every lead form carries the load-bearing phrase above the fields**, in the same block as the form and visible without interaction: "A marketing service, not a licensed contractor. [SERVICE] work is performed by independent licensed local contractors." This is in addition to the information-sharing disclosure and the TCPA consent, not instead of either.
+5. No page anywhere claims or implies the operator performs the work. The forbidden-language rules are unchanged and still govern.
+
+**The reasoning.** Net impression is judged on what a reasonable consumer encounters. On a geo site every page is a pitch, so the disclosure has to lead. On an editorial property the reader is consuming a sourced reference, and the moment the relationship turns commercial is the form. Putting the disclosure there puts it where the consumer's decision actually is, and the footer disclaimer still appears on every page regardless.
+
+**The risk this accepts, stated plainly.** A reader who consumes content and never reaches a form now meets the disclosure only in the footer. That is a real reduction in prominence, and accepting it is the operator's decision. It is defensible only while condition 2 holds. **If the body copy ever turns pitchy, this exception stops applying and the header strip goes back.**
+
+**Sites currently using this exception:** insulationreport.com.
+
 ### Footer disclaimer (every page)
 
 **Copy template:**
@@ -82,7 +100,7 @@ This MUST appear on every page. Same wording across the site.
 
 ### Both disclosure blocks carry data-nosnippet (added 2026-07-31)
 
-Put `data-nosnippet` on the element wrapping the header disclosure strip and on the element wrapping the footer disclaimer.
+Put `data-nosnippet` on the element wrapping the header disclosure strip and on the element wrapping the footer disclaimer. A site using the 2026-08-07 editorial-content exception has no header strip, so this applies to the footer disclaimer alone.
 
 ```html
 <div class="bg-gray-50 text-xs text-gray-500 py-1 px-4 text-center" data-nosnippet>
@@ -319,9 +337,9 @@ Use this checklist before launching any new site. Every item must pass before th
 - [ ] Phone number is real and answerable (TextNow acceptable pre-revenue, Call Rail required pre-outreach)
 
 **Site content:**
-- [ ] Header disclosure strip on every page
+- [ ] Header disclosure strip on every page (an editorial content property using the 2026-08-07 exception has none, and instead carries the load-bearing phrase above the fields of every lead form)
 - [ ] Footer disclaimer on every page with correct entity and service references
-- [ ] `data-nosnippet` on the wrapper of both disclosure blocks (check the built HTML, not the source)
+- [ ] `data-nosnippet` on the wrapper of both disclosure blocks (check the built HTML, not the source). Under the 2026-08-07 exception there is no header strip, so this is the footer disclaimer alone
 - [ ] Every page has its own meta description, leading with the service and the local specifics, not the matching pitch
 - [ ] All body copy uses neutral "a licensed contractor" language, no first-person work claims
 - [ ] No "vetted," "our network," "pre-screened," or similar claim-language
