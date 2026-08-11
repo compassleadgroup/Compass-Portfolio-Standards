@@ -118,6 +118,7 @@ Every item below traces to a defect found on a live portfolio site, which is why
 6. **Sticky mobile call bar that prints the digits**, never a "Call Now" label. A local area code is itself local proof, and the number is what a homeowner dials from a second device.
 7. **Check the breakpoint.** The bar renders through tablet widths, not only below the smallest breakpoint.
 8. **A desktop phone line directly under the form**: "Prefer to talk? Call (XXX) XXX-XXXX". The sticky bar is mobile only, so without this a desktop visitor sees no number below the header.
+8a. **Call, never text. No `sms:` link anywhere on any site, ever** (operator instruction 2026-08-11). The published numbers do not receive texts, so "Call or text", "Text us", "Or text your name to ..." and every variant is a channel that silently drops the lead. Say call. This also covers copy that only implies it, such as a privacy page listing "call and text records if you contact our phone number", because a reader takes that as permission. One site shipped an `sms:` link and a text invitation on all 27 of its pages. Check the BUILT HTML: `grep -r "sms:" dist` must return nothing. Consent copy is a separate matter, see Section 11.
 
 **What the copy may and may not promise**
 
@@ -606,6 +607,7 @@ Before pushing a site live, verify every item:
 - [ ] Footer disclaimer present (Section 11)
 - [ ] Privacy and Terms pages live
 - [ ] Contact email is compassleadgroup@gmail.com everywhere it appears, checked on the BUILT HTML with a grep for `@` across `dist`. Any address at the site's own domain is a fail (Section 11)
+- [ ] No `sms:` link and no texting invitation anywhere, checked on the BUILT HTML: `grep -r "sms:" dist` returns nothing (SECTION 2A item 8a)
 - [ ] TCPA consent on every form
 - [ ] Real LLC copyright in footer
 - [ ] No reused license numbers from other sites
@@ -687,6 +689,7 @@ These are the patterns that get rank-and-rent sites penalized or that erode conv
 10. **Reused trust signals across sites.** One license number across multiple non-overlapping CSLB classes is detectable and damaging at scale.
 11. **"24/7" claims that aren't true.** Easy to disprove and erodes trust on inspection.
 12. **Stock photo testimonials with invented names.** Reverse image search exposes this immediately.
+14. **Inviting a text to a number that cannot receive one.** "Call or text" and an `sms:` link read as a convenience and are a dead end: the message goes nowhere and the lead is lost with no error anyone sees. Say call. SECTION 2A item 8a.
 13. **An invented contact email at the site's own domain.** `info@`, `quotes@` and `hello@` look right and reach nothing, because the mailbox is never created. It publishes a dead contact channel on the privacy page, in the schema, and everywhere a homeowner or a regulator would look. Ten sites did this. The address is always compassleadgroup@gmail.com, Section 11.
 
 ---
