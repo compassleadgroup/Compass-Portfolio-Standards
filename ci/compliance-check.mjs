@@ -66,6 +66,31 @@ const LINE_RULES = [
     msg: "Forbidden schema @type. Allowed only: Organization, Service, ProfessionalService, BreadcrumbList, FAQPage." },
 
   // Forbidden claim-language (COMPLIANCE_STANDARDS.md, "never use these ever")
+  // Consent channel, added 2026-08-11 on operator instruction, enforcing the
+  // second half of the same-day consent ruling: "No consent template names text
+  // messaging, and no site may add it back." The documents said it and the
+  // 54-site sweep applied it, but nothing stopped a future build typing it back.
+  //
+  // These match the CONSENT CONSTRUCTION, not the word "text". A first attempt
+  // used a forward lookahead and silently caught nothing, because real consent
+  // copy puts the verb first ("I agree that we may contact you by ... text
+  // messages"). Tested both directions before merge: it fires on reintroduced
+  // consent copy and stays quiet on "we do not send text messages", which is a
+  // sentence sites should be free to write, and on "alt text".
+  { id: "consent-text-agree", severity: "fail",
+    re: /\b(agree|consent)\b[^.!?]{0,200}\b(text messages?|text messaging|texting|SMS)\b/gi,
+    msg: "Consent copy names text messaging. Banned portfolio-wide 2026-08-11: the published numbers do not send or receive texts, so consenting to that channel is a claim the business cannot support." },
+  { id: "consent-text-contact", severity: "fail",
+    re: /\b(contact|reach)\s+(me|you)\b[^.!?]{0,160}\b(text messages?|text messaging|texting|SMS)\b/gi,
+    msg: "Contact-permission copy names text messaging. Banned portfolio-wide 2026-08-11." },
+  // "reply STOP" and "replying STOP" both appeared in the pre-ruling copy. The
+  // first version of this rule matched only the former and missed the live
+  // sonoranseptic.com line, which said "by replying STOP to any text".
+  { id: "consent-stop-keyword", severity: "fail", re: /\breply(ing)?\s+STOP\b/gi,
+    msg: "The 'reply STOP' opt-out points at a text mechanism that does not exist. Retired 2026-08-11; the opt-out is asking to be removed during any call." },
+  { id: "consent-msg-data-rates-text", severity: "warn", re: /\btext (message )?and data rates\b/gi,
+    msg: "Rate disclosure names text. The template says 'Message and data rates may apply'." },
+
   { id: "phrase-vetted", severity: "fail", re: /\bvetted\b/gi,
     msg: "'Vetted' is banned. No documented vetting process exists." },
   { id: "phrase-our-network", severity: "fail", re: /\bour network\b/gi,

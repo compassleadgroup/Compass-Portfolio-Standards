@@ -2,6 +2,18 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-11 (consent ruling, enforcement): text messaging is now blocked, not just removed
+
+Operator instruction, after the checker fix: block the channel as well. The ruling said "no site may add it back", the documents said so, and the 54-site sweep applied it, but nothing stopped a future build typing it back in. Four rules in `ci/compliance-check.mjs` now enforce it.
+
+- **`consent-text-agree`** and **`consent-text-contact`** (both FAIL) match the consent construction rather than the word "text": an agree or consent verb, or a contact permission, within one sentence of "text messages", "texting" or "SMS".
+- **`consent-stop-keyword`** (FAIL) catches "reply STOP" and "replying STOP".
+- **`consent-msg-data-rates-text`** (WARN) catches a rate disclosure that names text instead of the template's "Message and data rates may apply".
+
+**Two calibration failures were caught before merge, which is the part worth recording.** The first version used a forward lookahead and silently matched nothing, because real consent copy puts the verb first ("I agree that we may contact you by ... text messages"). The second version matched "reply STOP" but not "replying STOP", which is exactly what the pre-ruling sonoranseptic.com copy said. **A rule that only ever passes is worthless**, so every rule here was tested in both directions.
+
+Verified against real copy, not just fixtures: **passes** chicagowindowguide.com and the current sonoranseptic.com at zero warns, and **fails** the genuine pre-ruling consent line, recovered from a stale checkout, on three of the four rules. It also stays quiet on sentences a site should be free to write, including "we do not send text messages" and any use of "alt text".
+
 ## 2026-08-11 (consent ruling, checker follow-up): the CI rule still enforced the old opt-out
 
 The same-day consent change updated COMPLIANCE_STANDARDS.md and BUILD_PLAYBOOK.md and swept all 54 sites, but **`ci/compliance-check.mjs` was not updated with them**. Its `req-tcpa-stop` rule still required the keyword STOP in consent copy, which every template had just been told to drop. Found while building the first site after the change: chicagowindowguide.com's consent copy matched the new canonical template exactly and the checker warned on it anyway.
