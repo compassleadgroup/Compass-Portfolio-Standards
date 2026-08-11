@@ -129,7 +129,7 @@ Every item below traces to a defect found on a live portfolio site, which is why
 
 **Consent and the pages that describe the form**
 
-13. **The consent block names only the channels the form actually collects.** With no email field it never promises email contact. Narrowing consent is always safe; widening it never is.
+13. **The consent block names only the channels the form actually collects, and never names text messaging** (operator instruction 2026-08-11). With no email field it never promises email contact, and no form on any site consents to texts, because the numbers do not send them. The opt-out is asking to be removed during any call, never "reply STOP to any text", which points at a mechanism that does not exist. Canonical templates: COMPLIANCE_STANDARDS.md. Narrowing consent is always safe; widening it never is.
 14. **Sweep the copy that describes the fields.** The privacy page's collected-data list, any how-it-works step, and any "put it in your message" instruction all have to match the four fields. Live sites have shipped a privacy policy pointing at a free-text box that no longer existed.
 
 **The gate that makes all of it real**
@@ -494,7 +494,7 @@ This website is operated by Compass Camper LLC (Oregon), a licensed marketing an
 Every form must include a TCPA consent checkbox or text block:
 
 ```
-By clicking Submit, I authorize Compass Camper LLC and its partner contractors to contact me by phone, text, or email at the number and address I provided, including by automated means, regardless of any do-not-call list status. Message and data rates may apply. This consent is not a condition of purchase.
+By clicking Submit, I authorize Compass Camper LLC and its partner contractors to contact me by phone or email at the number and address I provided, including by automated means, regardless of any do-not-call list status. Message and data rates may apply. This consent is not a condition of purchase.
 ```
 
 ### Forbidden

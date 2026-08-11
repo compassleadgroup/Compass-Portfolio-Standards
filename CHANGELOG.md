@@ -2,6 +2,18 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-11 (consent drops text messaging, portfolio-wide)
+
+Operator instruction, after the texting sweep raised it as an open question: remove text. The published numbers do not send or receive texts, so consenting to a channel nobody uses is a claim the business cannot support, and the "reply STOP to any text" opt-out pointed at a mechanism that does not exist.
+
+- **COMPLIANCE_STANDARDS.md: both TCPA consent templates lose "and text messages" and the STOP opt-out.** Consent now reads "including by automated phone calls and prerecorded messages", and the opt-out is "asking to be removed during any call". A note records that no site may add the channel back without an operator decision.
+- **BUILD_PLAYBOOK.md SECTION 2A item 13** now says the consent block never names text messaging, and Section 11's consent sample matches.
+- **Applied to all 54 built sites the same day**, 109 files. Wording had drifted a long way from the templates, so this was not one find-and-replace: consent copy, privacy pages, terms pages, disclosure pages and opt-out sentences each carried their own phrasing across roughly 25 distinct variants.
+
+**What this costs, recorded rather than hidden.** Consent now covers calls only, so neither Compass Camper LLC nor the contractor receiving a lead may text the homeowner. Contractors commonly do text leads, so this may cost conversion or put a contractor outside the consent the site obtained. The operator was told this before the change and chose it. Restoring the channel is a template change here plus a portfolio re-sweep, not a per-site edit.
+
+**Method note worth keeping.** Machine replacement across 54 repos produced eight broken sentences ("contact me by phone message", "calls, prerecorded messages, from", "by telling us ... or by telling us", a heading that became lowercase "calls"). They were caught by reading every changed line, not by any grep. On a copy change this wide, reading the diff is part of the job.
+
 ## 2026-08-11 (call, never text)
 
 Operator instruction: the published phone numbers do not receive texts, so no site should suggest texting one. "It doesn't need to say to NOT text it, just don't recommend texting the number. Make it say to call the number."
