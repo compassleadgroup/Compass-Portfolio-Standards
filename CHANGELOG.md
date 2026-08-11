@@ -2,6 +2,18 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-11 (the contact email becomes a locked standard)
+
+Operator instruction: "I need every single site we have ever made to have the contact email be compassleadgroup@gmail.com, not some fabricated email." The portfolio-wide fix shipped the same day across 19 site repos. This is the rule that stops it recurring, added because nothing in this playbook ever said what the contact address is, so each build invented one from its own domain name.
+
+- **BUILD_PLAYBOOK.md SECTION 11 has a new locked block: CONTACT EMAIL, one address portfolio-wide.** Six numbered rules, each traced to a live defect. No mailbox invented from the domain (`info@`, `quotes@`, `hello@`, `contact@`, `privacy@`, `legal@`, `INBOX@`), never compasscamperconcepts@gmail.com, one config value that every page imports, the key named `email` rather than anything that reads as a stand-in, a site with no email counted as non-compliant rather than clean, and no "create a domain forwarder" task in any checklist or brief.
+- **The scale of what it fixes.** Ten live sites published a mailbox that does not exist, on contact, privacy, about, terms and disclosure pages and inside the JSON-LD schema. Five published compasscamperconcepts@gmail.com, 12 days after the 2026-07-30 operator correction said that address must never appear on a published page. Two published no address at all, against the COMPLIANCE_STANDARDS.md requirement for a real monitored email for privacy requests. Eight repos carried a launch-checklist or brief task telling a future build to create a brand mailbox, which is what kept regenerating the problem.
+- **Section 7 footer** gains the contact email line, next to the phone and the no-address ruling.
+- **Section 14 launch checklist, Trust group,** gains a check run on the BUILT HTML, not the source: grep `dist` for `@` and fail on any address at the site's own domain.
+- **Section 17 failure modes** gains item 13, the invented domain mailbox, because it looks right in review and reaches nothing in practice.
+
+COMPLIANCE_STANDARDS.md is unchanged. It already requires a real monitored email address for privacy requests; the playbook now names the address that satisfies it and defers to that file for the requirement itself.
+
 ## 2026-08-11 (third-party money claims become a compliance rule, after a live incident)
 
 A homeowner acted on a grant claim published on marioncountyseptic.com, called the utility to ask about the grant, and the utility had never heard of it. A supervisor traced the claim to our site and called the operator to say the site was publishing false information. Operator instruction the same day: never fabricate false information on the sites.
