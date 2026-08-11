@@ -287,6 +287,55 @@ Until you have a signed contractor partner, do NOT include any of these on the s
 
 ---
 
+## Third-Party Money Claims (grants, rebates, tax credits, assistance programs)
+
+Added 2026-08-11 after a live incident. See the incident record at the bottom of this section.
+
+A third-party money claim is any statement that a reader might get money, pay less, or have a cost covered by someone other than the contractor: grants, rebates, tax credits, cost-share, reimbursement, subsidies, assistance programs, "free" inspections paid by a program.
+
+**These are the highest-risk sentences on any site we operate.** Unlike a pricing range, which a reader treats as an estimate, a money claim causes the reader to act: they call a county office, a utility, or a state agency and ask for the money. If the program does not exist, or does not apply to them, a public employee finds out, traces the claim to our site, and the site's credibility is gone. That has already happened once.
+
+### The rule
+
+**Every third-party money claim must name a specific program and link its primary source, or it must not be published.**
+
+Three parts, all required:
+
+1. **Named.** The exact program name as the administering body writes it. "The Strengthen Mississippi Homes grant", not "a state grant". "The SoonerSafe Safe Room Rebate Program", not "a rebate".
+2. **Sourced.** A link to the administering body's own page: the county, city, utility, state agency, or the statute. Not a news article about it, not a contractor's blog, not a summary site.
+3. **Dated.** A visible "as of [date]" or a dated sources block, because these programs open, close, exhaust their funds, and change caps constantly. A program that was real last year is a false claim this year.
+
+If any of the three is missing, delete the sentence. **Deleting an unsourced claim needs no source. Publishing one does.**
+
+### Never publish these shapes
+
+| Shape | Example | Why it fails |
+|---|---|---|
+| Vague jurisdiction | "Some counties offer upgrade grants" | Names nothing, so the reader assumes their county. Unfalsifiable statewide, specific and wrong locally |
+| Hedged availability | "Grants may be available" | Reads as "yes, ask about it". Carries no program to ask about |
+| Borrowed adjacency | The county funds X, so the page implies it funds Y | The reader cannot see the boundary you left implicit |
+| Stale certainty | A program named and sourced, but with no date | Programs close. An undated live claim becomes false on its own |
+
+### The adjacency trap
+
+The most dangerous claim is one that is *nearly* true. A county may genuinely run a funded program for one thing while funding nothing for the adjacent thing the site sells. Marion County FL funds septic-to-**sewer connection** in designated program areas at roughly $30,000 per household, and funds **nothing** toward a septic **system upgrade or replacement**. A page that mentions both without stating the boundary sends the reader to the utility asking for the wrong money.
+
+**When a real adjacent program exists, state its boundary explicitly.** Who it covers, where, for what work, and what it does not cover. The boundary sentence is not optional caution, it is the part that prevents the phone call.
+
+### Enforcement
+
+`ci/compliance-check.mjs` carries two hard-fail rules, `money-claim-vague-jurisdiction` and `money-claim-may-be-available`, that block the unnamed and hedged shapes at CI. They are deliberately narrow: they catch the fabrication shape and pass every properly named, sourced claim in the portfolio. **They are a floor, not the standard.** A named-and-linked claim passes CI and can still be wrong, stale, or misapplied. The three-part rule above is what governs; the checker only catches the shape that is always wrong.
+
+### Incident record, 2026-08-11
+
+marioncountyseptic.com published "Some Florida counties offer upgrade grants" in six places, including a "Grant programs, Down" row in a cost-guide price-driver table. The line named no program and cited no source; it was written at build time and never traced to anything. A homeowner read it, called the utility to ask about the grant, and the utility had no idea what they were describing. A supervisor investigated, found our site as the source, and called the operator to tell them the site was publishing false information.
+
+Cost: the operator was scolded by a public official, and a county utility now associates one of our domains with false claims. No revenue was lost directly. The reputational exposure with a local government body is the real damage, and in a niche whose entire moat is a county regulatory mandate, that body is the last one to alienate.
+
+Root cause: no rule required a money claim to carry a source, so a vague hedge read as safe. Removed in marion-county-septic PR #35; rule and CI check added here the same day.
+
+---
+
 ## Off-Site Operational Requirements
 
 These aren't code but are operator responsibilities on every site:
@@ -347,6 +396,7 @@ Use this checklist before launching any new site. Every item must pass before th
 - [ ] No fake team members or stock-photo bios
 - [ ] No false experience claims, completed-jobs counters, or "since [year]" claims
 - [ ] No certifications, awards, or accreditation badges unverified
+- [ ] Every grant, rebate, tax credit or assistance claim names its program, links the administering body's own page, and carries a date (see Third-Party Money Claims). Where a real adjacent program exists, the boundary of what it does not cover is stated
 
 **Forms:**
 - [ ] TCPA consent language above submit button, not pre-checked
