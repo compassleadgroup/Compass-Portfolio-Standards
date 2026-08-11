@@ -2,6 +2,17 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-11 (call, never text)
+
+Operator instruction: the published phone numbers do not receive texts, so no site should suggest texting one. "It doesn't need to say to NOT text it, just don't recommend texting the number. Make it say to call the number."
+
+- **BUILD_PLAYBOOK.md SECTION 2A gains item 8a: call, never text.** No `sms:` link anywhere on any site, ever. Covers the obvious forms ("Call or text", "Text us", "Or text your name to ...") and the implied ones, such as a privacy page listing "call and text records if you contact our phone number", because a reader takes that as permission.
+- **Section 14 launch checklist and Section 17 failure modes** both point at it. The checklist item runs on built HTML: `grep -r "sms:" dist` must return nothing.
+- **What it fixed.** marioncountyseptic.com carried an `sms:` link and an "Or text your name, address, and what the job is to ..." line under every ask, on all 27 published pages. Two privacy pages described inbound texting as a way to reach the site (charlotteharborpoolcages.com, marioncountyseptic.com). One privacy page listed texting as a contact channel (tennesseevalleybarndominiums.com). Every other live site was already clean. Verified by crawling every sitemap and fetching every published URL across all 54 sites: zero `sms:` links, zero texting invitations.
+- **A text invitation is worse than a dead email address.** It fails silently. The homeowner texts, nothing arrives, nobody sees an error, and the lead is gone.
+
+**Left open for an operator decision, deliberately.** The TCPA consent block on about 50 sites still says Compass Camper LLC and the contractor may contact the homeowner "including by ... text messages" at the number they provided. That is the opposite direction, us contacting them, and the contractor receiving a lead very likely does text homeowners. Narrowing consent is always safe in the abstract, but here it could strip coverage the contractor actually needs, so nothing was changed.
+
 ## 2026-08-11 (money claims, second revision the same day: we publish no program figures)
 
 Operator instruction, hours after the first version: "rather than trying to detail specific grant numbers on our sites, we should just say that these grants may be offered, and then link to the actual source for updated information. Apply this on every single site that refers to grants."
