@@ -107,6 +107,14 @@ const LINE_RULES = [
     msg: "'As featured in' requires verifiable media placement." },
   { id: "starting-at", severity: "warn", re: /\bstarting at \$\d/gi,
     msg: "Pricing claim requires documented tenant data." },
+  // Third-party money claims. These two catch the UNNAMED, UNSOURCED shape only.
+  // A claim that names its program and links its primary source matches neither.
+  { id: "money-claim-vague-jurisdiction", severity: "fail",
+    re: /\b(some|certain|many|several|various)\s+(?:\w+\s+){0,3}(counties|cities|states|towns|areas|municipalities|utilities|jurisdictions|programs)\b[^.!?]{0,60}\b(grants?|rebates?|tax credits?|incentives?|subsidies|cost[-\s]shares?|reimbursements?)\b/gi,
+    msg: "Unnamed money claim ('some counties offer grants'). Name the program and link its primary source, or delete the sentence. COMPLIANCE_STANDARDS.md, Third-Party Money Claims." },
+  { id: "money-claim-may-be-available", severity: "fail",
+    re: /\b(grants?|rebates?|tax credits?|incentives?|subsidies|funding|financial assistance)\b[^.!?]{0,40}\b(may|might|could)\s+be\s+available\b/gi,
+    msg: "Hedged money claim ('grants may be available'). Name the program and link its primary source, or delete the sentence. COMPLIANCE_STANDARDS.md, Third-Party Money Claims." },
 ];
 
 // Required elements: checked for PRESENCE anywhere in the scanned set.
