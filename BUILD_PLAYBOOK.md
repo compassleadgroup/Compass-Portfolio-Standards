@@ -297,6 +297,7 @@ Run every template through Google's Rich Results Test before publishing. Fix all
 - Real LLC ownership disclosure: "© 2026 Compass Camper LLC. All Rights Reserved."
 - Compliance disclaimer (full version in Section 11).
 - Phone with click-to-call. Name, phone, and URL only: no street address on any site, ever (operator ruling 2026-07-22). No embedded map, see Section 8.
+- Contact email, always compassleadgroup@gmail.com, never a per-domain brand address. Full rule in Section 11.
 - No business hours. Published hours imply staffed premises this entity does not have.
 - 5-social-icon row.
 
@@ -470,10 +471,22 @@ Skip mass directory submissions. Skip "500 citations for $99" services. ROI flat
 This website is operated by Compass Camper LLC (Oregon), a licensed marketing and lead generation company. {SITE_BRAND} is a marketing service that connects homeowners with independent, licensed {NICHE} contractors. All {NICHE} and related services are performed by independent licensed contractors operating under their own licenses and insurance. Compass Camper LLC does not perform {NICHE} work and is not a licensed contractor.
 ```
 
+### Contact email (locked; one address, portfolio-wide)
+
+**Every site publishes compassleadgroup@gmail.com and no other address.** It is the operating entity's real monitored inbox, and it is what COMPLIANCE_STANDARDS.md means by a real monitored email address for privacy requests, which is not optional. That file carries the requirement; this section only says which address satisfies it.
+
+1. **Never invent a mailbox from the domain.** No `info@`, `quotes@`, `hello@`, `contact@`, `privacy@`, `legal@` or `INBOX@` at the site's own domain. Nobody creates those mailboxes, so the address is dead the day it ships and a homeowner or a regulator writing to it reaches nothing. This is the most repeated defect in the portfolio's history: 10 live sites published a dead mailbox, several for months, until the 2026-08-11 sweep.
+2. **Never use compasscamperconcepts@gmail.com.** That is the operator's session account, not the business address, and it must not appear on a published page, in a signature, or in a template (operator correction 2026-07-30). Five sites carried it for 12 days after that ruling.
+3. **One config value, imported by every page that shows it.** Put the address in the site config beside the phone. The legal pages, contact page, footer and schema all import it. Never type it into a page.
+4. **Name the config key `email`.** Not `emailPlaceholder`, and nothing else that reads as a stand-in. One site held its real published address under `emailPlaceholder`, which invites the next build to read it as a dummy and swap a brand address back in.
+5. **A site with no email is not a clean site, it is a non-compliant one.** Sending privacy requests to a contact form and a phone number does not satisfy the rule. Two sites shipped that way.
+6. **Never add a "create a domain email forwarder" task to a launch checklist or brief.** There is no per-domain mailbox to set up. Eight repos carried that task and it is what kept regenerating the invented addresses.
+
 ### Privacy and Terms
 
 - `/privacy` page with standard privacy policy. Identify Compass Camper LLC as operator. Governing law: Oregon.
 - `/terms` page with standard terms of service. Identify Compass Camper LLC as operator.
+- Both pages, plus `/about` and `/contact` where they exist, print the contact email above for privacy and data requests.
 
 ### TCPA consent block
 
@@ -592,6 +605,7 @@ Before pushing a site live, verify every item:
 ### Trust
 - [ ] Footer disclaimer present (Section 11)
 - [ ] Privacy and Terms pages live
+- [ ] Contact email is compassleadgroup@gmail.com everywhere it appears, checked on the BUILT HTML with a grep for `@` across `dist`. Any address at the site's own domain is a fail (Section 11)
 - [ ] TCPA consent on every form
 - [ ] Real LLC copyright in footer
 - [ ] No reused license numbers from other sites
@@ -673,6 +687,7 @@ These are the patterns that get rank-and-rent sites penalized or that erode conv
 10. **Reused trust signals across sites.** One license number across multiple non-overlapping CSLB classes is detectable and damaging at scale.
 11. **"24/7" claims that aren't true.** Easy to disprove and erodes trust on inspection.
 12. **Stock photo testimonials with invented names.** Reverse image search exposes this immediately.
+13. **An invented contact email at the site's own domain.** `info@`, `quotes@` and `hello@` look right and reach nothing, because the mailbox is never created. It publishes a dead contact channel on the privacy page, in the schema, and everywhere a homeowner or a regulator would look. Ten sites did this. The address is always compassleadgroup@gmail.com, Section 11.
 
 ---
 
