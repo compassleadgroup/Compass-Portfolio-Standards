@@ -2,6 +2,17 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-11 (consent ruling, checker follow-up): the CI rule still enforced the old opt-out
+
+The same-day consent change updated COMPLIANCE_STANDARDS.md and BUILD_PLAYBOOK.md and swept all 54 sites, but **`ci/compliance-check.mjs` was not updated with them**. Its `req-tcpa-stop` rule still required the keyword STOP in consent copy, which every template had just been told to drop. Found while building the first site after the change: chicagowindowguide.com's consent copy matched the new canonical template exactly and the checker warned on it anyway.
+
+- **`req-tcpa-stop` is replaced by `req-tcpa-optout`**, which requires the current opt-out language, "asking to be removed during any call".
+- Verified both directions before merge: it passes chicagowindowguide.com (new copy) and the live sonoranseptic.com (swept to the new copy that day), both now at zero warns, and it still warns on a fixture whose consent block omits the opt-out entirely.
+
+**The lesson worth keeping: a standards change is not finished when the documents change.** The checker is the only part of this repo that other repos execute, so a doc-only update leaves every site failing a rule the standards no longer hold. Any future change to consent, disclosure or claim language should grep `ci/compliance-check.mjs` for the rule it affects in the same pass.
+
+**Not done here, and it is a live option rather than an oversight:** nothing yet *blocks* a site from adding text-message consent back. Enforcing the "no site may add it back" half of the ruling would need a new banned pattern, which is a policy addition rather than a fix, and it is the operator's call.
+
 ## 2026-08-11 (consent drops text messaging, portfolio-wide)
 
 Operator instruction, after the texting sweep raised it as an open question: remove text. The published numbers do not send or receive texts, so consenting to a channel nobody uses is a claim the business cannot support, and the "reply STOP to any text" opt-out pointed at a mechanism that does not exist.

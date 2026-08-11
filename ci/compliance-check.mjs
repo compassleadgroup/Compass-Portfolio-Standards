@@ -127,8 +127,16 @@ const REQUIRED = [
     msg: "Operating entity 'Compass Camper LLC' not found anywhere." },
   { id: "req-tcpa-consent", re: /consent is not a condition/i,
     msg: "TCPA consent line 'Consent is not a condition' not found. Required above every form submit." },
-  { id: "req-tcpa-stop", re: /\bSTOP\b/,
-    msg: "TCPA opt-out keyword 'STOP' not found in consent copy." },
+  // Updated 2026-08-11 to match the same-day consent ruling. The old rule
+  // required the keyword STOP, which every template now omits: the portfolio's
+  // numbers do not send or receive texts, so a "reply STOP to any text" opt-out
+  // pointed at a mechanism that does not exist. The opt-out is now asking to be
+  // removed during a call. COMPLIANCE_STANDARDS.md was updated for this the
+  // same day; this checker was not, and warned on every compliant site until
+  // now. See COMPLIANCE_STANDARDS.md, "No consent template names text
+  // messaging, and no site may add it back".
+  { id: "req-tcpa-optout", re: /asking to be removed/i,
+    msg: "TCPA opt-out line 'asking to be removed during any call' not found in consent copy." },
   { id: "req-privacy-link", re: /\/privacy\b/,
     msg: "No link to /privacy found." },
   { id: "req-terms-link", re: /\/terms\b/,
