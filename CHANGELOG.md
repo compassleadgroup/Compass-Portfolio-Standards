@@ -2,6 +2,21 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-11 (money claims, second revision the same day: we publish no program figures)
+
+Operator instruction, hours after the first version: "rather than trying to detail specific grant numbers on our sites, we should just say that these grants may be offered, and then link to the actual source for updated information. Apply this on every single site that refers to grants."
+
+- **COMPLIANCE_STANDARDS.md, Third-Party Money Claims, rewritten.** The rule was named, sourced and dated. It is now **name the program, say it may be offered, link the agency, publish no numbers.** No amounts, caps, percentages, deadlines, application windows, round status or award counts, **not even correct ones**.
+- **Hedged availability is no longer banned. It is the required shape**, provided the program is named and the agency linked. "Grants may be available" with nothing named still fails.
+- **Why the reversal.** A figure is right the day it is written and wrong the day the round closes, and nobody re-reads 177 pages. Publishing the number also makes us the authority a homeowner acts on, which is how a public official ends up on the phone. The agency owns the number; we own the pointer to it.
+- **Scope stated explicitly.** Grants, rebates, tax credits, refunds, reimbursement, cost-share, subsidies, assistance programs. **Not** statutory insurance discounts or premium credits, which are rate mechanics rather than money handed to a homeowner, and not the site's own service cost ranges.
+- **Banned-shapes table reworked.** Any program figure is now the first row. Grant math (a calculator or worked example that subtracts an award from a price) is a new row: a figure wearing arithmetic, same decay, more authority.
+- **ci/compliance-check.mjs:** `money-claim-may-be-available` **removed**, because it blocked the phrasing now required. `money-claim-figure` **added** as a hard fail: a dollar amount or percentage within a sentence of grant, rebate, credit, refund, reimbursement, cost-share, subsidy or assistance-program vocabulary. Scoped by lookbehind so statutory insurance and premium credits do not match, and so ordinary service cost ranges do not match unless they sit beside program vocabulary. Verified against 12 real portfolio figure-claims (all caught) and 12 compliant or cost-only sentences (all clean), then replayed across the full sweep corpus of 2,578 money sentences from all 53 live sites.
+- **Marion County recorded as a standing exception that goes further**: marioncountyseptic.com publishes nothing about county money at all, sourced or not. A source is a licence to publish, not an obligation.
+- **Pre-launch checklist item rewritten** to the no-figures form, including the no-calculator clause.
+
+Measured scope of the portfolio change this triggers: **329 figure-carrying sentences across 177 pages on 18 sites.**
+
 ## 2026-08-11 (the contact email becomes a locked standard)
 
 Operator instruction: "I need every single site we have ever made to have the contact email be compassleadgroup@gmail.com, not some fabricated email." The portfolio-wide fix shipped the same day across 19 site repos. This is the rule that stops it recurring, added because nothing in this playbook ever said what the contact address is, so each build invented one from its own domain name.

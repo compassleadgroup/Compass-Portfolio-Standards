@@ -297,34 +297,56 @@ A third-party money claim is any statement that a reader might get money, pay le
 
 ### The rule
 
-**Every third-party money claim must name a specific program and link its primary source, or it must not be published.**
+Revised 2026-08-11 by operator instruction, hours after the first version. The first version required a money claim to be named, sourced and dated. It permitted figures, and figures are the part that rots. **We no longer publish program figures at all.**
 
-Three parts, all required:
+**Name the program. Say it may be offered. Link the agency. Publish no numbers.**
+
+Four parts:
 
 1. **Named.** The exact program name as the administering body writes it. "The Strengthen Mississippi Homes grant", not "a state grant". "The SoonerSafe Safe Room Rebate Program", not "a rebate".
-2. **Sourced.** A link to the administering body's own page: the county, city, utility, state agency, or the statute. Not a news article about it, not a contractor's blog, not a summary site.
-3. **Dated.** A visible "as of [date]" or a dated sources block, because these programs open, close, exhaust their funds, and change caps constantly. A program that was real last year is a false claim this year.
+2. **Hedged, deliberately.** "May be offered", "may be available", "you may qualify". Never a promise, never a stated entitlement.
+3. **Linked.** A link to the administering body's own page: the county, city, utility, state agency, or the statute. Not a news article, not a contractor's blog, not a summary site. That link is the answer to every question the page no longer answers.
+4. **No figures.** No dollar amounts, no caps, no percentages, no deadlines, no application windows, no round status, no award counts. Not even correct ones. Say that amounts and eligibility change and that the agency's page is current.
 
-If any of the three is missing, delete the sentence. **Deleting an unsourced claim needs no source. Publishing one does.**
+If a program cannot be named and linked, delete the sentence. **Deleting an unsourced claim needs no source. Publishing one does.**
+
+**Why the reversal.** A figure is right on the day it is written and wrong the day the round closes, and nobody re-reads 177 pages. Publishing the number also makes us the authority a homeowner acts on, which is how a public official ends up on the phone. The agency owns the number; we own the pointer to it. This costs a little conversion copy and removes an entire class of recurring error.
+
+**Scope.** Grants, rebates, tax credits, refunds, reimbursement, cost-share, subsidies and assistance programs. **Not** statutory insurance discounts or premium credits, which are rate mechanics rather than money handed to a homeowner, and not the site's own service cost ranges.
 
 ### Never publish these shapes
 
 | Shape | Example | Why it fails |
 |---|---|---|
+| Any program figure | "The grant pays up to $10,000", "reimburses 75% of cost" | Correct today, false when the round closes. The agency owns the number |
 | Vague jurisdiction | "Some counties offer upgrade grants" | Names nothing, so the reader assumes their county. Unfalsifiable statewide, specific and wrong locally |
-| Hedged availability | "Grants may be available" | Reads as "yes, ask about it". Carries no program to ask about |
 | Borrowed adjacency | The county funds X, so the page implies it funds Y | The reader cannot see the boundary you left implicit |
-| Stale certainty | A program named and sourced, but with no date | Programs close. An undated live claim becomes false on its own |
+| Grant math | A calculator or worked example that subtracts an award from a price | A figure wearing arithmetic. Same decay, more authority |
+
+**Hedged availability is no longer banned. It is the required shape**, provided the program is named and the agency is linked. "Grants may be available" alone still fails, because it names nothing to ask about.
 
 ### The adjacency trap
 
-The most dangerous claim is one that is *nearly* true. A county may genuinely run a funded program for one thing while funding nothing for the adjacent thing the site sells. Marion County FL funds septic-to-**sewer connection** in designated program areas at roughly $30,000 per household, and funds **nothing** toward a septic **system upgrade or replacement**. A page that mentions both without stating the boundary sends the reader to the utility asking for the wrong money.
+The most dangerous claim is one that is *nearly* true. A county may genuinely run a funded program for one thing while funding nothing for the adjacent thing the site sells. Marion County FL funds septic-to-**sewer connection** in designated program areas, and funds **nothing** toward a septic **system upgrade or replacement**. A page that mentions both without stating the boundary sends the reader to the utility asking for the wrong money.
 
-**When a real adjacent program exists, state its boundary explicitly.** Who it covers, where, for what work, and what it does not cover. The boundary sentence is not optional caution, it is the part that prevents the phone call.
+**When a real adjacent program exists, name the boundary and route the reader to the agency.** What work it covers and what it does not, then the link. Do not price either side.
+
+**Marion County is a standing exception and goes further.** After the incident below, operator instruction 2026-08-11: marioncountyseptic.com publishes nothing about county money at all, sourced or not. Where a topic has already produced real-world friction, silence beats a correct sentence. **A source is a licence to publish, not an obligation.**
 
 ### Enforcement
 
-`ci/compliance-check.mjs` carries two hard-fail rules, `money-claim-vague-jurisdiction` and `money-claim-may-be-available`, that block the unnamed and hedged shapes at CI. They are deliberately narrow: they catch the fabrication shape and pass every properly named, sourced claim in the portfolio. **They are a floor, not the standard.** A named-and-linked claim passes CI and can still be wrong, stale, or misapplied. The three-part rule above is what governs; the checker only catches the shape that is always wrong.
+`ci/compliance-check.mjs` carries two hard-fail rules:
+
+| Rule | Blocks |
+|---|---|
+| `money-claim-vague-jurisdiction` | "Some counties offer grants" and its variants, which name nothing |
+| `money-claim-figure` | A dollar amount or percentage within a sentence of grant, rebate, credit, refund, reimbursement, cost-share, subsidy or assistance-program vocabulary |
+
+`money-claim-may-be-available` was **removed** in the same revision, because the hedge it blocked is now the required phrasing.
+
+`money-claim-figure` is scoped to avoid the two legitimate neighbours: statutory insurance credits and premium credits are excluded by lookbehind, and ordinary service cost ranges do not match unless they sit next to program vocabulary. Verified against 12 real portfolio figure-claims (all caught) and 12 compliant or cost-only sentences (all clean), then against the full sweep corpus of 2,578 money sentences across all 53 live sites.
+
+**The checker is a floor, not the standard.** A named-and-linked claim passes CI and can still be misapplied. The four-part rule above governs.
 
 ### Incident record, 2026-08-11
 
@@ -396,7 +418,7 @@ Use this checklist before launching any new site. Every item must pass before th
 - [ ] No fake team members or stock-photo bios
 - [ ] No false experience claims, completed-jobs counters, or "since [year]" claims
 - [ ] No certifications, awards, or accreditation badges unverified
-- [ ] Every grant, rebate, tax credit or assistance claim names its program, links the administering body's own page, and carries a date (see Third-Party Money Claims). Where a real adjacent program exists, the boundary of what it does not cover is stated
+- [ ] Every grant, rebate, tax credit or assistance claim names its program, says it may be offered, links the administering agency's own page, and publishes NO figures: no amounts, caps, percentages, deadlines or round status (see Third-Party Money Claims). No calculator or worked example subtracts an award
 
 **Forms:**
 - [ ] TCPA consent language above submit button, not pre-checked
