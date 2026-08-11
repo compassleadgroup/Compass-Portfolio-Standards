@@ -2,6 +2,19 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-11 (third-party money claims become a compliance rule, after a live incident)
+
+A homeowner acted on a grant claim published on marioncountyseptic.com, called the utility to ask about the grant, and the utility had never heard of it. A supervisor traced the claim to our site and called the operator to say the site was publishing false information. Operator instruction the same day: never fabricate false information on the sites.
+
+- **COMPLIANCE_STANDARDS.md has a new section, Third-Party Money Claims.** Any statement that a reader might get money, pay less, or have a cost covered by someone other than the contractor (grants, rebates, tax credits, cost-share, reimbursement, subsidies, program-paid inspections) must be **named, sourced and dated**: the exact program name as the administering body writes it, a link to that body's own page rather than a news article or summary site, and a visible date because these programs open, close and exhaust their funds. Missing any of the three means delete the sentence. Deleting an unsourced claim needs no source; publishing one does.
+- **Four shapes are banned outright**, with a table: vague jurisdiction ("some counties offer grants"), hedged availability ("grants may be available"), borrowed adjacency (the county funds X so the page implies it funds Y), and stale certainty (named and sourced but undated).
+- **The adjacency trap is called out as the most dangerous case**, because it is nearly true. Marion County FL funds septic-to-sewer connection in designated areas at roughly $30,000 per household and funds nothing toward a septic system upgrade, which is precisely the confusion that triggered the incident. When a real adjacent program exists, the page must state the boundary of what it does not cover.
+- **ci/compliance-check.mjs gains two hard-fail rules**, `money-claim-vague-jurisdiction` and `money-claim-may-be-available`. Deliberately narrow: verified against seven fabrication shapes (all caught) and 11 real portfolio claims naming SoonerSafe, My Safe Florida Home, Strengthen Mississippi Homes, the Suffolk County SIP, the MA Title 5 credit, the West Des Moines radon grant and others (all clean). Replayed against the marion-county-septic build commit that introduced the bad line: four hard fails, so CI would have blocked it at build time. The current site passes.
+- **The checker is a floor, not the standard.** A named-and-linked claim passes CI and can still be stale or misapplied. The three-part rule governs.
+- **Pre-launch checklist gains one item** covering the same ground.
+
+Full portfolio sweep run the same day: 1,588 served URLs across all 53 live sites. Marion was the only site carrying an unnamed money claim. Every other program claim found (about 20 sites) names its program, and the four highest utility-call-risk claims were verified against primary sources and are correct.
+
 ## 2026-08-03 (lead capture becomes part of the build, plus four playbook corrections)
 
 Operator instruction: the conversion setup run across the portfolio on 2026-08-02 (sticky call bar, form under the hero, four fields) becomes the norm for all future sites, automatically. Until now it was a retrofit pass, and the playbook's homepage formula specified the opposite.
