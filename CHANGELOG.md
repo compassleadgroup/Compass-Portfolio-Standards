@@ -2,6 +2,20 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-14 (money claims, revision): verified figures the operator approves may now be published
+
+Operator instruction: "The rule only should apply to numbers that I do not specifically say should pass because of verification." The 2026-08-11 blanket ban on program figures gains a narrow, expiring exception.
+
+**The default does not move.** No figures unless the operator has specifically approved that program, every figure was read at the administering body's own page or document, the verification date is shown to the reader, the figures sit in one owner file, and that file carries a `compass-approved-figures` block with `operator=`, `verified=` and `source=`.
+
+**The exception decays, which is the point.** The ban existed because a figure is right the day it is written and wrong the day the round closes. **After 180 days without re-verification the approval stops working and the figures hard-fail again**, with the message naming the source to re-read. An operator approval does not make a stale number correct.
+
+**Never covered by the exception:** unnamed money claims, since they name nothing to check; grant math in a calculator or worked example; a figure the administering body's own pages disagree on; and any standing silence such as Marion County.
+
+**Enforcement.** `money-claim-figure` downgrades from FAIL to WARN in an approved, unexpired file, and only that rule. An incomplete or unparseable block approves nothing. Approved figures are reported as warnings on every run by design: a number nobody sees in CI is a number nobody re-verifies. Tested in all four states before merge, which is the standing bar here: no approval fails, a fresh approval warns, an expired one fails, a malformed one fails.
+
+**One incident recorded in the same revision, because it is the more useful lesson.** On 2026-08-14 a page shipped figures the standard forbade at the time, and CI passed it. The rule looks for a figure and program vocabulary within a sentence of each other, and a table put "$3,500" and "grant" in separate cells. **A green check is not a compliance opinion.** The Enforcement section now says so. The same session also reported that this Third-Party Money Claims section did not exist, having read a site repo's stale local copy rather than this file. Both errors were corrected the same day, and the figures came down before the exception existed to allow them.
+
 ## 2026-08-11 (consent ruling, enforcement): text messaging is now blocked, not just removed
 
 Operator instruction, after the checker fix: block the channel as well. The ruling said "no site may add it back", the documents said so, and the 54-site sweep applied it, but nothing stopped a future build typing it back in. Four rules in `ci/compliance-check.mjs` now enforce it.

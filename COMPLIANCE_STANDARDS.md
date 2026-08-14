@@ -318,6 +318,43 @@ If a program cannot be named and linked, delete the sentence. **Deleting an unso
 
 **Scope.** Grants, rebates, tax credits, refunds, reimbursement, cost-share, subsidies and assistance programs. **Not** statutory insurance discounts or premium credits, which are rate mechanics rather than money handed to a homeowner, and not the site's own service cost ranges.
 
+### The exception: figures the operator specifically approves, backed by verification
+
+Added 2026-08-14 by operator instruction: "The rule only should apply to numbers that I do not specifically say should pass because of verification."
+
+**The default stays no figures.** Point 4 above applies unless every condition below is met. This exception is opt-in per program, per file, and it expires.
+
+A figure may be published only when all five hold:
+
+1. **The operator specifically approved figures for that program.** Not a general permission, not an inference from a related approval. A dated instruction naming the program.
+2. **Every figure was read at the administering body's own page or document**, in full, and the read date recorded. A summary site, a news article, an aggregator or another contractor is not verification. Two views of one publisher, such as an agency's page and that page's own PDF, are one source, which is enough when it is the authoritative one.
+3. **The reader can see how fresh it is.** The verification date is published beside the figures, not just kept in a code comment.
+4. **The figures live in one owner file per site**, so re-verification is one edit and cannot half-happen.
+5. **The file carries a machine-readable approval block** so the gate can see it:
+
+   ```
+   compass-approved-figures: operator=YYYY-MM-DD verified=YYYY-MM-DD
+   source=https://<administering body's own site>/...
+   ```
+
+**It decays on purpose.** The original reasoning for the ban was that a figure is right the day it is written and wrong the day the round closes. Still true, so the exception carries the same clock: **after 180 days without re-verification the approval stops working and the figures hard-fail again.** Re-read them at the source and bump `verified=`, or take them down. An operator approval does not make a stale number correct.
+
+**What the exception never covers:**
+
+- **Unnamed money claims.** "Some counties offer grants" is wrong no matter who approved it, because it names nothing a reader can check.
+- **Grant math.** A calculator or worked example that subtracts an award is still banned. Approval covers publishing a figure, not doing arithmetic with it.
+- **A figure the sources disagree on.** If the administering body's own pages contradict each other, publish neither and send the reader to the agency. Verification means the disagreement is resolved, not averaged.
+- **Standing silences.** Where the operator has ruled that a site publishes nothing on a topic, such as Marion County below, that ruling wins.
+
+**Approved figures stay visible in every gate run as warnings, never silent.** Deliberate: a number nobody sees in CI is a number nobody re-verifies.
+
+**Standing approvals on record:**
+
+| Site | Program | Operator approval | Owner file |
+|---|---|---|---|
+| oklahomastormshelterpros.com | SoonerSafe Safe Room Rebate Program (Oklahoma OEM) | 2026-08-14 | `src/data/soonersafe.ts` |
+| oklahomastormshelterpros.com | Choctaw Storm Shelter Program, Chickasaw Homeowner Preparedness Grant, Oklahoma storm shelter ad valorem exemption | 2026-08-14 | `src/pages/funding/tribal-grants-and-tax-exemption.astro` |
+
 ### Never publish these shapes
 
 | Shape | Example | Why it fails |
@@ -349,6 +386,16 @@ The most dangerous claim is one that is *nearly* true. A county may genuinely ru
 `money-claim-may-be-available` was **removed** in the same revision, because the hedge it blocked is now the required phrasing.
 
 `money-claim-figure` is scoped to avoid the two legitimate neighbours: statutory insurance credits and premium credits are excluded by lookbehind, and ordinary service cost ranges do not match unless they sit next to program vocabulary. Verified against 12 real portfolio figure-claims (all caught) and 12 compliant or cost-only sentences (all clean), then against the full sweep corpus of 2,578 money sentences across all 53 live sites.
+
+**The approval block, added 2026-08-14 with the verified-figure exception.** A file whose first 40 lines carry
+
+```
+compass-approved-figures: operator=YYYY-MM-DD verified=YYYY-MM-DD source=https://...
+```
+
+downgrades `money-claim-figure` from FAIL to WARN, and only that rule. The block must carry all three fields; an incomplete or unparseable one approves nothing and the figures hard-fail. Past 180 days from `verified=` the approval expires and they hard-fail again, with the message naming the source to re-read. Approved figures are reported as warnings on every run by design, so they never disappear from view.
+
+**The gate is a floor, not the standard.** `money-claim-figure` looks for a figure and program vocabulary within a sentence of each other, which means separating them defeats it. That happened on 2026-08-14: a page put "$3,500" in one table cell and "grant" in another, passed CI, and shipped figures that the standard forbade at the time. **A green check is not a compliance opinion.** Read the rule, not the regex.
 
 **The checker is a floor, not the standard.** A named-and-linked claim passes CI and can still be misapplied. The four-part rule above governs.
 
@@ -423,6 +470,7 @@ Use this checklist before launching any new site. Every item must pass before th
 - [ ] No false experience claims, completed-jobs counters, or "since [year]" claims
 - [ ] No certifications, awards, or accreditation badges unverified
 - [ ] Every grant, rebate, tax credit or assistance claim names its program, says it may be offered, links the administering agency's own page, and publishes NO figures: no amounts, caps, percentages, deadlines or round status (see Third-Party Money Claims). No calculator or worked example subtracts an award
+- [ ] Any figure published under the verified-figure exception has a dated operator approval naming the program, was read at the administering body's own page, shows its verification date to the reader, sits in one owner file, carries a complete `compass-approved-figures` block, and was verified within 180 days
 
 **Forms:**
 - [ ] TCPA consent language above submit button, not pre-checked
