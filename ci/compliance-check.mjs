@@ -25,6 +25,26 @@
 // Per-line override: put the token compliance-ignore in a line to suppress findings on it.
 // Per-file override: put compliance-ignore-file within the first 5 lines to skip the file.
 //
+// Program-figure exception (operator ruling 2026-08-14). Program figures are still
+// banned by default. They pass ONLY in a file carrying an approval block, and only
+// while the verification behind them is fresh. Put this in the first 40 lines:
+//
+//   compass-approved-figures: operator=2026-08-14 verified=2026-08-14
+//   source=https://oklahoma.gov/oem/.../rules-and-regulations.html
+//
+// operator=  the date the operator specifically approved figures for this program.
+// verified=  the date every figure in the file was last read at the administering
+//            body's own page or document. Re-read and bump it, or the file expires.
+// source=    a URL on the administering body's own site. Not a news article, not a
+//            summary site, not another contractor.
+//
+// An approved file downgrades money-claim-figure from FAIL to WARN, so the figures
+// stay visible in every run and never go silent. After FIGURE_APPROVAL_MAX_AGE_DAYS
+// the approval stops working and the figures hard-fail again: the rule's original
+// worry was decay, so the exception decays too. Re-verify at the source and bump
+// verified=, or take the figures down. A malformed or incomplete block does not
+// approve anything.
+//
 // Config shape (all optional):
 //   {
 //     "tenantSigned": false,     // true relaxes tenant-allowed phrases per TENANT_ACTIVATION_PLAYBOOK.md
@@ -37,6 +57,13 @@ import path from "node:path";
 
 const IGNORE_LINE = "compliance-" + "ignore";           // split so this file does not self-match
 const IGNORE_FILE = "compliance-" + "ignore-file";
+const FIGURE_APPROVAL = "compass-" + "approved-figures";
+// How long a verification stays good. Program rounds turn over annually, so half a
+// year is the outside edge of "somebody checked this recently".
+const FIGURE_APPROVAL_MAX_AGE_DAYS = 180;
+// Rules the approval block can downgrade. Only the figure rule: an unnamed money
+// claim is wrong no matter who approved it, because it names nothing to verify.
+const FIGURE_APPROVAL_COVERS = new Set(["money-claim-figure"]);
 const SCAN_EXT = new Set([
   ".astro", ".html", ".md", ".mdx", ".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs", ".json",
 ]);
@@ -214,6 +241,35 @@ function collect(target, out) {
 const files = [];
 for (const p of paths) collect(p, files);
 
+// ---- Program-figure approval ---------------------------------------------------------
+
+// Reads the approval block out of a file header. Returns null when there is none,
+// or when it is incomplete or malformed: a half-written block approves nothing.
+// Returns { operator, verified, source, ageDays, expired } otherwise.
+function readFigureApproval(lines, today) {
+  const head = lines.slice(0, 40).join("\n");
+  if (!head.includes(FIGURE_APPROVAL)) return null;
+  const operator = /operator=(\d{4}-\d{2}-\d{2})/.exec(head)?.[1];
+  const verified = /verified=(\d{4}-\d{2}-\d{2})/.exec(head)?.[1];
+  const source = /source=(https?:\/\/\S+)/.exec(head)?.[1];
+  if (!operator || !verified || !source) {
+    return { malformed: true, operator, verified, source };
+  }
+  const verifiedAt = Date.parse(verified + "T00:00:00Z");
+  if (Number.isNaN(verifiedAt)) return { malformed: true, operator, verified, source };
+  const ageDays = Math.floor((today - verifiedAt) / 86400000);
+  return {
+    malformed: false,
+    operator,
+    verified,
+    source,
+    ageDays,
+    expired: ageDays > FIGURE_APPROVAL_MAX_AGE_DAYS,
+  };
+}
+
+const TODAY = Date.parse(new Date().toISOString().slice(0, 10) + "T00:00:00Z");
+
 // ---- Scan ----------------------------------------------------------------------------
 
 const findings = [];      // { severity, file, line, id, text, msg }
@@ -231,6 +287,8 @@ for (const file of files) {
   // Per-file skip marker in first 5 lines
   if (lines.slice(0, 5).some((l) => l.includes(IGNORE_FILE))) continue;
 
+  const approval = readFigureApproval(lines, TODAY);
+
   // Required-element presence (whole file)
   for (const req of REQUIRED) if (req.re.test(content)) requiredHits.add(req.id);
 
@@ -244,13 +302,37 @@ for (const file of files) {
       rule.re.lastIndex = 0;
       let m;
       while ((m = rule.re.exec(line)) !== null) {
+        let severity = rule.severity;
+        let msg = rule.msg;
+
+        if (FIGURE_APPROVAL_COVERS.has(rule.id) && approval) {
+          if (approval.malformed) {
+            msg =
+              "Program figure in a file whose " + FIGURE_APPROVAL + " block is incomplete. " +
+              "It needs all three of operator=YYYY-MM-DD, verified=YYYY-MM-DD and " +
+              "source=<url on the administering body's own site>. Fix the block or remove the figure.";
+          } else if (approval.expired) {
+            msg =
+              `Program figure last verified ${approval.verified}, which is ${approval.ageDays} days ` +
+              `ago and past the ${FIGURE_APPROVAL_MAX_AGE_DAYS}-day limit. The approval has expired. ` +
+              `Re-read every figure at ${approval.source}, bump verified=, or take the figures down.`;
+          } else {
+            severity = "warn";
+            msg =
+              `Program figure, approved by the operator on ${approval.operator} and verified ` +
+              `${approval.verified} (${approval.ageDays} days ago) at ${approval.source}. ` +
+              "Allowed under the verified-figure exception. Re-verify before it reaches " +
+              `${FIGURE_APPROVAL_MAX_AGE_DAYS} days.`;
+          }
+        }
+
         findings.push({
-          severity: rule.severity,
+          severity,
           file,
           line: idx + 1,
           id: rule.id,
           text: m[0].trim().slice(0, 80),
-          msg: rule.msg,
+          msg,
         });
         if (m.index === rule.re.lastIndex) rule.re.lastIndex++; // avoid zero-width loop
       }
