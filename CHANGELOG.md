@@ -2,6 +2,18 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-20 (lead capture): the playbook still specified Web3Forms, which the portfolio retired on 2026-08-11
+
+Found while scaffolding a new site against these files. Every site was migrated to the portfolio's own lead endpoint nine days ago and the standards never caught up, so a build run from BUILD_PLAYBOOK.md or `/new-site` would have shipped a retired integration and then waited on an access key that nobody issues any more.
+
+**What is true now.** Every site posts to `https://compass-leads.pages.dev/submit`, a Cloudflare Pages Function that writes the lead to our own database, serves its own branded thank-you page, and calls a Worker that emails the operator in about two seconds. There is no per-site access key. Cloudflare Turnstile does the spam check: the public site key sits in `site.ts`, the secret lives only in the endpoint keyed by host, and **a widget caps at 10 domains**, so a new site needs a slot on an existing widget or a new widget.
+
+**What changed here.** BUILD_PLAYBOOK.md SECTION 2A item 15, the `/new-site` command's tech list and its done-gate, and the free-tier budget lines in the two MASTER reference prompts.
+
+**The done-gate moved rather than relaxed.** There is no key to get wrong now, so the failures that remain are a missing Turnstile site key and a deployment that did not ship. A merged pull request is not a deployed site: one site served the retired form for four hours after its migration merged, because the deployment failed and nobody looked.
+
+Background and the endpoint's own record: `wiki/build/lead-capture.md` in compass-kb.
+
 ## 2026-08-14 (money claims, revision): verified figures the operator approves may now be published
 
 Operator instruction: "The rule only should apply to numbers that I do not specifically say should pass because of verification." The 2026-08-11 blanket ban on program figures gains a narrow, expiring exception.
