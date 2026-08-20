@@ -175,3 +175,14 @@ layout, one signature element) → critique the plan against this file (would I 
 
 Distinctiveness comes from the subject. Restraint makes it look designed. Beautiful type and a
 clean responsive build are the floor, not the goal.
+
+## The fixed hero backdrop (standard, 2026-08-20)
+
+The hero photograph is a fixed layer behind the whole site and the page scrolls over it. Build
+it as a `position: fixed` layer, never `background-attachment: fixed`, which iOS Safari ignores.
+`html` carries the solid colour, `body` is transparent so it cannot paint over the layer, the
+content panel below the hero window is opaque so type never sits on the picture, and the
+backdrop takes a scrim plus a text shadow on the hero type so a bright patch in the photograph
+cannot cost legibility. One layout prop switches a tall hero window on the homepage for a short
+one elsewhere. The backdrop is decorative: `alt=""` and `aria-hidden`. Full detail and the
+reasoning: BUILD_PLAYBOOK.md Section 0.

@@ -2,6 +2,18 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-20 (visual design): the hero photograph becomes a fixed backdrop on every site
+
+Operator instruction, after seeing it on septicindiana.com: make the hero image the background, fixed, with the rest of the page scrolling on top of it, and make that the standard.
+
+**The rule.** One photograph sits behind the whole site, the hero band is a window onto it, and the content panel scrolls up over it. Not a banner in the flow, and not a different image per page.
+
+**The build notes matter more than the rule, because the obvious implementation is broken on phones.** Use a `position: fixed` layer, never `background-attachment: fixed`, which iOS Safari ignores and Android repaints badly. Put the solid colour on `html` and make `body` transparent, or the body background paints over the layer and the effect silently disappears. Keep the content panel opaque. Add a scrim plus a text shadow on the hero type, because a photograph has bright patches wherever it likes and a long lede runs past the darkest part of a gradient on a narrow screen. Carry it on one layout prop rather than per-page markup. Mark the backdrop `alt=""` and `aria-hidden`, since it is decoration.
+
+**Check it by rendering at desktop and mobile widths.** The mobile failure is legibility and it does not appear in the source. First reference implementation: septicindiana.com.
+
+Changed: BUILD_PLAYBOOK.md Section 0 and reference/CLAUDEwebdesign_copy.md.
+
 ## 2026-08-20 (lead capture): the playbook still specified Web3Forms, which the portfolio retired on 2026-08-11
 
 Found while scaffolding a new site against these files. Every site was migrated to the portfolio's own lead endpoint nine days ago and the standards never caught up, so a build run from BUILD_PLAYBOOK.md or `/new-site` would have shipped a retired integration and then waited on an access key that nobody issues any more.
