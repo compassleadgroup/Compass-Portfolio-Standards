@@ -134,7 +134,7 @@ Every item below traces to a defect found on a live portfolio site, which is why
 
 **The gate that makes all of it real**
 
-15. **A form that renders is not a form that delivers.** The access key must be real, never a placeholder, and a test submission must land in the inbox before launch. Ten portfolio sites once shipped with a placeholder key and rendered live-looking forms that posted nowhere, invisible from the outside. If the build gates the form behind a readiness constant, that constant must be confirmed to have at least one importer: a gate nothing consumes reads as protection and provides none.
+15. **A form that renders is not a form that delivers.** Every site posts to the portfolio lead endpoint, `https://compass-leads.pages.dev/submit`, which writes the lead to our own database and emails the operator in about two seconds. There is no per-site access key to provision (Web3Forms was retired portfolio-wide on 2026-08-11), so what has to be true instead is that the form's `action` is the endpoint, the Turnstile site key is real, the deployment actually shipped, and a test submission has landed in the inbox before launch. Ten portfolio sites once shipped with a placeholder key and rendered live-looking forms that posted nowhere, invisible from the outside. If the build gates the form behind a readiness constant, that constant must be confirmed to have at least one importer: a gate nothing consumes reads as protection and provides none.
 
 **Rejected, do not build**
 

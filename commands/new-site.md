@@ -36,7 +36,8 @@ Do not start building until you have all five.
 Tech (per BUILD_PLAYBOOK.md):
 
 - Astro 6.x, TypeScript strict, Tailwind CSS v4 via the Vite plugin, static output, Node 22.
-- Web3Forms for the contact form with the access key in site.ts (browser-visible by design).
+- The portfolio lead endpoint for the contact form: post to `https://compass-leads.pages.dev/submit`, held in a `LEAD_ENDPOINT` constant in site.ts. There is no per-site key to provision and nothing to expire. Web3Forms was retired portfolio-wide on 2026-08-11.
+- Cloudflare Turnstile on the form for the spam check. The public site key goes in site.ts; the matching secret lives only in the endpoint, keyed by host. **A widget caps at 10 domains and a new site needs a slot on one**, so check capacity before the build and say so if a new widget is needed.
 - Lucide icons only.
 
 Config:
@@ -65,7 +66,7 @@ Lead capture (non-negotiable, built in batch one, never a later pass):
 - The short version, so nothing gets missed: a four-field form (name, phone, city, what the job is), no email field, placed directly under the hero as section two with the hero button jumping to it; a neutral first option on the job-type dropdown; a sticky mobile call bar that prints the digits and renders through tablet widths; a "Prefer to talk" phone line under the form for desktop; the routing promise printed under every submit and in the sitewide CTA band; consent naming only the channels the form collects; an ask on every reachable page including the /locations hub.
 - Choosing "licensed" or "independent" in the routing promise is the threshold test in SECTION 2A, not a does-the-state-license-it question. Get this one right per site: it is a claim and it carries the evidence bar.
 - Never print a response time or any other promise about what the contractor will do. Never print a text-us line unless the operator confirms inbound SMS reaches a human.
-- The build is not done until a real Web3Forms key is in place and a test submission has landed in the inbox. A form that renders is not a form that delivers.
+- The build is not done until a test submission has landed in the inbox. A form that renders is not a form that delivers. With the shared endpoint there is no key to get wrong, so the two things that can still break a site's form are a missing Turnstile site key and a deployment that did not actually ship: **a merged pull request is not a deployed site**, and one site served the retired form for four hours after its migration merged because its deployment had failed.
 
 Compliance on every page:
 
