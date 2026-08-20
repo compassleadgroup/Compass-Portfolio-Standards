@@ -31,6 +31,36 @@ The gate: run the `site-design-qa` skill on each finished section and once on th
 
 The design license is visual and editorial only. It never buys a compliance shortcut: the copy, schema, disclosures, and forbidden-language rules are identical in a bold build and a plain one, and COMPLIANCE_STANDARDS.md wins every conflict.
 
+
+### The fixed hero backdrop (portfolio standard, operator instruction 2026-08-20)
+
+**Every site's hero photograph is a fixed backdrop that the page scrolls over.** It is not a
+banner image inside the flow, and it is not repeated per page: one photograph sits behind the
+whole site, the hero band is a window onto it, and the content panel slides up over it.
+
+Build it this way, because the obvious way is broken on phones:
+
+1. **A `position: fixed` layer, never `background-attachment: fixed`.** iOS Safari ignores that
+   property and Android repaints it badly, which fails on exactly the devices homeowners use.
+   The layer holds the image at `width:100%; height:100%; object-fit: cover`, `z-index: -1`.
+2. **`html` carries the solid background colour; `body` is transparent.** A `body` with a
+   background paints straight over the fixed layer and the effect silently disappears.
+3. **The content panel is opaque.** Below the hero window, everything sits on the page colour so
+   type never fights the picture. This is what makes it legible rather than decorative.
+4. **A scrim over the backdrop**, darkest where the hero type sits, plus a text shadow on the
+   hero heading and lede. A photograph has bright patches wherever it likes, and a long lede
+   runs past the darkest part of the gradient on a narrow screen.
+5. **One layout prop, not per-page markup**: a tall window on the homepage that renders the
+   hero over the photograph, a short window everywhere else. Every page then shares the
+   backdrop and only the window height changes.
+6. **The backdrop is decoration**: `alt=""` and `aria-hidden`, because the page already says in
+   words everything the photograph shows.
+7. **Check it by rendering at desktop and mobile widths.** The mobile failure mode is legibility,
+   and it does not show up in the source.
+
+The photograph still obeys the image standard in full: no text, no logos, no crew, no branded
+vehicles, no faces, and provenance logged in image-licenses.md.
+
 ---
 
 ## SECTION 1: SITE ARCHITECTURE
