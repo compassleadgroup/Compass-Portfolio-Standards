@@ -124,6 +124,20 @@ Section order (12 sections, locked):
 11. **Final CTA + phone repeat.** Form + click-to-call.
 12. **Footer.** Phone with click-to-call, 5-social-icon row, full mega-nav of Services and Locations, real LLC disclosure with copyright, and the compliance disclaimer. NO street address, NO business hours, NO Google Maps embed: no operating address appears on any site (operator ruling 2026-07-22), so a map pin would have to be invented, which is the fake-premises tripwire. See Section 8, Service-area map.
 
+
+### Homepage imagery is not optional (operator instruction, 2026-08-20)
+
+Verbatim: "theres just one boring photo (fine) on the home page but no other septic related photos on the home page. this is bad and should be updated for future builds too. These sites need to be less boring."
+
+**The bar: at least five photographs on the homepage, and each one sits next to the thing it illustrates.** A hero image alone is a failure, whether or not the hero is a fixed backdrop. A homepage that is a wall of text with one picture at the top does not read as a business a contractor would rent.
+
+- **Photograph the subject, not the mood.** The correct equipment for the trade, rendered accurately, in the metro's real setting: the tank going into the ground, the part a homeowner actually sees in their lawn, the thing an inspector opens, the ground after the work. Not stock houses and not abstract textures.
+- **Every image earns its position.** Place it beside the section whose question it answers, so it explains rather than decorates. An image dropped in as filler is worse than white space.
+- **Reuse across pages is allowed and honest** when the image belongs to the topic in both places, and the homepage instance links on to the page that owns it.
+- **The gates do not move.** No text in the image, no crew, no branded vehicles or uniforms, no performed-work read, anonymized people only. Screen the pixels, never the prompt. Full generation standard: `wiki/build/image-generation.md` in compass-kb.
+- **Weight is a budget, not an excuse.** Five to seven images at 900px wide in WebP lands around 500 KB, well inside the 1.5 MB page budget. Lazy-load everything below the hero.
+
+The check at build time: scroll the rendered homepage. If two full screens pass with no photograph, the page is not done.
 ---
 
 ## SECTION 2A: LEAD CAPTURE (locked; built in, never retrofitted)
