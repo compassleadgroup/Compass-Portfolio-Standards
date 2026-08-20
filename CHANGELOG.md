@@ -14,6 +14,16 @@ Operator instruction, after seeing it on septicindiana.com: make the hero image 
 
 Changed: BUILD_PLAYBOOK.md Section 0 and reference/CLAUDEwebdesign_copy.md.
 
+## 2026-08-20 (homepage imagery): five photographs on a homepage, minimum
+
+Operator instruction after reviewing a freshly built site: "theres just one boring photo (fine) on the home page but no other septic related photos on the home page. this is bad and should be updated for future builds too. These sites need to be less boring."
+
+**SECTION 2 gains a homepage imagery bar.** At least five photographs on the homepage, each placed beside the section whose question it answers, photographing the trade's real equipment in the market's real setting. A hero alone is a failure, fixed backdrop or not. Reuse from inner pages is allowed where the image belongs to the topic in both places.
+
+Nothing about the image gates moves: no text, no crew, no performed-work read, anonymized people only, screen the pixels. Weight stays inside the existing 1.5 MB page budget, which five 900px WebP images do comfortably at around 500 KB.
+
+The build-time check is a scroll: two full screens with no photograph means the page is not done.
+
 ## 2026-08-20 (lead capture): the playbook still specified Web3Forms, which the portfolio retired on 2026-08-11
 
 Found while scaffolding a new site against these files. Every site was migrated to the portfolio's own lead endpoint nine days ago and the standards never caught up, so a build run from BUILD_PLAYBOOK.md or `/new-site` would have shipped a retired integration and then waited on an access key that nobody issues any more.
