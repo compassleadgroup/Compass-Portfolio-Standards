@@ -2,6 +2,22 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-22 (voice): sell the outcome, stop narrating the handoff
+
+Operator instruction, after a conversion pass on hillcountrybarnbuilders.com: someone searching "pole barn builders" wants the work done, and copy that opens by explaining the business model gives them a reason to leave before they reach the form.
+
+**The rule.** Marketing copy names who does the work and what the reader gets. It does not describe how the lead travels. Retired from marketing copy: "we connect you with", "the referral service", "the contractor we send your request to", and "we are a marketing and referral service, not a contractor" as a mid-paragraph aside. All four stay correct on `/about/`, `/disclosure/`, `/terms/`, and inside governed disclosure strings.
+
+**This repo caused the problem.** VOICE.md line 44 modelled the phrase "the contractor we connect you with" as the house pattern, and FORBIDDEN_LANGUAGE.md repeated it as the correct framing. Every site built to the standard inherited it. Both lines are now corrected, which is the part that stops it recurring on site 65.
+
+**The technique is subtraction, not rewriting.** The sentence almost always already contains the fact. Delete the clause: "An independent local contractor ~~we connect you with,~~ who works in Kendall County and provides the quote."
+
+**What this does not relax.** First-person work claims stay banned outright: no "we build", "we install", "our crews". A signed tenant does not transfer the contractor's work to us; TENANT_ACTIVATION.md keeps naming the tenant, never "we". "We help you get the work done" is facilitation and is fine; "we do the work" is a licensing and liability claim and is not.
+
+**Honest-limitation passages stay, reframed.** Refusing to quote a number is a trust asset and must not be deleted to reduce mechanism language. Put it on the real reason: "only a contractor standing on your site can price it", not "we are a marketing and referral service, so we cannot".
+
+**Enforcement.** `ci/compliance-check.mjs` gains `mechanism-language` at WARN. WARN and not FAIL because the phrases are legitimate on the business-model pages and a FAIL would block every site at once. The pattern is deliberately narrow and was tested against the footer disclaimer, header strip and form disclosure: it does not fire on any of them, so no governed wording is put at risk.
+
 ## 2026-08-20 (visual design): the hero photograph becomes a fixed backdrop on every site
 
 Operator instruction, after seeing it on septicindiana.com: make the hero image the background, fixed, with the rest of the page scrolling on top of it, and make that the standard.

@@ -27,7 +27,9 @@ The brand never performs the work, so the brand never says it does:
 - [ ] we fix
 - [ ] any equivalent first-person trade claim (we replace, we inspect, we remediate, we build, our crews, our technicians)
 
-Correct framing: "the contractor we connect you with diagnoses..." or "licensed contractors handle...".
+Correct framing: "a licensed contractor who works your county diagnoses..." or "licensed contractors handle...".
+
+Note, 2026-08-22: this line used to model "the contractor we connect you with", and that phrasing is retired. It is compliant but it narrates the handoff, which costs conversion on hire-intent queries. Name who does the work; do not describe how the lead reaches them. See VOICE.md, "Sell the outcome, not the mechanism". The ban on first-person trade claims above is unchanged and is not what that section relaxes.
 
 ## Fabricated trust signals (banned)
 

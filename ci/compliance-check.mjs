@@ -146,6 +146,23 @@ const LINE_RULES = [
   { id: "our-crew", severity: "fail", re: /\bour (crew|crews|technicians|installers|specialists)\b/gi,
     msg: "Implies an owned workforce. Compass Camper LLC has none. Rephrase." },
 
+  // Handoff narration in marketing copy (WARN). Not a compliance defect: every phrase here is
+  // true, and one of them was the modelled house phrasing in VOICE.md until 2026-08-22. It is a
+  // conversion defect. Hire-intent searchers want the work done, and copy that opens on the
+  // business model gives them a reason to leave before they reach the form. The disclosures
+  // already disclose (VOICE.md, "Sell the outcome, not the mechanism").
+  //
+  // WARN, never FAIL, for two reasons: /about/, /disclosure/ and /terms/ use these phrases
+  // legitimately, and a FAIL would block every site in the portfolio at once. Suppress
+  // per-site with ignorePhrases in compliance.config.json where a page genuinely needs it.
+  //
+  // Deliberately narrow: it matches only reader-addressed handoff narration, so it cannot fire on
+  // the governed footer disclaimer ("connects landowners with independent local contractors") or
+  // the form disclosure ("your information is shared with"), whose wording must not change.
+  { id: "mechanism-language", severity: "warn",
+    re: /\bwe (?:will |can )?connect you\b|\bconnects? you with\b|\bthe (?:referral|matching) service\b|\bthe (?:contractor|builder) we send your request to\b/gi,
+    msg: "Handoff narration in reader-facing copy. Name who does the work instead ('a licensed contractor who works your county'). Legitimate on /about/, /disclosure/, /terms/ and inside governed disclosures. See VOICE.md." },
+
   // Tenure and fabricated-stat claims (WARN)
   { id: "since-year", severity: "warn", re: /\bsince (19|20)\d{2}\b/gi,
     msg: "Tenure claim. Only allowed if it reflects Compass Camper LLC's real operating history." },
