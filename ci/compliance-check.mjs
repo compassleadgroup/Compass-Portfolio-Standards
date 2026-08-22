@@ -159,8 +159,15 @@ const LINE_RULES = [
   // Deliberately narrow: it matches only reader-addressed handoff narration, so it cannot fire on
   // the governed footer disclaimer ("connects landowners with independent local contractors") or
   // the form disclosure ("your information is shared with"), whose wording must not change.
+  // Widened 2026-08-22 during the marioncountyseptic.com pass. The first version
+  // caught "the contractor we send your request to" but missed the active voice
+  // form, "we send your request to a licensed local contractor", which is the same
+  // habit and turned out to be more common: 41 hits found, then 42 more missed on
+  // one site. The active form is matched only with a first-person subject, so the
+  // passive governed form disclosure ("your information is shared with an
+  // independent contractor") still does not fire.
   { id: "mechanism-language", severity: "warn",
-    re: /\bwe (?:will |can )?connect you\b|\bconnects? you with\b|\bthe (?:referral|matching) service\b|\bthe (?:contractor|builder) we send your request to\b/gi,
+    re: /\bwe (?:will |can )?connect you\b|\bconnects? you with\b|\bthe (?:referral|matching) service\b|\bthe (?:contractor|builder) we send your request to\b|\bwe (?:send|forward|pass|route|share) (?:your|the) (?:request|details|information|project)\b/gi,
     msg: "Handoff narration in reader-facing copy. Name who does the work instead ('a licensed contractor who works your county'). Legitimate on /about/, /disclosure/, /terms/ and inside governed disclosures. See VOICE.md." },
 
   // Tenure and fabricated-stat claims (WARN)
