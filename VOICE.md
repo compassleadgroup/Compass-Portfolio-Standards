@@ -41,13 +41,48 @@ Never use:
 
 ## How the brand talks about the work
 
-- The contractor does the work. Always. "The contractor we connect you with will..." not "we will...".
+- The contractor does the work. Always. Name who does it; do not narrate how they got there. "An independent local contractor who works your county", not "we will...". The older version of this line modelled the phrase "the contractor we connect you with", which is exactly the habit the next section now bans. That phrasing is retired.
 - Describe the service factually: what it involves, what it costs locally, how long it takes, what affects the price.
 - Local specifics make the page: soil types, weather patterns, permit quirks, regional price ranges. Real ones only.
 - Credentials belong to the contractor: "licensed, insured contractors" as a category description is fine; named endorsements and vetting claims are not (see FORBIDDEN_LANGUAGE.md).
+
+## Sell the outcome, not the mechanism
+
+Effective 2026-08-22, operator instruction. This is a conversion rule, not a compliance rule, and it exists because the two were being confused.
+
+Someone searching "pole barn builders" or "septic tank repair" wants the work done. Copy that opens by explaining the business model gives them a reason to leave before they reach the form. **The required disclosures already say what we are, on every page. Marketing copy must stop repeating them.**
+
+**Retired from marketing copy** (still correct on `/about/`, `/disclosure/`, `/terms/`, and inside governed disclosure strings):
+
+- "we connect you with" / "we will connect you with"
+- "the referral service" / "our matching service"
+- "the contractor we send your request to"
+- "we are a marketing and referral service, not a contractor" as a mid-paragraph aside
+
+**The technique is subtraction.** Delete the narration, keep the fact. The sentence usually already contains the answer:
+
+> An independent local contractor ~~we connect you with,~~ who works in Kendall County and provides the quote.
+
+Same information, no play-by-play of how the lead travels.
+
+**What replaces it:** name who does the work, and what the reader gets.
+
+| Instead of | Write |
+|---|---|
+| "We connect you with a licensed contractor" | "A licensed contractor who works your county prices the job" |
+| "Get a free quote from our referral service" | "Get a real number on your build" |
+| "How the referral works" | "How it works" |
+| "Only the contractor we send your request to can price it" | "Only the contractor who walks your site can price it" |
+
+**The line that does not move.** This buys latitude in framing, never in substance. First-person work claims stay banned outright: no "we build", "we install", "we repair", "our crews", "our contractors". A partnership or signed tenant does not transfer the contractor's work to us (see TENANT_ACTIVATION.md). "We help you get the work done" is facilitation and is fine. "We do the work" is a licensing and liability claim and is not.
+
+**Honest-limitation passages stay, reframed.** Refusing to quote a number is a trust asset and must not be deleted to reduce mechanism language. Rewrite it onto the real reason instead of a self-description: "only a contractor standing on your site can price it", not "we are a marketing and referral service, so we cannot".
+
+**Governed strings are untouched by this rule.** The header disclosure strip, footer entity disclaimer, TCPA consent, and form disclosure keep their exact wording. They are what make this reframe safe: the disclosure does the disclosing, so the sales copy does not have to.
 
 ## Quick self-test before shipping copy
 
 1. Could a reader mistake any sentence for the brand doing the work? Rewrite it.
 2. Does any sentence exist only to sound impressive? Cut it.
 3. Would this paragraph work word for word on a competitor's site in another state? Add local substance or cut it.
+4. Does this sentence explain our business model to someone who came here to price a job? Move it to `/about/` or cut it. The disclosures already cover it.
