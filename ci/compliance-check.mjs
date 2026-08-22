@@ -289,8 +289,13 @@ for (const file of files) {
 
   const approval = readFigureApproval(lines, TODAY);
 
-  // Required-element presence (whole file)
-  for (const req of REQUIRED) if (req.re.test(content)) requiredHits.add(req.id);
+  // Required-element presence (whole file). Match against whitespace-collapsed
+  // text: the required phrases are prose sentences, and the formatter wraps them
+  // across source lines, so "Consent is not a\ncondition of any purchase" failed
+  // a single-line regex on four sites that all carried the consent block. Found
+  // by the 2026-08-22 Minnesota radon dossier.
+  const flattened = content.replace(/\s+/g, " ");
+  for (const req of REQUIRED) if (req.re.test(flattened)) requiredHits.add(req.id);
 
   // Per-line rules
   lines.forEach((line, idx) => {
