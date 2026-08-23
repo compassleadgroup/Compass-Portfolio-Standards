@@ -2,6 +2,23 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-23 (disclosure): the header strip is retired portfolio-wide
+
+Operator decision, stated plainly: "remove the header disclosure from every site. I'm okay with the risk and i think the footer is enough."
+
+**The rule.** No site carries a header disclosure strip. New builds do not add one. This supersedes the 2026-07-11 style decision and the 2026-08-23 blend decision, both of which assumed a strip existed.
+
+**The footer disclaimer is now the only place the disclosure lives, and it must contain the phrase "not a licensed contractor".** That is the phrase the state advertising statutes turn on. A footer that only says "we do not perform the work" does not satisfy this.
+
+**The premise was checked before the change, and it was false on 16 sites.** Their footers disclaimed performing the work but never used the phrase, so the strip had been carrying it alone and removing it would have dropped it from those sites entirely. One sentence was appended to each of those footers so the decision's own reasoning holds everywhere. Twelve of those sixteen had never carried the phrase in the footer at any point, which was a pre-existing gap this change closed.
+
+**What it costs, recorded rather than hidden.** The strip existed because FTC net-impression doctrine asks whether a reasonable consumer actually encounters the disclosure, and a footer is encountered less than a bar above the nav. The prominence is gone; the wording is not. Exposure is unchanged in kind and higher in degree under California B&P 7027/7099, Florida 489.127, Arizona A.R.S. 32-1151 (which affirmatively requires a "Not a Licensed Contractor" disclaimer on ads) and North Carolina G.S. 87-13. Eight sites sit in those four states. Restoring the strip there, or portfolio-wide, is the first fix and is an operator decision plus a re-sweep.
+
+**This reverses the 2026-07-30 ruling** that the strip never comes off. That ruling stands as the record of why it existed; the operator has since weighed it and decided otherwise, which is theirs to decide.
+
+**Enforcement.** No checker change. `req-disclosure` still requires "is not a licensed contractor" somewhere in the scanned source and the footer satisfies it on all 57 sites.
+
+
 ## 2026-08-23 (visual): the disclosure strip blends into the nav, and never sticks
 
 Operator instruction: make the header strip the same colour as the menu bar so it reads as part of it, but keep it out of the sticky behaviour so it scrolls away.
