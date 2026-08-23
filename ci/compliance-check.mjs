@@ -157,15 +157,16 @@ const LINE_RULES = [
   // per-site with ignorePhrases in compliance.config.json where a page genuinely needs it.
   //
   // Deliberately narrow: it matches only reader-addressed handoff narration, so it cannot fire on
-  // the governed footer disclaimer ("connects landowners with independent local contractors") or
-  // the form disclosure ("your information is shared with"), whose wording must not change.
+  // the governed footer disclaimer ("connects landowners with independent local contractors"),
+  // whose wording must not change.
   // Widened 2026-08-22 during the marioncountyseptic.com pass. The first version
   // caught "the contractor we send your request to" but missed the active voice
   // form, "we send your request to a licensed local contractor", which is the same
   // habit and turned out to be more common: 41 hits found, then 42 more missed on
-  // one site. The active form is matched only with a first-person subject, so the
-  // passive governed form disclosure ("your information is shared with an
-  // independent contractor") still does not fire.
+  // one site. The active form is matched only with a first-person subject, so
+  // passive governed disclosure wording still does not fire. (The separate
+  // data-sharing disclosure above the form was retired portfolio-wide on
+  // 2026-08-23; see COMPLIANCE_STANDARDS.md, "Retired 2026-08-23".)
   { id: "mechanism-language", severity: "warn",
     re: /\bwe (?:will |can )?connect you\b|\bconnects? you with\b|\bthe (?:referral|matching) service\b|\bthe (?:contractor|builder) we send your request to\b|\bwe (?:send|forward|pass|route|share) (?:your|the) (?:request|details|information|project)\b/gi,
     msg: "Handoff narration in reader-facing copy. Name who does the work instead ('a licensed contractor who works your county'). Legitimate on /about/, /disclosure/, /terms/ and inside governed disclosures. See VOICE.md." },
@@ -199,6 +200,10 @@ const LINE_RULES = [
 const REQUIRED = [
   { id: "req-disclosure", re: /is not a licensed contractor/i,
     msg: "Header/footer disclosure string 'is not a licensed contractor' not found anywhere." },
+  // Still required somewhere in the scanned set, but no longer via the form consent
+  // block: since 2026-08-23 the consent names the site brand instead. The header
+  // disclosure strip, the footer entity disclaimer and /about all carry the entity,
+  // so a site that drops it entirely is still caught here.
   { id: "req-entity", re: /Compass Camper LLC/,
     msg: "Operating entity 'Compass Camper LLC' not found anywhere." },
   { id: "req-tcpa-consent", re: /consent is not a condition/i,
