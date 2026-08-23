@@ -62,22 +62,19 @@ These are honest, descriptive, and convert well:
 
 ## Required Page Elements
 
-### Header disclosure strip (every page, above main nav)
+### Header disclosure strip: RETIRED PORTFOLIO-WIDE (operator decision 2026-08-23)
 
-A thin, minimal gray bar with small but readable text. NOT footer-only.
+**There is no header disclosure strip on any site. Do not add one to a new build.** The operator retired it across all 54 sites carrying it, on the stated judgement that the footer disclaimer is sufficient and the residual risk is accepted. This supersedes the 2026-07-11 style decision and the 2026-08-23 blend decision, both of which assumed a strip existed.
 
-**Copy template (operator decision 2026-07-11, shortened from the earlier two-sentence version; keeps the "not a licensed contractor" phrase and the independent-contractor attribution, which are the legally load-bearing elements):**
-> "A marketing service, not a licensed contractor. [SERVICE] work is performed by independent licensed local contractors."
+**The footer disclaimer is now the only place the disclosure lives, so it is load-bearing in a way it was not before.** It must appear on every page, carry `data-nosnippet`, and it must contain the phrase **"not a licensed contractor"**. That phrase is what the state advertising statutes turn on; a footer that merely says "we do not perform the work" is not sufficient on its own.
 
-**Style (operator decision 2026-08-23, superseding the 2026-07-11 grey bar):** the strip takes **the nav bar's own background** and carries **no border against it**, so the strip and the menu read as one block rather than a grey bar stacked on top of the nav. Keep `text-xs`, `py-1 px-4`, centered, single line on desktop.
+**This was checked, not assumed, at the time of the change.** Sixteen sites had footers that disclaimed performing the work but never used the phrase, so the strip had been carrying it alone. Those footers gained one sentence, "Compass Camper LLC is not a licensed contractor and does not perform the work described on this site.", so the decision's own reasoning holds on every site. Any new build must satisfy the same condition.
 
-**The text colour is chosen against that background, never carried over.** It must measure at least **4.5:1** contrast on the new background and the figure must be checked, not assumed. This is not pedantry: the naive version of this change (swap the background, keep the text colour) produced white text on a white bar at 1.0:1 on a site whose strip had been dark over a light nav. Muted is fine; invisible is not.
+**What this costs, recorded rather than hidden.** The strip existed because FTC net-impression doctrine asks whether a reasonable consumer actually encounters the disclosure, and a footer is encountered less than a bar above the nav. That prominence is gone; the wording is not. The exposure named in the risk reference is unchanged in kind and higher in degree: California B&P 7027/7099, Florida 489.127, Arizona A.R.S. 32-1151 (which affirmatively requires a "Not a Licensed Contractor" disclaimer on advertisements), and North Carolina G.S. 87-13. Eight portfolio sites sit in those four states: capecoralimpactwindows.com, charlotteharborpoolcages.com, coastalcarolinametalroofing.com, marioncountyseptic.com, sonoranseptic.com, spacecoastimpactwindows.com, springscoastseptic.com, suncoastimpactwindows.com. Restoring the strip, on those eight or portfolio-wide, is the first fix if this ever becomes a problem, and it is an operator decision plus a re-sweep, not a per-site edit.
 
-**The strip is never a child of `<header>`.** Site headers are sticky, and this line is not meant to follow the reader down the page: it belongs at the top of the document and scrolls away. Render it as a sibling immediately before `<header>`. Four sites had it nested inside the sticky header and were corrected on 2026-08-23.
+**Enforcement.** `req-disclosure` in `ci/compliance-check.mjs` still requires "is not a licensed contractor" somewhere in the scanned source, which the footer satisfies. No checker rule changed.
 
-Unchanged from 2026-07-11: it must render on every page without interaction (no dismissal, no collapse, no scripts). It looks like a legitimate disclosure, not hidden styling. The wording is untouched by any of this.
-
-**Why:** FTC net-impression doctrine requires a reasonable consumer to actually encounter the disclosure. Footer-only doesn't satisfy this when body copy is sales-pitchy.
+**The 2026-08-07 editorial-content exception below is now moot for the header strip** (no site has one) but is kept as the record of why thegutterreport.com and insulationreport.com moved the phrase to the top of their lead forms, which they still do.
 
 #### Exception: editorial content properties (operator decision 2026-08-07)
 
@@ -470,7 +467,7 @@ Use this checklist before launching any new site. Every item must pass before th
 - [ ] Phone number is real and answerable (TextNow acceptable pre-revenue, Call Rail required pre-outreach)
 
 **Site content:**
-- [ ] Header disclosure strip on every page (an editorial content property using the 2026-08-07 exception has none, and instead carries the load-bearing phrase above the fields of every lead form)
+- [ ] NO header disclosure strip (retired 2026-08-23). Instead: the footer disclaimer renders on every page and contains the phrase "not a licensed contractor"
 - [ ] Footer disclaimer on every page with correct entity and service references
 - [ ] `data-nosnippet` on the wrapper of both disclosure blocks (check the built HTML, not the source). Under the 2026-08-07 exception there is no header strip, so this is the footer disclaimer alone
 - [ ] Every page has its own meta description, leading with the service and the local specifics, not the matching pitch
