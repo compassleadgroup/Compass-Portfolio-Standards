@@ -80,9 +80,26 @@ Same information, no play-by-play of how the lead travels.
 
 **Governed strings are untouched by this rule.** The header disclosure strip, footer entity disclaimer, TCPA consent, and form disclosure keep their exact wording. They are what make this reframe safe: the disclosure does the disclosing, so the sales copy does not have to.
 
+## Never name the operating entity in marketing copy
+
+Operator instruction, 2026-08-23. "Compass Camper LLC", and "Compass Lead Group" with it, belongs in the governed disclosures and nowhere else a buyer reads on the way to the form. The operator's words on finding the line live on a money page: a homeowner reads it and thinks "who the heck is Compass Camper LLC?" They only need to know their request reaches a contractor.
+
+Banned in marketing copy: page body text, FAQ answers, hero paragraphs, cost and response blocks, fine print near a form, and contact-page blurbs.
+
+Allowed and unchanged: the header disclosure strip, the footer entity disclaimer, the TCPA consent line, `/about/`, `/terms/`, `/privacy/`, `/disclosure/`, `/how-we-make-money/`, `/how-it-works/`, and JSON-LD schema. Those satisfy every disclosure obligation in COMPLIANCE_STANDARDS.md, which is exactly why the sales copy does not have to repeat them.
+
+| Instead of | Write |
+|---|---|
+| "Calls and form submissions reach Compass Camper LLC directly. We read the request and pass it to a licensed local contractor, usually within about an hour during the day." | "Your request goes to a licensed local contractor, usually within about an hour during the day." |
+| "Only the contractor who walks your site can price it. Compass Camper LLC does not perform roofing work and does not quote it." | "Only the contractor who walks your site can price it." |
+| "[Brand] is a free referral service operated by Compass Camper LLC, doing business as Compass Lead Group." | "[Brand] is a free referral service." |
+
+**Where this came from.** The money-page rollout of 2026-08-16 to 2026-08-18 shipped a response answer that named the entity, and it reached 55 sites because the rollout doctrine modelled the sentence. That is the second time a modelled phrase has spread portfolio-wide, after the handoff narration this section already retires. **Model the constraint, not the sentence.** A rule that ships with example wording will see that wording copied into every property.
+
 ## Quick self-test before shipping copy
 
 1. Could a reader mistake any sentence for the brand doing the work? Rewrite it.
 2. Does any sentence exist only to sound impressive? Cut it.
 3. Would this paragraph work word for word on a competitor's site in another state? Add local substance or cut it.
 4. Does this sentence explain our business model to someone who came here to price a job? Move it to `/about/` or cut it. The disclosures already cover it.
+5. Does the legal entity name appear anywhere outside a governed disclosure or a business-model page? Cut it.

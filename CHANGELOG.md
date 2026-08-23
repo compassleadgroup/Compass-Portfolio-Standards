@@ -2,6 +2,18 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-23 (voice): the operating entity name is banned from marketing copy
+
+Operator instruction, from a screenshot of tennesseevalleybarndominiums.com. The "What happens after you send it" block on every money page opened with "Calls and form submissions reach Compass Camper LLC directly." The operator's read: a homeowner about to send the form thinks "who the heck is Compass Camper LLC?" They only need to know the request reaches a builder. The operator ruled that the header and footer disclosure is enough.
+
+**The rule.** "Compass Camper LLC" and "Compass Lead Group" appear in the governed disclosures and on the business-model pages, and nowhere else a buyer reads. Banned in page body text, FAQ answers, hero paragraphs, cost and response blocks, fine print near a form, and contact-page blurbs. Untouched: header disclosure strip, footer entity disclaimer, TCPA consent, `/about/`, `/terms/`, `/privacy/`, `/disclosure/`, `/how-we-make-money/`, `/how-it-works/`, JSON-LD schema. Nothing in COMPLIANCE_STANDARDS.md required the name anywhere else, and `req-entity` is satisfied by the footer.
+
+**This repo caused it again.** The money-page rollout doctrine modelled the response answer as a finished sentence, entity name included, and 55 sites copied it. That is the second instance of the same failure after the handoff-narration phrase. **Model the constraint, not the sentence.**
+
+**Enforcement.** Written rule in VOICE.md plus self-test item 5. No new checker rule: the entity name is legitimately inside a component that renders on every page, so a regex over `src` would fire on all 64 sites and teach everyone to ignore it.
+
+**Rollout.** All 55 built sites carrying the line were fixed and merged the same day, 2026-08-23. thegutterreport.com was already clean.
+
 ## 2026-08-22 (voice): sell the outcome, stop narrating the handoff
 
 Operator instruction, after a conversion pass on hillcountrybarnbuilders.com: someone searching "pole barn builders" wants the work done, and copy that opens by explaining the business model gives them a reason to leave before they reach the form.
