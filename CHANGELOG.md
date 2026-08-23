@@ -2,6 +2,21 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-23 (visual): the disclosure strip blends into the nav, and never sticks
+
+Operator instruction: make the header strip the same colour as the menu bar so it reads as part of it, but keep it out of the sticky behaviour so it scrolls away.
+
+**The rule.** The strip takes the nav's own background and drops any border against it. Keep `text-xs`, `py-1 px-4`, centered. It renders as a sibling immediately before `<header>`, never a child, because site headers are sticky and this line is not meant to follow the reader down the page.
+
+**The text colour is chosen against the new background and measured, not carried over.** Minimum 4.5:1. This is the part that bites: on a site whose strip had been dark over a light nav, swapping only the background left `text-paper` on `bg-paper`, white on white, 1.0:1, an invisible disclosure. Every site in the 2026-08-23 sweep was measured; the range landed between 4.51:1 and 16.76:1.
+
+**Four sites had the strip nested inside the sticky header** and were corrected in the same pass: cabincountryseptic.com, suncoastimpactwindows.com, onondagaleadservices.com, lilaccityadu.com. On those it had been following the reader down every page on tablet and desktop.
+
+**What this does not change.** The wording is untouched. The strip still renders on every page without interaction, still carries `data-nosnippet`, and still must look like a legitimate disclosure rather than hidden styling. Muted is fine; invisible is not, which is what the contrast floor now enforces.
+
+**Scope.** 54 sites. The two sites using the 2026-08-07 editorial-content exception (thegutterreport.com, insulationreport.com) have no header strip and were correctly left alone.
+
+
 ## 2026-08-23 (voice): the operating entity name is banned from marketing copy
 
 Operator instruction, from a screenshot of tennesseevalleybarndominiums.com. The "What happens after you send it" block on every money page opened with "Calls and form submissions reach Compass Camper LLC directly." The operator's read: a homeowner about to send the form thinks "who the heck is Compass Camper LLC?" They only need to know the request reaches a builder. The operator ruled that the header and footer disclosure is enough.
