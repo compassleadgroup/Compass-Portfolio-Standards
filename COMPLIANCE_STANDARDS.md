@@ -69,7 +69,13 @@ A thin, minimal gray bar with small but readable text. NOT footer-only.
 **Copy template (operator decision 2026-07-11, shortened from the earlier two-sentence version; keeps the "not a licensed contractor" phrase and the independent-contractor attribution, which are the legally load-bearing elements):**
 > "A marketing service, not a licensed contractor. [SERVICE] work is performed by independent licensed local contractors."
 
-**Style (operator decision 2026-07-11, minimal small-font bar):** `bg-gray-50`, `text-xs`, `text-gray-500`, `py-1 px-4`, centered, single line on desktop. Muted is fine; hidden is not. It must render on every page without interaction (no dismissal, no collapse, no scripts) and stay readable against its background. Looks like a legitimate disclosure, not hidden styling.
+**Style (operator decision 2026-08-23, superseding the 2026-07-11 grey bar):** the strip takes **the nav bar's own background** and carries **no border against it**, so the strip and the menu read as one block rather than a grey bar stacked on top of the nav. Keep `text-xs`, `py-1 px-4`, centered, single line on desktop.
+
+**The text colour is chosen against that background, never carried over.** It must measure at least **4.5:1** contrast on the new background and the figure must be checked, not assumed. This is not pedantry: the naive version of this change (swap the background, keep the text colour) produced white text on a white bar at 1.0:1 on a site whose strip had been dark over a light nav. Muted is fine; invisible is not.
+
+**The strip is never a child of `<header>`.** Site headers are sticky, and this line is not meant to follow the reader down the page: it belongs at the top of the document and scrolls away. Render it as a sibling immediately before `<header>`. Four sites had it nested inside the sticky header and were corrected on 2026-08-23.
+
+Unchanged from 2026-07-11: it must render on every page without interaction (no dismissal, no collapse, no scripts). It looks like a legitimate disclosure, not hidden styling. The wording is untouched by any of this.
 
 **Why:** FTC net-impression doctrine requires a reasonable consumer to actually encounter the disclosure. Footer-only doesn't satisfy this when body copy is sales-pitchy.
 
@@ -103,7 +109,9 @@ This MUST appear on every page. Same wording across the site.
 Put `data-nosnippet` on the element wrapping the header disclosure strip and on the element wrapping the footer disclaimer. A site using the 2026-08-07 editorial-content exception has no header strip, so this applies to the footer disclaimer alone.
 
 ```html
-<div class="bg-gray-50 text-xs text-gray-500 py-1 px-4 text-center" data-nosnippet>
+<!-- Sibling of <header>, never a child: <header> is sticky, this line is not.
+     bg-<nav's own background>, and a text colour measured at 4.5:1 on it. -->
+<div class="bg-white text-xs text-gray-500 py-1 px-4 text-center" data-nosnippet>
   A marketing service, not a licensed contractor. ...
 </div>
 ```
