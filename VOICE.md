@@ -86,7 +86,7 @@ Operator instruction, 2026-08-23. "Compass Camper LLC", and "Compass Lead Group"
 
 Banned in marketing copy: page body text, FAQ answers, hero paragraphs, cost and response blocks, fine print near a form, and contact-page blurbs.
 
-Allowed and unchanged: the header disclosure strip, the footer entity disclaimer, the TCPA consent line, `/about/`, `/terms/`, `/privacy/`, `/disclosure/`, `/how-we-make-money/`, `/how-it-works/`, and JSON-LD schema. Those satisfy every disclosure obligation in COMPLIANCE_STANDARDS.md, which is exactly why the sales copy does not have to repeat them.
+Allowed and unchanged: the header disclosure strip, the footer entity disclaimer, `/about/`, `/terms/`, `/privacy/`, `/disclosure/`, `/how-we-make-money/`, `/how-it-works/`, and JSON-LD schema. The TCPA consent block names the site brand instead, per the same-day forms ruling in CHANGELOG.md. Those satisfy every disclosure obligation in COMPLIANCE_STANDARDS.md, which is exactly why the sales copy does not have to repeat them.
 
 | Instead of | Write |
 |---|---|
