@@ -2,6 +2,18 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-08-23 (forms): the data-sharing line comes off, and the consent block names the site brand
+
+Two operator instructions in one pass, both about the lead form.
+
+**The data-sharing disclosure above the form is retired portfolio-wide.** The sentence "When you submit this form, your information is shared with a licensed [SERVICE] contractor for the purpose of scheduling your free [inspection/quote/assessment]." is gone from the standard and from every site. No site may add it back. The operator's reason is redundancy: the header disclosure strip, the footer entity disclaimer, /about, /privacy and the TCPA consent block directly above the submit button all already say the request goes to a contractor, and the consent block is in the same eyeline as the button.
+
+**What this costs, recorded rather than hidden.** That sentence was the only plain-language notice naming the data transfer at the exact point of collection. What remains is a consent block, which discloses the contractor as a caller rather than the transfer as such, plus linked policy pages. If a state adds a point-of-collection notice requirement that a linked /privacy cannot satisfy, or a complaint turns on the net impression at the form itself, restoring the sentence is the first fix: operator decision plus a portfolio re-sweep, not a per-site edit.
+
+**The consent block now names the site brand, not the operating entity.** "By submitting this form, I agree that Cabin Country Septic and a septic contractor may contact me at the phone number I provided..." replaces "Compass Camper LLC and a septic contractor". Compass Camper LLC is still named on the same page in the header strip and the footer disclaimer, and in full on /about, /privacy and /terms, so the entity stays disclosed to anyone who submits. The parties, the channels (phone calls only) and the opt-out are unchanged.
+
+**Enforcement.** No new check. `req-entity` still requires "Compass Camper LLC" somewhere in the scanned source, and the header strip and footer satisfy it, so a site that drops the entity entirely is still caught. The checker never had a required rule for the data-sharing sentence, so nothing needed removing there; two stale comments that described the sentence as governed wording were corrected.
+
 ## 2026-08-22 (voice): sell the outcome, stop narrating the handoff
 
 Operator instruction, after a conversion pass on hillcountrybarnbuilders.com: someone searching "pole barn builders" wants the work done, and copy that opens by explaining the business model gives them a reason to leave before they reach the form.

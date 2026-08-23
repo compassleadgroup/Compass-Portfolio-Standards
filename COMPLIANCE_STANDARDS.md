@@ -123,21 +123,24 @@ Above every submit button. Not pre-checked. Not in popup. Not in fine print.
 **The consent block names only the channels the form actually collects.** The standard lead form is four fields with no email (BUILD_PLAYBOOK.md SECTION 2A), so the four-field template below is the default. Narrowing consent to the channels collected is always safe; widening it is never safe. Never promise contact by a channel the form does not capture.
 
 **TCPA consent copy template, four-field form (the default; no email field):**
-> "By submitting this form, I agree that Compass Camper LLC and a [SERVICE] contractor may contact me at the phone number I provided, including by automated phone calls and prerecorded messages, regarding [SERVICE] services. Consent is not a condition of any purchase. Message and data rates may apply. I may opt out at any time by asking to be removed during any call. See our Privacy Policy."
+> "By submitting this form, I agree that [SITE_BRAND] and a [SERVICE] contractor may contact me at the phone number I provided, including by automated phone calls and prerecorded messages, regarding [SERVICE] services. Consent is not a condition of any purchase. Message and data rates may apply. I may opt out at any time by asking to be removed during any call. See our Privacy Policy."
 
 **TCPA consent copy template, only where a form genuinely collects an email address:**
-> "By submitting this form, I agree that Compass Camper LLC and a [SERVICE] contractor may contact me at the phone number and email I provided, including by automated phone calls and prerecorded messages, regarding [SERVICE] services. Consent is not a condition of any purchase. Message and data rates may apply. I may opt out at any time by asking to be removed during any call. See our Privacy Policy."
+> "By submitting this form, I agree that [SITE_BRAND] and a [SERVICE] contractor may contact me at the phone number and email I provided, including by automated phone calls and prerecorded messages, regarding [SERVICE] services. Consent is not a condition of any purchase. Message and data rates may apply. I may opt out at any time by asking to be removed during any call. See our Privacy Policy."
 
 **No consent template names text messaging, and no site may add it back (operator instruction 2026-08-11).** The portfolio's published numbers do not send or receive texts, so consenting to a channel nobody uses is a claim the business cannot support, and the "reply STOP to any text" opt-out pointed at a mechanism that does not exist. Both came out of every template and every site on 2026-08-11. The opt-out is now asking to be removed during any call, plus email where the site collects one.
 
-**What this costs, recorded rather than hidden.** Consent now covers calls only, so neither Compass Camper LLC nor the contractor receiving a lead may text the homeowner. A contractor who texts a lead is outside the consent this site obtained. If that becomes a problem in practice, the fix is an operator decision to restore the channel in these templates and re-sweep the portfolio, not a per-site edit.
+**What this costs, recorded rather than hidden.** Consent now covers calls only, so neither the site operator nor the contractor receiving a lead may text the homeowner. A contractor who texts a lead is outside the consent this site obtained. If that becomes a problem in practice, the fix is an operator decision to restore the channel in these templates and re-sweep the portfolio, not a per-site edit.
+
+**The consent block names the site brand, not the operating entity (operator instruction 2026-08-23).** `[SITE_BRAND]` is the site's own name, exactly as it appears in the header logo and the footer, for example "Cabin Country Septic". Compass Camper LLC is not named in the consent block. It is still named on the same page in the header disclosure strip and the footer entity disclaimer, and in full on /about, /privacy and /terms, so the operating entity remains disclosed to any homeowner who submits the form. What changed is that the sentence a homeowner reads at the moment of consent uses the brand they came to the site for. Nothing else about the consent changes: the parties are the same two (the site and the matched contractor), the channels are the same (phone calls only), and the opt-out is the same.
 
 Whichever template a site uses, the /privacy collected-data list must match the fields the form actually has. Added 2026-08-03: the single-template version of this rule promised email contact on every four-field form in the portfolio, which is over-disclosure rather than a violation, but it is a claim the form cannot support and it is corrected here centrally rather than patched per site.
 
 "Privacy Policy" must be a real link to /privacy.
 
-**Disclosure above the form:**
-> "When you submit this form, your information is shared with a licensed [SERVICE] contractor for the purpose of scheduling your free [inspection/quote/assessment]."
+**Retired 2026-08-23: the separate data-sharing disclosure above the form.** Until this date the standard also required a sentence above every form reading "When you submit this form, your information is shared with a licensed [SERVICE] contractor for the purpose of scheduling your free [inspection/quote/assessment]." That sentence is retired portfolio-wide by operator instruction, and no site may add it back. The reason is redundancy, not a change of posture: every page already carries the header disclosure strip and the footer entity disclaimer, /about states the business model outright, /privacy lists contractors as a party the data goes to, and the TCPA consent block directly above the submit button already names the contractor as a party who may call. The homeowner is told, on the same screen and in the same eyeline, before they submit.
+
+**What this costs, recorded rather than hidden.** The retired sentence was the only notice that named data sharing at the exact point of collection in plain language. The remaining notices are a consent block (which discloses the contractor as a caller, not the data transfer as such) and linked policy pages. If a state adds a point-of-collection notice requirement the linked /privacy page cannot satisfy, or if a complaint ever turns on the net impression at the form itself, restoring this sentence is the first fix, and it is an operator decision plus a portfolio re-sweep, not a per-site edit.
 
 ### About page required elements
 
@@ -473,8 +476,7 @@ Use this checklist before launching any new site. Every item must pass before th
 - [ ] Any figure published under the verified-figure exception has a dated operator approval naming the program, was read at the administering body's own page, shows its verification date to the reader, sits in one owner file, carries a complete `compass-approved-figures` block, and was verified within 180 days
 
 **Forms:**
-- [ ] TCPA consent language above submit button, not pre-checked
-- [ ] Disclosure above form about contractor data sharing
+- [ ] TCPA consent language above submit button, not pre-checked, naming the site brand and not Compass Camper LLC
 - [ ] Privacy Policy link in consent block is a real link
 - [ ] TODO comment for TrustedForm/Jornaya integration before paid traffic
 
