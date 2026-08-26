@@ -41,7 +41,7 @@ Never use:
 
 ## How the brand talks about the work
 
-- The contractor does the work. Always. Name who does it; do not narrate how they got there. "An independent local contractor who works your county", not "we will...". The older version of this line modelled the phrase "the contractor we connect you with", which is exactly the habit the next section now bans. That phrasing is retired.
+- The contractor does the work. Always. Name who does it; do not narrate how they got there. "An independent local contractor who works your county", not "we will...". The older version of this line modeled the phrase "the contractor we connect you with", which is exactly the habit the next section now bans. That phrasing is retired.
 - Describe the service factually: what it involves, what it costs locally, how long it takes, what affects the price.
 - Local specifics make the page: soil types, weather patterns, permit quirks, regional price ranges. Real ones only.
 - Credentials belong to the contractor: "licensed, insured contractors" as a category description is fine; named endorsements and vetting claims are not (see FORBIDDEN_LANGUAGE.md).
@@ -94,7 +94,7 @@ Allowed and unchanged: the header disclosure strip, the footer entity disclaimer
 | "Only the contractor who walks your site can price it. Compass Camper LLC does not perform roofing work and does not quote it." | "Only the contractor who walks your site can price it." |
 | "[Brand] is a free referral service operated by Compass Camper LLC, doing business as Compass Lead Group." | "[Brand] is a free referral service." |
 
-**Where this came from.** The money-page rollout of 2026-08-16 to 2026-08-18 shipped a response answer that named the entity, and it reached 55 sites because the rollout doctrine modelled the sentence. That is the second time a modelled phrase has spread portfolio-wide, after the handoff narration this section already retires. **Model the constraint, not the sentence.** A rule that ships with example wording will see that wording copied into every property.
+**Where this came from.** The money-page rollout of 2026-08-16 to 2026-08-18 shipped a response answer that named the entity, and it reached 55 sites because the rollout doctrine modeled the sentence. That is the second time a modeled phrase has spread portfolio-wide, after the handoff narration this section already retires. **Model the constraint, not the sentence.** A rule that ships with example wording will see that wording copied into every property.
 
 ## Quick self-test before shipping copy
 

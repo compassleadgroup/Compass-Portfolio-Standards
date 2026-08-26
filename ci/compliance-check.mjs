@@ -73,6 +73,201 @@ const SKIP_DIR = new Set([
 ]);
 const SKIP_FILE = new Set(["compliance-check.mjs", "compliance.config.json"]);
 
+// ---- American spellings only ---------------------------------------------------------
+// Operator instruction 2026-08-21, hardened 2026-08-26 to "never use British spellings
+// ever again for absolutely anything anywhere". It is a CI rule rather than a rulebook
+// line because the rulebook line did not hold: British spellings shipped into merged
+// content on four sites in three weeks, 22 on one site and then two more on the same
+// site the same day, and nothing here caught any of them.
+//
+// Two layers, because an enumerated list only catches what somebody thought of. The
+// pairs below are the known spellings; BRITISH_ISE and BRITISH_OUR are generic rules
+// for the two productive British endings, filtered by the American words that share
+// those endings. The generic layer catches a spelling nobody has written yet.
+const BRITISH_SPELLINGS = {
+  "characterisation": "characterization", "cannibalisation": "cannibalization", "operationalised": "operationalized", "operationalises": "operationalizes",
+  "categorisation": "categorization", "characterising": "characterizing", "generalisation": "generalization", "neighbourhoods": "neighborhoods",
+  "operationalise": "operationalize", "authorisation": "authorization", "cannibalising": "cannibalizing", "characterised": "characterized",
+  "characterises": "characterizes", "neighbourhood": "neighborhood", "normalisation": "normalization", "organisations": "organizations",
+  "cannibalised": "cannibalized", "cannibalises": "cannibalizes", "capitalising": "capitalizing", "categorising": "categorizing",
+  "characterise": "characterize", "generalising": "generalizing", "hypothesised": "hypothesized", "hypothesises": "hypothesizes",
+  "localisation": "localization", "minimisation": "minimization", "monetisation": "monetization", "neighbouring": "neighboring",
+  "optimisation": "optimization", "organisation": "organization", "prioritising": "prioritizing", "scrutinising": "scrutinizing",
+  "specialising": "specializing", "standardised": "standardized", "synchronised": "synchronized", "apologising": "apologizing",
+  "authorising": "authorizing", "behavioural": "behavioral", "cannibalise": "cannibalize", "capitalised": "capitalized",
+  "capitalises": "capitalizes", "categorised": "categorized", "categorises": "categorizes", "counselling": "counseling",
+  "counsellors": "counselors", "criticising": "criticizing", "deodorising": "deodorizing", "generalised": "generalized",
+  "generalises": "generalizes", "hypothesise": "hypothesize", "instalments": "installments", "normalising": "normalizing",
+  "prioritised": "prioritized", "publicising": "publicizing", "recognising": "recognizing", "scrutinised": "scrutinized",
+  "smouldering": "smoldering", "specialised": "specialized", "specialises": "specializes", "stabilising": "stabilizing",
+  "standardise": "standardize", "summarising": "summarizing", "synchronise": "synchronize", "visualising": "visualizing",
+  "apologised": "apologized", "apologises": "apologizes", "authorised": "authorized", "behaviours": "behaviors",
+  "cancelling": "canceling", "capitalise": "capitalize", "catalogues": "catalogs", "categorise": "categorize",
+  "counsellor": "counselor", "criticised": "criticized", "criticises": "criticizes", "customised": "customized",
+  "deodorised": "deodorized", "dramatised": "dramatized", "emphasised": "emphasized", "endeavours": "endeavors",
+  "favourable": "favorable", "favourites": "favorites", "formalised": "formalized", "fulfilment": "fulfillment",
+  "generalise": "generalize", "instalment": "installment", "localising": "localizing", "manoeuvres": "maneuvers",
+  "marvellous": "marvelous", "maximising": "maximizing", "minimising": "minimizing", "monetising": "monetizing",
+  "neighbours": "neighbors", "normalised": "normalized", "normalises": "normalizes", "optimising": "optimizing",
+  "organising": "organizing", "penalising": "penalizing", "practising": "practicing", "prioritise": "prioritize",
+  "programmes": "programs", "publicised": "publicized", "recognised": "recognized", "recognises": "recognizes",
+  "recoloured": "recolored", "scrutinise": "scrutinize", "signalling": "signaling", "specialise": "specialize",
+  "stabilised": "stabilized", "sterilised": "sterilized", "summarised": "summarized", "travellers": "travelers",
+  "travelling": "traveling", "visualised": "visualized", "aeroplane": "airplane", "aluminium": "aluminum",
+  "analysing": "analyzing", "apologise": "apologize", "authorise": "authorize", "behaviour": "behavior",
+  "cancelled": "canceled", "catalogue": "catalog", "colourful": "colorful", "criticise": "criticize",
+  "customise": "customize", "deodorise": "deodorize", "dramatise": "dramatize", "emphasise": "emphasize",
+  "endeavour": "endeavor", "enquiries": "inquiries", "enrolment": "enrollment", "favourite": "favorite",
+  "finalised": "finalized", "flavoured": "flavored", "formalise": "formalize", "jewellery": "jewelry",
+  "labelling": "labeling", "localised": "localized", "localises": "localizes", "manoeuvre": "maneuver",
+  "maximised": "maximized", "minimised": "minimized", "mobilised": "mobilized", "modelling": "modeling",
+  "monetised": "monetized", "monetises": "monetizes", "neighbour": "neighbor", "normalise": "normalize",
+  "optimised": "optimized", "optimises": "optimizes", "organised": "organized", "organises": "organizes",
+  "penalised": "penalized", "penalises": "penalizes", "practised": "practiced", "programme": "program",
+  "publicise": "publicize", "realising": "realizing", "recognise": "recognize", "signalled": "signaled",
+  "stabilise": "stabilize", "sterilise": "sterilize", "summarise": "summarize", "travelled": "traveled",
+  "traveller": "traveler", "utilising": "utilizing", "visualise": "visualize", "analogue": "analog",
+  "analysed": "analyzed", "coloured": "colored", "defences": "defenses", "draughts": "drafts",
+  "enquired": "inquired", "favoured": "favored", "finalise": "finalize", "flavours": "flavors",
+  "fuelling": "fueling", "harbours": "harbors", "honoured": "honored", "itemised": "itemized",
+  "itemises": "itemizes", "labelled": "labeled", "laboured": "labored", "licenced": "licensed",
+  "licences": "licenses", "localise": "localize", "maximise": "maximize", "minimise": "minimize",
+  "mobilise": "mobilize", "modelled": "modeled", "monetise": "monetize", "moulding": "molding",
+  "offences": "offenses", "optimise": "optimize", "organise": "organize", "penalise": "penalize",
+  "ploughed": "plowed", "practise": "practice", "pretence": "pretense", "realised": "realized",
+  "realises": "realizes", "recolour": "recolor", "smoulder": "smolder", "sulphate": "sulfate",
+  "theatres": "theaters", "utilised": "utilized", "amongst": "among", "analyse": "analyze",
+  "centred": "centered", "centres": "centers", "cheques": "checks", "colours": "colors",
+  "defence": "defense", "draught": "draft", "enquire": "inquire", "enquiry": "inquiry",
+  "favours": "favors", "flavour": "flavor", "fuelled": "fueled", "greyish": "grayish",
+  "harbour": "harbor", "honours": "honors", "itemise": "itemize", "labours": "labors",
+  "licence": "license", "moulded": "molded", "offence": "offense", "realise": "realize",
+  "rumours": "rumors", "saviour": "savior", "skilful": "skillful", "storeys": "stories",
+  "sulphur": "sulfur", "theatre": "theater", "towards": "toward", "utilise": "utilize",
+  "vapours": "vapors", "ageing": "aging", "armour": "armor", "centre": "center",
+  "cheque": "check", "colour": "color", "distil": "distill", "dreamt": "dreamed",
+  "favour": "favor", "fibres": "fibers", "fulfil": "fulfill", "greyer": "grayer",
+  "honour": "honor", "humour": "humor", "instil": "instill", "labour": "labor",
+  "learnt": "learned", "litres": "liters", "metres": "meters", "moulds": "molds",
+  "odours": "odors", "plough": "plow", "rumour": "rumor", "spoilt": "spoiled",
+  "storey": "story", "vapour": "vapor", "whilst": "while", "wilful": "willful",
+  "appal": "appall", "enrol": "enroll", "fibre": "fiber", "greys": "grays",
+  "litre": "liter", "metre": "meter", "mould": "mold", "odour": "odor",
+  "spelt": "spelled", "tyres": "tires", "gaol": "jail", "grey": "gray",
+  "kerb": "curb", "tyre": "tire",
+};
+
+// American words ending -ise/-ised/-ising/-isation. Everything else with those endings
+// is reported. Leaving "advertise" out of an early draft of this set turned every
+// "advertising" in the portfolio into a false failure, so the list is the load-bearing
+// part, not the regex.
+const AMERICAN_ISE = new Set([
+  "advertise", "advise", "anise", "appraise", "apprise", "arise", "braise",
+  "bruise", "chastise", "circumcise", "comprise", "compromise", "concise",
+  "cruise", "demise", "despise", "devise", "disenfranchise", "disguise",
+  "enfranchise", "enterprise", "excise", "exercise", "exorcise", "expertise",
+  "franchise", "fundraise", "guise", "imprecise", "improvise", "incise",
+  "likewise", "malaise", "merchandise", "misadvise", "mortise", "noise",
+  "overpromise", "paradise", "poise", "praise", "precise", "premise", "prise",
+  "promise", "raise", "reprise", "revise", "rise", "sunrise", "supervise",
+  "surmise", "surprise", "televise", "tortoise", "treatise", "turquoise",
+  "valise", "wise",
+]);
+// American words ending -our.
+const AMERICAN_OUR = new Set([
+  "amour", "contour", "court", "detour", "devour", "dolour", "dour", "flour",
+  "four", "fourth", "glamour", "hour", "our", "paramour", "pour", "scour",
+  "sour", "tambour", "tour", "troubadour", "velour", "your",
+]);
+// Proper nouns own their spelling. These are real places, organizations and people,
+// not misspellings, so a county page naming Centre County PA is correct as written.
+const SPELLING_NAMES =
+  /Centre County|Centre PA|radon-centre-pa|Harbour Heights|Bal Harbour|Roberts-Grey|Ancient Air Theatre|ESRI Behavioural Research Unit|Greystone|Seymour|Annalise|Cochise|Robert B\. Our/gi;
+// Ordinary words capitalized only because they open a sentence, a heading or a table
+// cell. Any other capitalized match is assumed to be a name and is left alone.
+const SPELLING_CAPS_ORDINARY = new Set([
+  "analogue", "amongst", "behaviour", "behavioural", "behaviours", "cancelled",
+  "cancelling", "catalogue", "colour", "coloured", "colours", "counsellor",
+  "counsellors", "defence", "draught", "enquiries", "enquiry", "favourite",
+  "favourites", "fulfilment", "grey", "honour", "honoured", "instalment",
+  "instalments", "labelled", "labelling", "labour", "licence", "licenced",
+  "licences", "modelled", "modelling", "mould", "moulds", "neighbour",
+  "neighbourhood", "neighbouring", "neighbours", "optimised", "optimising",
+  "organisation", "organised", "practised", "prioritised", "prioritising",
+  "programme", "programmes", "realised", "recognised", "skilful", "storey",
+  "storeys", "summarised", "travelled", "traveller", "travellers", "travelling",
+  "whilst",
+]);
+// Spans a spelling rule must never reach into. Renaming a file, a route or a domain is
+// not a spelling correction. Bounded character classes, never \S+: a greedy token run
+// swallows the word before a link and silently exempts it.
+const SPELLING_PROTECT =
+  /\]\([^)]*\)|`[^`]*`|https?:\/\/\S+|[^\s[\]()]+\.(?:md|json|csv|html|astro|ts|tsx|js|jsx|mjs|cjs|py|sh|yml|yaml|txt|webp|png|svg)\b|[^\s[\]()@]+\.(?:com|net|org|gov|edu|info|us|io|co)\b/gi;
+// A clause naming the spelling it bans has to be able to write it. Scoped to the clause
+// rather than the line: one table row can carry the explanation in one sentence and a
+// real defect in the next.
+const SPELLING_META = /british spelling|american spelling/gi;
+
+const BRITISH_ISE = /\b([a-z]{3,}?)is(e|ed|es|ing|ation|ations)\b/gi;
+const BRITISH_OUR = /\b([a-z]{2,}our)(s|ed|ing|able|ite)?\b/gi;
+const BRITISH_LIST = new RegExp(
+  "\\b(" + Object.keys(BRITISH_SPELLINGS).join("|") + ")\\b", "gi");
+
+function americanFor(word) {
+  const lo = word.toLowerCase();
+  if (BRITISH_SPELLINGS[lo]) return BRITISH_SPELLINGS[lo];
+  if (/^([a-z]{3,}?)is(e|ed|es|ing|ation|ations)$/i.test(lo)) {
+    return lo.replace(/is(e|ed|es|ing|ation|ations)$/i, (m, tail) => "iz" + tail);
+  }
+  return lo.replace(/our(s|ed|ing|able|ite)?$/i, (m, tail) => "or" + (tail || ""));
+}
+
+// True when this exact token is a British spelling worth reporting.
+function isBritish(word) {
+  const lo = word.toLowerCase();
+  const iseMatch = /^([a-z]{3,}?)is(e|ed|es|ing|ation|ations)$/i.exec(lo);
+  const ourMatch = /^([a-z]{2,}our)(s|ed|ing|able|ite)?$/i.exec(lo);
+  if (BRITISH_SPELLINGS[lo]) {
+    // a known pair, fall through
+  } else if (iseMatch) {
+    const stem = iseMatch[1].toLowerCase();
+    if (AMERICAN_ISE.has(stem + "ise") || lo.endsWith("wise") || stem.endsWith("a")) return false;
+  } else if (ourMatch) {
+    if (AMERICAN_OUR.has(ourMatch[1].toLowerCase())) return false;
+  } else {
+    return false;
+  }
+  const isLower = word === lo;
+  const isUpper = word === word.toUpperCase();
+  if (isLower || isUpper) return true;
+  return SPELLING_CAPS_ORDINARY.has(lo);
+}
+
+// Character ranges on this line the spelling rules must not fire inside.
+function spellingHoles(line) {
+  const holes = [];
+  for (const re of [SPELLING_PROTECT, SPELLING_NAMES]) {
+    re.lastIndex = 0;
+    let m;
+    while ((m = re.exec(line)) !== null) {
+      holes.push([m.index, m.index + m[0].length]);
+      if (m.index === re.lastIndex) re.lastIndex++;
+    }
+  }
+  SPELLING_META.lastIndex = 0;
+  let m;
+  while ((m = SPELLING_META.exec(line)) !== null) {
+    holes.push([m.index - 140, m.index + m[0].length + 140]);
+    if (m.index === SPELLING_META.lastIndex) SPELLING_META.lastIndex++;
+  }
+  return holes;
+}
+
+function spellingExempt(match, line) {
+  if (!isBritish(match[0])) return true;
+  return spellingHoles(line).some(([a, b]) => match.index >= a && match.index < b);
+}
+
 // ---- Rule definitions ----------------------------------------------------------------
 // severity: "fail" blocks. "warn" reports only. relaxIfTenant: dropped when tenantSigned.
 
@@ -118,6 +313,13 @@ const LINE_RULES = [
   { id: "consent-msg-data-rates-text", severity: "warn", re: /\btext (message )?and data rates\b/gi,
     msg: "Rate disclosure names text. The template says 'Message and data rates may apply'." },
 
+  { id: "british-spelling", severity: "fail", re: BRITISH_LIST, skip: spellingExempt,
+    msg: "British spelling. American spellings only, everywhere (operator instruction 2026-08-21, hardened 2026-08-26)." },
+  { id: "british-spelling-ise", severity: "fail", re: BRITISH_ISE, skip: spellingExempt,
+    msg: "British -ise ending. American spellings only: write -ize (operator instruction 2026-08-21)." },
+  { id: "british-spelling-our", severity: "fail", re: BRITISH_OUR, skip: spellingExempt,
+    msg: "British -our ending. American spellings only: write -or (operator instruction 2026-08-21)." },
+
   { id: "phrase-vetted", severity: "fail", re: /\bvetted\b/gi,
     msg: "'Vetted' is banned. No documented vetting process exists." },
   { id: "phrase-our-network", severity: "fail", re: /\bour network\b/gi,
@@ -147,7 +349,7 @@ const LINE_RULES = [
     msg: "Implies an owned workforce. Compass Camper LLC has none. Rephrase." },
 
   // Handoff narration in marketing copy (WARN). Not a compliance defect: every phrase here is
-  // true, and one of them was the modelled house phrasing in VOICE.md until 2026-08-22. It is a
+  // true, and one of them was the modeled house phrasing in VOICE.md until 2026-08-22. It is a
   // conversion defect. Hire-intent searchers want the work done, and copy that opens on the
   // business model gives them a reason to leave before they reach the form. The disclosures
   // already disclose (VOICE.md, "Sell the outcome, not the mechanism").
@@ -336,6 +538,13 @@ for (const file of files) {
       rule.re.lastIndex = 0;
       let m;
       while ((m = rule.re.exec(line)) !== null) {
+        // Optional per-rule filter. The spelling rules need one: their regexes
+        // match far more than they should on purpose, and the judgment about
+        // proper nouns, filenames and rule-quoting clauses lives in the hook.
+        if (rule.skip && rule.skip(m, line)) {
+          if (m.index === rule.re.lastIndex) rule.re.lastIndex++;
+          continue;
+        }
         let severity = rule.severity;
         let msg = rule.msg;
 
@@ -366,7 +575,9 @@ for (const file of files) {
           line: idx + 1,
           id: rule.id,
           text: m[0].trim().slice(0, 80),
-          msg,
+          msg: rule.id.startsWith("british-spelling")
+            ? `${msg} Write "${americanFor(m[0])}".`
+            : msg,
         });
         if (m.index === rule.re.lastIndex) rule.re.lastIndex++; // avoid zero-width loop
       }
