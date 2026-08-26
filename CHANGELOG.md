@@ -21,11 +21,11 @@ Operator decision, stated plainly: "remove the header disclosure from every site
 
 ## 2026-08-23 (visual): the disclosure strip blends into the nav, and never sticks
 
-Operator instruction: make the header strip the same colour as the menu bar so it reads as part of it, but keep it out of the sticky behaviour so it scrolls away.
+Operator instruction: make the header strip the same color as the menu bar so it reads as part of it, but keep it out of the sticky behavior so it scrolls away.
 
 **The rule.** The strip takes the nav's own background and drops any border against it. Keep `text-xs`, `py-1 px-4`, centered. It renders as a sibling immediately before `<header>`, never a child, because site headers are sticky and this line is not meant to follow the reader down the page.
 
-**The text colour is chosen against the new background and measured, not carried over.** Minimum 4.5:1. This is the part that bites: on a site whose strip had been dark over a light nav, swapping only the background left `text-paper` on `bg-paper`, white on white, 1.0:1, an invisible disclosure. Every site in the 2026-08-23 sweep was measured; the range landed between 4.51:1 and 16.76:1.
+**The text color is chosen against the new background and measured, not carried over.** Minimum 4.5:1. This is the part that bites: on a site whose strip had been dark over a light nav, swapping only the background left `text-paper` on `bg-paper`, white on white, 1.0:1, an invisible disclosure. Every site in the 2026-08-23 sweep was measured; the range landed between 4.51:1 and 16.76:1.
 
 **Four sites had the strip nested inside the sticky header** and were corrected in the same pass: cabincountryseptic.com, suncoastimpactwindows.com, onondagaleadservices.com, lilaccityadu.com. On those it had been following the reader down every page on tablet and desktop.
 
@@ -40,7 +40,7 @@ Operator instruction, from a screenshot of tennesseevalleybarndominiums.com. The
 
 **The rule.** "Compass Camper LLC" and "Compass Lead Group" appear in the governed disclosures and on the business-model pages, and nowhere else a buyer reads. Banned in page body text, FAQ answers, hero paragraphs, cost and response blocks, fine print near a form, and contact-page blurbs. Untouched: header disclosure strip, footer entity disclaimer, `/about/`, `/terms/`, `/privacy/`, `/disclosure/`, `/how-we-make-money/`, `/how-it-works/`, JSON-LD schema. The TCPA consent block names the site brand instead, per the forms entry below. Nothing in COMPLIANCE_STANDARDS.md required the name anywhere else, and `req-entity` is satisfied by the footer.
 
-**This repo caused it again.** The money-page rollout doctrine modelled the response answer as a finished sentence, entity name included, and 55 sites copied it. That is the second instance of the same failure after the handoff-narration phrase. **Model the constraint, not the sentence.**
+**This repo caused it again.** The money-page rollout doctrine modeled the response answer as a finished sentence, entity name included, and 55 sites copied it. That is the second instance of the same failure after the handoff-narration phrase. **Model the constraint, not the sentence.**
 
 **Enforcement.** Written rule in VOICE.md plus self-test item 5. No new checker rule: the entity name is legitimately inside a component that renders on every page, so a regex over `src` would fire on all 64 sites and teach everyone to ignore it.
 
@@ -66,7 +66,7 @@ Operator instruction, after a conversion pass on hillcountrybarnbuilders.com: so
 
 **The rule.** Marketing copy names who does the work and what the reader gets. It does not describe how the lead travels. Retired from marketing copy: "we connect you with", "the referral service", "the contractor we send your request to", and "we are a marketing and referral service, not a contractor" as a mid-paragraph aside. All four stay correct on `/about/`, `/disclosure/`, `/terms/`, and inside governed disclosure strings.
 
-**This repo caused the problem.** VOICE.md line 44 modelled the phrase "the contractor we connect you with" as the house pattern, and FORBIDDEN_LANGUAGE.md repeated it as the correct framing. Every site built to the standard inherited it. Both lines are now corrected, which is the part that stops it recurring on site 65.
+**This repo caused the problem.** VOICE.md line 44 modeled the phrase "the contractor we connect you with" as the house pattern, and FORBIDDEN_LANGUAGE.md repeated it as the correct framing. Every site built to the standard inherited it. Both lines are now corrected, which is the part that stops it recurring on site 65.
 
 **The technique is subtraction, not rewriting.** The sentence almost always already contains the fact. Delete the clause: "An independent local contractor ~~we connect you with,~~ who works in Kendall County and provides the quote."
 
@@ -82,7 +82,7 @@ Operator instruction, after seeing it on septicindiana.com: make the hero image 
 
 **The rule.** One photograph sits behind the whole site, the hero band is a window onto it, and the content panel scrolls up over it. Not a banner in the flow, and not a different image per page.
 
-**The build notes matter more than the rule, because the obvious implementation is broken on phones.** Use a `position: fixed` layer, never `background-attachment: fixed`, which iOS Safari ignores and Android repaints badly. Put the solid colour on `html` and make `body` transparent, or the body background paints over the layer and the effect silently disappears. Keep the content panel opaque. Add a scrim plus a text shadow on the hero type, because a photograph has bright patches wherever it likes and a long lede runs past the darkest part of a gradient on a narrow screen. Carry it on one layout prop rather than per-page markup. Mark the backdrop `alt=""` and `aria-hidden`, since it is decoration.
+**The build notes matter more than the rule, because the obvious implementation is broken on phones.** Use a `position: fixed` layer, never `background-attachment: fixed`, which iOS Safari ignores and Android repaints badly. Put the solid color on `html` and make `body` transparent, or the body background paints over the layer and the effect silently disappears. Keep the content panel opaque. Add a scrim plus a text shadow on the hero type, because a photograph has bright patches wherever it likes and a long lede runs past the darkest part of a gradient on a narrow screen. Carry it on one layout prop rather than per-page markup. Mark the backdrop `alt=""` and `aria-hidden`, since it is decoration.
 
 **Check it by rendering at desktop and mobile widths.** The mobile failure is legibility and it does not appear in the source. First reference implementation: septicindiana.com.
 
@@ -180,7 +180,7 @@ Operator instruction, hours after the first version: "rather than trying to deta
 - **Scope stated explicitly.** Grants, rebates, tax credits, refunds, reimbursement, cost-share, subsidies, assistance programs. **Not** statutory insurance discounts or premium credits, which are rate mechanics rather than money handed to a homeowner, and not the site's own service cost ranges.
 - **Banned-shapes table reworked.** Any program figure is now the first row. Grant math (a calculator or worked example that subtracts an award from a price) is a new row: a figure wearing arithmetic, same decay, more authority.
 - **ci/compliance-check.mjs:** `money-claim-may-be-available` **removed**, because it blocked the phrasing now required. `money-claim-figure` **added** as a hard fail: a dollar amount or percentage within a sentence of grant, rebate, credit, refund, reimbursement, cost-share, subsidy or assistance-program vocabulary. Scoped by lookbehind so statutory insurance and premium credits do not match, and so ordinary service cost ranges do not match unless they sit beside program vocabulary. Verified against 12 real portfolio figure-claims (all caught) and 12 compliant or cost-only sentences (all clean), then replayed across the full sweep corpus of 2,578 money sentences from all 53 live sites.
-- **Marion County recorded as a standing exception that goes further**: marioncountyseptic.com publishes nothing about county money at all, sourced or not. A source is a licence to publish, not an obligation.
+- **Marion County recorded as a standing exception that goes further**: marioncountyseptic.com publishes nothing about county money at all, sourced or not. A source is a license to publish, not an obligation.
 - **Pre-launch checklist item rewritten** to the no-figures form, including the no-calculator clause.
 
 Measured scope of the portfolio change this triggers: **329 figure-carrying sentences across 177 pages on 18 sites.**
@@ -226,7 +226,7 @@ Operator instruction: the conversion setup run across the portfolio on 2026-08-0
 
 The site compliance workflow ran the checker unconditionally against `src`, and the checker exits 2 ("Path not found") when that directory does not exist. A repo scaffolded with documentation only, before its first build batch, therefore red-failed every pull request for having nothing to scan rather than for a compliance problem. Found while scaffolding the three wave 3 site repos (Centennial State Metal Roofing, Sonoran Septic, Show Me Metal Roofing), all of which sit in exactly that state.
 
-- ci/site-compliance.yml: the run step now checks for `src` and skips with a message when it is absent. Behaviour is unchanged for every repo that has a `src`, which is every built site.
+- ci/site-compliance.yml: the run step now checks for `src` and skips with a message when it is absent. Behavior is unchanged for every repo that has a `src`, which is every built site.
 - Verified both directions before shipping: with no `src` the step exits 0 with a message; with a `src` containing a clean file the checker exits 0; with a `src` containing a first-person work claim the checker still exits 1. The gate loses no enforcement.
 - Site repos carry their own copy of this workflow, so this does not propagate on its own. The three wave 3 repos are being synced in the same session. Older site repos are unaffected in practice, since they all have a `src`.
 

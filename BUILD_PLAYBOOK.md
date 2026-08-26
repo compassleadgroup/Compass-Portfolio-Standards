@@ -43,9 +43,9 @@ Build it this way, because the obvious way is broken on phones:
 1. **A `position: fixed` layer, never `background-attachment: fixed`.** iOS Safari ignores that
    property and Android repaints it badly, which fails on exactly the devices homeowners use.
    The layer holds the image at `width:100%; height:100%; object-fit: cover`, `z-index: -1`.
-2. **`html` carries the solid background colour; `body` is transparent.** A `body` with a
+2. **`html` carries the solid background color; `body` is transparent.** A `body` with a
    background paints straight over the fixed layer and the effect silently disappears.
-3. **The content panel is opaque.** Below the hero window, everything sits on the page colour so
+3. **The content panel is opaque.** Below the hero window, everything sits on the page color so
    type never fights the picture. This is what makes it legible rather than decorative.
 4. **A scrim over the backdrop**, darkest where the hero type sits, plus a text shadow on the
    hero heading and lede. A photograph has bright patches wherever it likes, and a long lede

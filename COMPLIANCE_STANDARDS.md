@@ -53,6 +53,16 @@ These are honest, descriptive, and convert well:
 ### Style consistency
 
 - No em dashes (—). Use commas, periods, parens, or "to" instead.
+- **American spellings only, never British.** Operator instruction 2026-08-21,
+  hardened 2026-08-26 to "never use British spellings ever again for absolutely
+  anything anywhere". Write color, license, center, labeled, gray, program,
+  neighbor, behavior, labor, analyze, organize, canceled, honor, catalog,
+  defense, traveled, while and among. This binds
+  every scope, not only rendered copy: page text, alt text, source comments,
+  data files, commit messages and pull request bodies. Proper nouns keep their
+  own spelling, so Centre County PA and Harbour Heights FL are correct as
+  written. Enforced by ci/compliance-check.mjs (`british-spelling`,
+  `british-spelling-ise`, `british-spelling-our`), which fails the build.
 - Numbers under 10 spelled out, 10+ as digits.
 - Currency: $3,500 (no space after $).
 - Phone numbers always formatted as (XXX) XXX-XXXX with tel: links as +1XXXXXXXXXX.
@@ -107,7 +117,7 @@ Put `data-nosnippet` on the element wrapping the header disclosure strip and on 
 
 ```html
 <!-- Sibling of <header>, never a child: <header> is sticky, this line is not.
-     bg-<nav's own background>, and a text colour measured at 4.5:1 on it. -->
+     bg-<nav's own background>, and a text color measured at 4.5:1 on it. -->
 <div class="bg-white text-xs text-gray-500 py-1 px-4 text-center" data-nosnippet>
   A marketing service, not a licensed contractor. ...
 </div>
@@ -380,7 +390,7 @@ The most dangerous claim is one that is *nearly* true. A county may genuinely ru
 
 **When a real adjacent program exists, name the boundary and route the reader to the agency.** What work it covers and what it does not, then the link. Do not price either side.
 
-**Marion County is a standing exception and goes further.** After the incident below, operator instruction 2026-08-11: marioncountyseptic.com publishes nothing about county money at all, sourced or not. Where a topic has already produced real-world friction, silence beats a correct sentence. **A source is a licence to publish, not an obligation.**
+**Marion County is a standing exception and goes further.** After the incident below, operator instruction 2026-08-11: marioncountyseptic.com publishes nothing about county money at all, sourced or not. Where a topic has already produced real-world friction, silence beats a correct sentence. **A source is a license to publish, not an obligation.**
 
 ### Enforcement
 
@@ -393,7 +403,7 @@ The most dangerous claim is one that is *nearly* true. A county may genuinely ru
 
 `money-claim-may-be-available` was **removed** in the same revision, because the hedge it blocked is now the required phrasing.
 
-`money-claim-figure` is scoped to avoid the two legitimate neighbours: statutory insurance credits and premium credits are excluded by lookbehind, and ordinary service cost ranges do not match unless they sit next to program vocabulary. Verified against 12 real portfolio figure-claims (all caught) and 12 compliant or cost-only sentences (all clean), then against the full sweep corpus of 2,578 money sentences across all 53 live sites.
+`money-claim-figure` is scoped to avoid the two legitimate neighbors: statutory insurance credits and premium credits are excluded by lookbehind, and ordinary service cost ranges do not match unless they sit next to program vocabulary. Verified against 12 real portfolio figure-claims (all caught) and 12 compliant or cost-only sentences (all clean), then against the full sweep corpus of 2,578 money sentences across all 53 live sites.
 
 **The approval block, added 2026-08-14 with the verified-figure exception.** A file whose first 40 lines carry
 

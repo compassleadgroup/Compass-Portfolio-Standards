@@ -131,7 +131,7 @@ Non-negotiable. The site must look intentional at every width.
 ## 8. Quality floor (build this in silently)
 
 - Visible keyboard focus states on all interactive elements.
-- Semantic HTML, alt text on meaningful images, labelled form controls.
+- Semantic HTML, alt text on meaningful images, labeled form controls.
 - `prefers-reduced-motion` respected.
 - Watch CSS specificity — don't let `.section` and element selectors cancel each other's
   padding/margins. Verify spacing actually applies.
@@ -180,7 +180,7 @@ clean responsive build are the floor, not the goal.
 
 The hero photograph is a fixed layer behind the whole site and the page scrolls over it. Build
 it as a `position: fixed` layer, never `background-attachment: fixed`, which iOS Safari ignores.
-`html` carries the solid colour, `body` is transparent so it cannot paint over the layer, the
+`html` carries the solid color, `body` is transparent so it cannot paint over the layer, the
 content panel below the hero window is opaque so type never sits on the picture, and the
 backdrop takes a scrim plus a text shadow on the hero type so a bright patch in the photograph
 cannot cost legibility. One layout prop switches a tall hero window on the homepage for a short
