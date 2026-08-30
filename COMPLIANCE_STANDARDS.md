@@ -102,7 +102,7 @@ A site may move the load-bearing disclosure from the header strip to the point o
 
 **The risk this accepts, stated plainly.** A reader who consumes content and never reaches a form now meets the disclosure only in the footer. That is a real reduction in prominence, and accepting it is the operator's decision. It is defensible only while condition 2 holds. **If the body copy ever turns pitchy, this exception stops applying and the header strip goes back.**
 
-**Sites currently using this exception:** insulationreport.com.
+**Sites currently using this exception:** insulationreport.com, thegutterreport.com, woodfloorreport.com.
 
 ### Footer disclaimer (every page)
 
