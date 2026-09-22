@@ -339,6 +339,18 @@ const LINE_RULES = [
   { id: "phrase-trusted-partner", severity: "fail", re: /\btrusted partners?\b/gi, relaxIfTenant: true,
     msg: "'Trusted partner(s)' creates implied warranty. Allowed only after a tenant is signed." },
 
+  // Text that describes a photograph (operator instruction, 2026-09-22: "Delete all
+  // text that describes images. Never do that again on any site."). This catches the
+  // disclaimer family only, which is the unmistakable form: a caption that calls the
+  // picture illustrative, or disowns it as a job the site arranged. The wider rule,
+  // that no visible text narrates a photograph at all, is judgment and lives in
+  // COMPLIANCE_STANDARDS.md: a chart's legend and a heading misplaced inside a
+  // figcaption are not captions, and no regex can tell them from one. A green check
+  // here is not a compliance opinion; read the standard.
+  { id: "photo-caption-disclaimer", severity: "fail",
+    re: /\billustrative (photograph|image|photo)\b|\bnot a (job we arranged|project record|specific property|property we inspected|system we inspected|test pit we dug)\b/gi,
+    msg: "Text describing a photograph. Delete the caption. The description belongs in the alt attribute, which is not visible." },
+
   // First-person work claims. FORBIDDEN_LANGUAGE.md bans these outright (holding out as a
   // contractor triggers state licensing statutes), so they FAIL, not WARN. There is no
   // judgment layer in CI to review a WARN, so the floor has to block them itself.
