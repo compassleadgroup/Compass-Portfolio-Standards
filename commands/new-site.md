@@ -60,6 +60,13 @@ Design (per Section 0 of BUILD_PLAYBOOK.md, and non-negotiable):
 - After each section, run the `site-design-qa` skill and clear its verdict table (every row PASS or an accepted WATCH) before starting the next section, so drift is caught while it is one section and cheap to fix. Save each section's audit file in the repo.
 - Do not ship the model's autopilot look. If a page could be dropped onto another site in the portfolio unchanged, it is not done.
 
+Review mining (standing step from 2026-09-30, before any service, city or FAQ copy is written):
+
+- Take the three to five local specialists that rank for the site's money queries (skip directories and national sites) and pull their Google reviews. With a compass-kb clone present, run `python3 scripts/review-mine.py "<City,State,United States>" "<name 1>" "<name 2>"` there; otherwise call DataForSEO `business_data/google/reviews/task_post` then `task_get` yourself, depth 40, once sorted `lowest_rating` and once `relevant`. About $0.003 per business.
+- Check each result's title is the business you meant. A loose name can match a different company.
+- Read the 1 and 2 star reviews first. Write down five to 10 homeowner problems and questions and use them as FAQs, questions-to-ask lines, and page sections.
+- Never name a competitor, quote a review, or state a price or warranty term from a review as fact. Write the general problem ("ask whether the estimate is free"). Method and rules: compass-kb wiki/build/review-mining.md.
+
 Lead capture (non-negotiable, built in batch one, never a later pass):
 
 - Read SECTION 2A of BUILD_PLAYBOOK.md and build every item in it. It is locked and it overrides any older field list elsewhere in the playbook.
