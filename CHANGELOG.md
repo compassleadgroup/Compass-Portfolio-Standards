@@ -2,6 +2,10 @@
 
 Every standards change, dated. Newest first.
 
+## 2026-09-30 (build method): competitor review mining before writing
+
+Operator instruction: "Let's put review mining into our workflow from here on out." /new-site and /new-page now pull the Google reviews of three to five local competitors before copy is written, and turn the homeowner complaints and questions into FAQs and page sections. Rule: never name a competitor, quote a review, or state a review's price or warranty claim as fact. Tool and method live in compass-kb (scripts/review-mine.py, wiki/build/review-mining.md). No checker change.
+
 ## 2026-08-23 (disclosure): the header strip is retired portfolio-wide
 
 Operator decision, stated plainly: "remove the header disclosure from every site. I'm okay with the risk and i think the footer is enough."

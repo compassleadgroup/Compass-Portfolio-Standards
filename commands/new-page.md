@@ -22,6 +22,10 @@ From the compass-standards repo (compassleadgroup/Compass-Portfolio-Standards, d
 
 Look at the top 3 organic results for the target keyword. Note their structure and the subtopics they cover. Then match or beat that coverage. Do this before drafting any copy.
 
+## Before writing: mine the reviews
+
+If the site's KB page has no review-mining block from the last 90 days, pull the Google reviews of three to five local competitors (compass-kb `scripts/review-mine.py`, or DataForSEO `business_data/google/reviews` sorted `lowest_rating` and `relevant`, depth 40). Fold any homeowner complaint or question that fits this page into it as an FAQ, a questions-to-ask line, or a section. Never name a competitor or quote a review. Rules: compass-kb wiki/build/review-mining.md.
+
 ## Rules of thumb
 
 - Cost pages are a proven winning lane. Cost searchers are warm buyers, so add a quote CTA.
