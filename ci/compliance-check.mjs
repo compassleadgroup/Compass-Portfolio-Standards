@@ -182,7 +182,7 @@ const AMERICAN_OUR = new Set([
 // Proper nouns own their spelling. These are real places, organizations and people,
 // not misspellings, so a county page naming Centre County PA is correct as written.
 const SPELLING_NAMES =
-  /Centre County|Centre PA|radon-centre-pa|Harbour Heights|Bal Harbour|Roberts-Grey|Ancient Air Theatre|ESRI Behavioural Research Unit|Greystone|Seymour|Annalise|Cochise|Robert B\. Our/gi;
+  /Centre County|Centre PA|radon-centre-pa|centre-county|Harbour Heights|Bal Harbour|Roberts-Grey|Ancient Air Theatre|ESRI Behavioural Research Unit|Greystone|Seymour|Annalise|Cochise|Robert B\. Our/gi;
 // Ordinary words capitalized only because they open a sentence, a heading or a table
 // cell. Any other capitalized match is assumed to be a name and is left alone.
 const SPELLING_CAPS_ORDINARY = new Set([
